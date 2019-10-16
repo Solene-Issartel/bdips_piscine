@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Please check your email to validate your account !
                 </div>
             </div>
         </div>

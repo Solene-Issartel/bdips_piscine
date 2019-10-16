@@ -1,6 +1,18 @@
 <?php
 
 return [
+  "driver" => "smtp",
+  "host" => "smtp.mailtrap.io",
+  "port" => 2525,
+  "from" => array(
+      "address" => "from@example.com",
+      "name" => "Example"
+  ),
+  "username" => "b0f4d7fbe104cd",
+  "password" => "041be14d083d10",
+  "sendmail" => "/usr/sbin/sendmail -bs"
+];
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +41,8 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +55,8 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    //'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +70,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@polytoeic-piscine.com'),
+        'name' => env('MAIL_FROM_NAME', 'Projet Piscine'),
     ],
 
     /*
@@ -84,9 +98,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','b0f4d7fbe104cd'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','041be14d083d10'),
 
     /*
     |--------------------------------------------------------------------------

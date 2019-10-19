@@ -109,6 +109,7 @@ class RegisterController extends Controller
         try
         {
             $user = $this->create($request->all());
+            //var_dump($user->email_token); NULL
             // After creating the user send an email with the random token generated in the create method above
             $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name]));
             Mail::to($user->email)->send($email);

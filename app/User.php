@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'firstname', 'email', 'password',
+        'name', 'firstname', 'email', 'password','email_token',
     ];
 
     /**
@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','email_token'
     ];
 
     // Set the verified status to true and make the email token null

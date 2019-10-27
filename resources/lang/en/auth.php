@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'checked' => 'You have to verify your account with the verification mail sent in your mailbox',
     'failed' => 'Wrong login or password. ',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 

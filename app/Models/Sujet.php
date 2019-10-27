@@ -6,6 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sujet extends Model
 {
+	protected $table = 'sujet';
+
+	/**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'libelleSujet', 'nomAuteur',
+    ];
+
+    //To don't use 'created_at and updated_at' in database
+    public $timestamps = false;
+
     public function get_questions()
 	{
 		//on recupere tous les satellites qui appartiennent à la planète courante
@@ -13,4 +27,10 @@ class Sujet extends Model
 	 ->get();
 	 return $tab_q;
 	}
+
+	/*public function create($subject_name,$author_name){
+		$this->libelleSujet = $subject_name;
+		$this->auteurSujet = $author_name;
+		$this->save();
+	}*/
 }

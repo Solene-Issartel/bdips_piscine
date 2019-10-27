@@ -35,4 +35,10 @@ class User extends Authenticatable
         $this->email_token = null;
         $this->save();
     }
+
+    // Boolean to know if user is an admin (1) or not (0)
+    public function isAdmin()
+    {
+        return $this->admin == 1;
+    }
 }

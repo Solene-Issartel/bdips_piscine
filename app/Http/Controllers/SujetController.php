@@ -34,5 +34,7 @@ class SujetController extends Controller
         $sujet->libelleSujet = request('subject_name');
         $sujet->nomAuteur = request('author_name');
         $sujet->save();
+
+        return view('question', ['id_sujet' => $sujet->id]);
     }
 }

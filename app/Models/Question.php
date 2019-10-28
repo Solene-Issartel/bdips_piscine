@@ -8,6 +8,9 @@ class Question extends Model
 {
 	protected $table = 'question';
 
+	//To don't use 'created_at and updated_at' in database
+    public $timestamps = false;
+
     public function get_reponse()
 	{
 		//on recupere tous les satellites qui appartiennent à la planète courante

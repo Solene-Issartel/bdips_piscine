@@ -1,0 +1,105 @@
+html,body {
+	height: 100%;
+	width: 100%;
+	font-family: "Quicksand", sans-serif;
+	color: #222;
+}
+
+.navbar {
+	padding: .8rem;
+}
+
+.navbar-nav li{
+	padding-right: 20px;
+}
+
+.nav-link {
+	font-size: 1.1em;
+}
+
+.jubotron {
+	padding: 1rem;
+	border-radius: 0;
+}
+
+.padding {
+	padding-bottom: 2rem;
+}
+
+.welcome {
+	width: 50em;
+	margin: 0 auto;
+	padding-top: 2rem;
+}
+
+.welcome hr {
+	border-top: 2px solid #b4b4b4;
+	width: 55%;
+	margin-top: .3rem;
+	margin-bottom: 1rem;
+}
+
+.fas {
+	color: #007bff;
+	font-size: 6em;
+	margin: 1rem;
+}
+
+.fab {
+	color: #007bff;
+	font-size: 3em;
+	margin: 1rem;
+	padding: 2rem;
+}
+
+.footer {
+	background-color: #3f3f3f;
+	color: #d5d5d5;
+	padding-top: 2rem;
+}
+
+.fa-broom {
+	font-size: 3rem;
+}
+
+hr.light {
+	border-top: 1px solid #d5d5d5;
+	width: 75%;
+	margin-top: .8rem;
+	margin-bottom: 1rem;
+}
+
+.strong {
+	font-weight: bold;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("parallax.jpg");
+
+  /* Set a specific height */
+  height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pad {
+	padding-top: 8em;
+}
+
+.my-margin {
+	margin-left: 6em;
+}
+
+p.my-marginTwo, h1.my-marginTwo {
+	width: 80%;
+	margin-left: 10%;
+}
+
+button.my-marginTwo {
+	margin-left: 10%;
+}

@@ -21,6 +21,8 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 
+Route::get('/user', 'UserController@index')->name('user');
+
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 Route::get('/check', 'Auth\RegisterController@check')->name('check');
 

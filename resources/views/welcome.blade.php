@@ -8,7 +8,7 @@
       <img src="../public/img/main.png" class="img-fluid">
     </div>
     <div class="row-sm-12 text-center">
-      <a href="#"><button type="buton" class="btn btn-primary btn-lg">Start now</button></a>
+      <a href="{{ url('login') }}"><button type="buton" class="btn btn-primary btn-lg">Start now</button></a>
     </div>
 
     <!-- About -->
@@ -69,22 +69,22 @@
 
     <!-- icons -->
 
-    <div class="container-fluid">
+    <div class="container-fluid pad pad-bottom">
     <div class="row text-center">
-        <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 60px">
+        <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 150px">
           <i class="fas fa-user"></i>
-          <h3>User</h3>
-          <p>You can check your personal account, update your informations and send requests/complaint to professors</p>          
+          <h4 style="font-weight: bold;">USER</h4>
+          <p class="my-marginTwo" style="padding-top: 20px;">You can check your personal account, update your informations and send requests/complaint to professors</p>          
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <i class="fas fa-tasks"></i>
-          <h3>Session</h3>
-          <p>You can join a session to pass the mock Toeic with other candidates. At the end, you will recieve your answer sheet and score</p>          
+          <h4 style="font-weight: bold;">SESSION</h4>
+          <p class="my-marginTwo" style="padding-top: 20px;">You can join a session to pass the mock Toeic with other candidates. At the end, you will recieve your answer sheet and score</p>          
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <i class="fas fa-chart-pie"></i>
-          <h3>Stats</h3>
-          <p>You can analyze your performance for each Toeic you passed and see your personal progress. You are free to share your score</p>         
+          <h4 style="font-weight: bold;">STATS</h4>
+          <p class="my-marginTwo" style="padding-top: 20px;">You can analyze your performance for each Toeic you passed and see your personal progress. You are free to share your score</p>         
         </div>
     </div>
     </div>
@@ -97,10 +97,13 @@
 
     <div class="container-fluid padding" id="team">
     <div class="row welcome text-center">
-      <div class="col-12 justify-content-center">
+      <div class="col-12 justify-content-center pad">
         <h1 class="display-4 text-center">Meet the team</h1>
       </div>
       <hr>
+      <div class="col-12">
+        <p class="lead">Because we know how boring is to correct 200 questions, we created this solution. This saves students and teachers time and prevent errors in corrections.</p>
+      </div>
     </div>      
     </div>
 
@@ -113,7 +116,7 @@
           <img class="card-img-top" src="../public/img/people1.jpg">
           <div class="card-body">
             <h4 class="card-title">Solène Issartel</h4>
-            <p class="card-text">Etudiant en première année du cursur ingénieur Informatique & Gestion.</p>
+            <p class="card-text">John is eipfjae aezfaez fazefqsf zrfazf dfzefazef azefaezf ezafefd.</p>
             <a href="#" class="btn btn-outline-primary">See profile</a>
           </div>
         </div>

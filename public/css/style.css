@@ -41,7 +41,7 @@ html,body {
 
 .fas {
 	color: #007bff;
-	font-size: 6em;
+	font-size: 2em;
 	margin: 1rem;
 }
 
@@ -58,10 +58,6 @@ html,body {
 	padding-top: 2rem;
 }
 
-.fa-broom {
-	font-size: 3rem;
-}
-
 hr.light {
 	border-top: 1px solid #d5d5d5;
 	width: 75%;
@@ -75,7 +71,7 @@ hr.light {
 
 .parallax {
   /* The image used */
-  background-image: url("parallax.jpg");
+  background-image: url("../img/parallax.jpg");
 
   /* Set a specific height */
   height: 400px;
@@ -91,6 +87,11 @@ hr.light {
 	padding-top: 8em;
 }
 
+.pad2 {
+	padding-top: 6em;
+}
+
+
 .my-margin {
 	margin-left: 6em;
 }
@@ -103,3 +104,36 @@ p.my-marginTwo, h1.my-marginTwo {
 button.my-marginTwo {
 	margin-left: 10%;
 }
+
+.pad-bottom {
+	padding-bottom: 8em;
+}
+
+.my-card {
+	width: 60%;
+	margin-left: 20%;
+	border-color: auto;
+}
+
+.responsive {
+  width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

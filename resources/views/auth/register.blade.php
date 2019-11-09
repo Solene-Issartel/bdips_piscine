@@ -1,24 +1,10 @@
-<!DOCTYPE html> 
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Quicksand font -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-    <!-- Title -->
-    <title>Sign in</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- My CSS -->
-    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
-    <link rel="icon" type="image/png" href="../public/img/dice.png">
-  </head>
+@extends('layouts.layauth')
 
-<!-- Problème : ne prend que l'idPromo dans l'envoie du formulaire --> 
+@section('title')
+Sign In
+@endsection
 
-  <body>
+@section('content')
     <!-- Creation d'une ligne -->
     <div class="container-fluid row pad">
       <!-- Colone 1 (image) -->
@@ -117,5 +103,4 @@
         </div>        
       </div>
   </div>
-  </body>
-</html>
+@endsection

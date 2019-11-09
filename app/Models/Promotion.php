@@ -14,4 +14,10 @@ class Promotion extends Model
 		$promos = DB::table('promotion')->distinct()->get();
 		return $promos;
 	}
+
+	public static function getPromoById($id_promotion)
+	{
+		$promo = DB::table($table)->where('idPromotion',$id_promotion)
+		return $promo;
+	}
 }

@@ -23,6 +23,9 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 
 Route::get('/user', 'UserController@index')->name('user');
 
+Route::get('/add_session', 'SessionController@index')->name('add_session');
+Route::post('/create_session', 'SessionController@create')->name('create_session');
+
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 
 Route::get('/signin', 'Auth\RegisterController@index')->name('signin'); 

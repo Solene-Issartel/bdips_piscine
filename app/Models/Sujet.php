@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Sujet extends Model
@@ -19,6 +20,13 @@ class Sujet extends Model
 
     //To don't use 'created_at and updated_at' in database
     public $timestamps = false;
+
+    public static function getAllSujets()
+	{
+		//on recupere tous les satellites qui appartiennent à la planète courante
+	 $tab_s = DB::table('sujet')->distinct()->get();
+	 return $tab_s;
+	}
 
     public function get_questions()
 	{

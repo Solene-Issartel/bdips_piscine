@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('verified')->default(0);
             $table->string('email_token')->nullable();
+            $table->integer('idPromotion');
             $table->rememberToken();
             $table->timestamps();
         });

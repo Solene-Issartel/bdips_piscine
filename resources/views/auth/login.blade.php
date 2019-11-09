@@ -24,7 +24,7 @@
         <div class="container-fluid">
           <img src="../public/img/signIn.png" class="img-fluid">
           <div class="col-sm-12 text-center">
-            <a href="{{ route('register') }}">I <span class="strong">don't have</span> an account !</a>
+            <a href="{{ url('signin') }}">I <span class="strong">don't have</span> an account !</a>
             <br>
             <a class="btn btn-link" href="{{ route('password.request') }}">I <span class="strong">lost</span> my password...</a>
           </div>

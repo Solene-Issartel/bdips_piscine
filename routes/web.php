@@ -24,6 +24,9 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/user', 'UserController@index')->name('user');
 
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
+
+Route::get('/signin', 'Auth\RegisterController@index')->name('signin'); 
+
 Route::get('/check', 'Auth\RegisterController@check')->name('check');
 
 Route::get('/subject', 'SujetController@index')->name('subject');

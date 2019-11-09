@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use DB;
 use Mail;
 use App\User;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use App\Mail\EmailVerification;
 use App\Http\Controllers\Controller;
@@ -44,6 +45,17 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {   
+        $promos=Promotion::getAllPromos();
+        return view('auth/register',['promos' => $promos]);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -55,7 +67,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'firstname' =>  'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
+            'idPromotion' => 'required|int',
         ]);
     }
 
@@ -67,12 +80,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        var_dump($data);
         return User::create([
             'name' => $data['name'],
             'firstname' => $data['firstname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'email_token' => str_random(10),
+            'idPromotion' => $data['idPromotion'],
         ]);
     }
 

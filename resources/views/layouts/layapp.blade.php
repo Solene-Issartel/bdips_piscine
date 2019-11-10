@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/e92a38100d.js" crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/appjs.js') }}"></script>
     <link rel="icon" type="image/png" href="../public/img/dice.png">
   </head>
 <body>

@@ -20,4 +20,14 @@ class Programmer extends Model
     //To don't use 'created_at and updated_at' in database
     public $timestamps = false;
 
+    public static function create($id_session, $id_promo)
+    {
+            $prog = new Programmer;
+            $prog->idSession=$id_session;
+            $prog->idPromotion=$id_promo;
+            $prog->save();
+
+            return $prog;
+    }
+
 }

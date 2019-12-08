@@ -29,7 +29,8 @@ class QuestionController extends Controller
 
     public function create()
     {
-        for ($i=1; $i <=200 ; $i++) { 
+        $last_id=Question::getLastId() + 1;
+        for ($i=$last_id; $i <=$last_id+200 ; $i++) { 
            $question = new Question;
            $question->numeroQuestion = request('num_question'.$i);
            $question->reponseQuestion = request('rep_question'.$i);
@@ -37,6 +38,8 @@ class QuestionController extends Controller
            $question->idSousPartie = request('id_souspartie'.$i);
            $question->save();
         }
+
+        return view('sujet');
         
         
     }

@@ -8,7 +8,12 @@
       <img src="../public/img/main.png" class="img-fluid">
     </div>
     <div class="row-sm-12 text-center">
-      <a href="{{ url('login') }}"><button type="buton" class="btn btn-primary btn-lg">Start now</button></a>
+      <!-- Verification si l'utilisateur est connecté -->
+      @if (auth()->check()) 
+        <a href="{{ url('home') }}"><button type="buton" class="btn btn-primary btn-lg">Start now</button></a>
+      @else
+        <a href="{{ url('login') }}"><button type="buton" class="btn btn-primary btn-lg">Start now</button></a>
+      @endif
     </div>
 
     <!-- About -->

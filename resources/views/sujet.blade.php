@@ -5,15 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Subject creation</div>
+                <div class="panel-heading">Subject list</div>
 
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'create_subject','method'=>'post']) !!}
-                        {!! Form::label('subject_name', 'Subject name : ') !!}
-                        {!! Form::text('subject_name') !!}
-                        {!! Form::hidden('author_name',Auth::user()->name) !!}
-                        {!! Form::submit('Next') !!}
-                    {!! Form::close() !!}
+                    @foreach($sujets as $sujet)
+                        {{ $sujet->libelleSujet }}
+                    @endforeach
+
+                    <a href="{{ url('cr_subject') }}"> Create new subject</a>
                 </div>
             </div>
         </div>

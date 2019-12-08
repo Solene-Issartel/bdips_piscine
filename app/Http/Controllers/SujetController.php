@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sujet;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class SujetController extends Controller
@@ -18,14 +19,26 @@ class SujetController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show subject list.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('sujet');
+        $sujets = Sujet::getAllSujets();
+        return view('sujet', ['sujets' => $sujets]);
     }
+
+     /**
+     * Show subject list.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function newSubject()
+    {
+        return view('create_sujet');
+    }
+    
 
     public function create()
     {
@@ -35,6 +48,11 @@ class SujetController extends Controller
         $sujet->nomAuteur = request('author_name');
         $sujet->save();
 
-        return view('question', ['id_sujet' => $sujet->id]);
+        $last_id = Question::getLastId();
+        if($last_id == null){
+            $last_id = 0;
+        }
+
+        return view('question', ['id_sujet' => $sujet->id,'last_id' => $last_id]);
     }
 }

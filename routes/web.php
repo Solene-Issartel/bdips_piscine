@@ -28,11 +28,18 @@ Route::post('/create_session', 'SessionController@create')->name('create_session
 
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 
+Route::post('password/reset', 'Auth\ResetPasswordController@reset'); 
+
+Route::post('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+
 Route::get('/signin', 'Auth\RegisterController@index')->name('signin'); 
 
 Route::get('/check', 'Auth\RegisterController@check')->name('check');
 
 Route::get('/subject', 'SujetController@index')->name('subject');
+
+Route::get('/cr_subject', 'SujetController@newSubject')->name('cr_subject');
+
 Route::post('/create_subject', 'SujetController@create');
 
 Route::get('/question', 'QuestionController@index')->name('question');

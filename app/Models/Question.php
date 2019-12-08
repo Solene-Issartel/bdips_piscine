@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
@@ -13,8 +14,18 @@ class Question extends Model
 
     public function get_reponse()
 	{
-		//on recupere tous les satellites qui appartiennent à la planète courante
-	 $reponse = DB::table($table)->whereId($this->id)->pluck('reponseQuestion');
-	 return $reponse;
+		 $reponse = DB::table($table)->whereId($this->id)->pluck('reponseQuestion');
+		 return $reponse;
+	}
+
+	public static function getLastId()
+	{
+		$last_id = DB::table('question')
+					->max('numeroQuestion');
+
+		/*$sql = 'SELECT MAX(`numeroQuestion`) FROM question';
+	 
+	 	 $last_id = DB::select($sql);*/
+		 return $last_id;
 	}
 }

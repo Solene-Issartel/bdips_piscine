@@ -28,6 +28,7 @@ class Sujet extends Model
 	 return $tab_s;
 	}
 
+
     public function get_questions()
 	{
 		//on recupere tous les satellites qui appartiennent à la planète courante

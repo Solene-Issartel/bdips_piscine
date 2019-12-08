@@ -15,11 +15,14 @@
                         <div class="col-sm-4">
                           First part : 
                             <div><br>
+                                <?php $k = $last_id+1; ?>
                                 @for ($i = 1; $i <= 6; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,1) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} <br><br>
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,1) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>

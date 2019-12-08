@@ -36,11 +36,11 @@
               <a class="nav-link" href="{{ url('/user') }}">User</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="session.html">Session</a>
+              <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="stats.html">Stats</a>
+              <a class="nav-link" href="{{ url('/stats') }}">Stats</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

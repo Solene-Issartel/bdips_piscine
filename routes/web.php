@@ -47,5 +47,5 @@ Route::get('/question', 'QuestionController@index')->name('question');
 Route::post('/create_question', 'QuestionController@create');
 
 //Stats
-Route::get('/stats','StatsController@index')->name('stats')
+Route::get('/stats','StatsController@index')->name('stats');
 

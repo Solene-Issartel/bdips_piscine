@@ -48,4 +48,6 @@ Route::post('/create_question', 'QuestionController@create');
 
 //Stats
 Route::get('/stats','StatsController@index')->name('stats');
+Route::post('/affichage','StatsController@checkchoice')->name('affichage');
+
 

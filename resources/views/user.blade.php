@@ -21,68 +21,69 @@ User
           <h1 class="display-4">My account</h1>
           <hr>
           <!-- Formulaire -->
-          <!-- Formulaire -->
-          <form class="form-horizontal" method="POST" action="{{ url('user_create') }}">
+          <form class="form-horizontal" method="POST" action="{{ url('user_update'), $user->id }}">
                         {{ csrf_field() }}
             <!-- Ligne 1 (nom + prenom) -->
             <div class="row">
-              <div class="col form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Paul">
+              <div> 
+                <input type="hidden" name="id"value="{{$user->id}}">
               </div>
               <div class="col form-group">
-                <label for="firstname">Surname</label>
-                <input type="text" class="form-control" id="firstname" placeholder="Dupont">
+                <label for="name">Name *</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
+              </div>
+              <div class="col form-group">
+                <label for="firstname">Surname *</label>
+                <input type="text" class="form-control" name="firstname" id="firstname" value="{{$user->firstname}}" required>
               </div>
             </div>
             <!-- Ligne 2 (email + password) -->
             <div class="row">
               <div class="col form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="paul.dupont@etu.umontpellier.fr">
+                <input type="text" class="form-control" name="email" id="email" placeholder="{{$user->email}}" disabled>
               </div>
               <div class="col form-group">
                 <label for="password">New password</label>
-                <input type="text" class="form-control" id="password" placeholder="Type here to set a new password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Type here to set a new password" value="">
               </div>
             </div>
             <!-- Ligne 3 (promotion + sexe) -->
             <div class="row">
               <!-- Promotion -->
               <div class="col-sm-3 form-group">
-                <label for="promotion">Promotion</label>
-                <select class="form-control">
-                  <option>IG3</option>
-                  <option>IG4</option>
-                  <option>IG5</option>
-                  <option>GBA3</option>
-                  <option>GBA4</option>
-                  <option>GBA5</option>
-                  <option>MAT3</option>
-                  <option>MAT4</option>
-                  <option>MAT5</option>
-                  <option>MI3</option>
-                  <option>MI4</option>
-                  <option>MI5</option>
-                  <option>MEA3</option>
-                  <option>MEA4</option>
-                  <option>MEA5</option>
-                  <option>SE3</option>
-                  <option>SE4</option>
-                  <option>SE5</option>
+                <label for="promotion">Promotion *</label>
+                <select class="form-control" name="promotion">
+                  <option value="1">IG3</option>
+                  <option value="2">IG4</option>
+                  <option value="3">IG5</option>
+                  <option value="4">GBA3</option>
+                  <option value="5">GBA4</option>
+                  <option value="6">GBA5</option>
+                  <option value="7">MAT3</option>
+                  <option value="8">MAT4</option>
+                  <option value="9">MAT5</option>
+                  <option value="10">MI3</option>
+                  <option value="11">MI4</option>
+                  <option value="12">MI5</option>
+                  <option value="13">MEA3</option>
+                  <option value="14">MEA4</option>
+                  <option value="15">MEA5</option>
+                  <option value="16">STE3</option>
+                  <option value="17">STE4</option>
+                  <option value="18">STE5</option>
                 </select>
               </div>
               <!-- Sexe -->
-              <div class="col-sm-3 form-group">
+              <!-- <div class="col-sm-3 form-group">
                 <label for="gender">Gender</label>
                 <select class="form-control">
                   <option>Male</option>
                   <option>Female</option>
                   <option>Other</option>
                 </select>
-              </div>
+              </div> -->
             </div>
-          </form>
           <!-- Ligne 4 (Bouton) -->
             <div class="row" style="padding-top: 2em;">
               <div class="col-sm-12">

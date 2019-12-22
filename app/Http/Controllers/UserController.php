@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Users;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,17 +25,41 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user');
+        $id = Auth::user()->id;
+        $currentuser = User::find($id);
+        return view('user',['user' => $currentuser]);
     }
 
-    /*public function create()
+    public function update()
     {
-        $sujet = new Sujet;
+        $id = request('id');
+        $user = User::find($id);
+        $user->firstname =  request('firstname');
+        $user->name = request('name');
+        $user->idPromotion = request('promotion');
+        if(request('password') != null){
+            $user->password = bcrypt(request('password'));
+        }
         
-        $sujet->libelleSujet = request('subject_name');
-        $sujet->nomAuteur = request('author_name');
-        $sujet->save();
+        $user->save();
 
-        return view('question', ['id_sujet' => $sujet->id]);
-    }*/
+        return redirect('/home')->with('success', 'User updated!');
+    
+    }
+
+    public function listing()
+    {
+        $users = User::getAllUsersNotAdmin();
+        return view('users_list', ['users' => $users]);
+    }
+
+    public function delete()
+    {
+
+        $id = request('id');
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/users_list')->with('success', 'User deleted!');
+    }
 }

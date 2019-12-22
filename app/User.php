@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,6 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = "users";
     /**
      * The attributes that are mass assignable.
      *
@@ -40,5 +42,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->admin == 1;
+    }
+
+    public static function getAllUsersNotAdmin()
+    {
+        $users = DB::table('users')->distinct()->where('admin',0)->get();
+        return $users;
     }
 }

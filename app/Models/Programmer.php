@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Programmer extends Model
@@ -28,6 +29,37 @@ class Programmer extends Model
             $prog->save();
 
             return $prog;
+    }
+
+    public static function gerUsersForSession($id_session)
+    {
+        /*"SELECT DISTINCT users.id FROM users INNER JOIN programmer ON users.idPromotion=programmer.idPromotion WHERE programmer.idSession=3";*/
+        $users = DB::table('programmer')
+        		->distinct()
+                ->select('users.*')
+                ->join('users', 'programmer.idPromotion', '=', 'programmer.idPromotion')
+                ->where('programmer.idSession','=',$id_session)
+                ->get();
+        return $users;
+    }
+
+    public static function accessSession($id_user,$id_session)
+    {
+           /* $user = "SELECT DISTINCT * FROM users INNER JOIN programmer ON users.idPromotion=programmer.idPromotion WHERE programmer.idSession=25 and users.id = 16";*/
+           $users = DB::table('programmer')
+           		->distinct()
+                ->select('users.*')
+                ->join('users', 'programmer.idPromotion', '=', 'programmer.idPromotion')
+                ->where('programmer.idSession','=',$id_session)
+                ->where('users.id','=',$id_user)
+                ->get();
+
+            //si l'utilisateur fait partit de la liste pouvant accéder à la session donnée en paramètre, renvoie true
+            if($user != null){
+            	return true;
+            }else {
+            	return false;
+            }
     }
 
 }

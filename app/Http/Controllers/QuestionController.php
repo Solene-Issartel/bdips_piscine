@@ -46,4 +46,9 @@ class QuestionController extends Controller
         
         
     }
+
+    public function quiz()
+    {
+        return view('questionnaire/quiz');
+    }
 }

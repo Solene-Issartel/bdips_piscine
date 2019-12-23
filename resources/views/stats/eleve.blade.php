@@ -1,7 +1,7 @@
 @extends('layouts.layauth')
 
 @section('title')
-Affichage
+Eleve
 @endsection
 
 @section('content')
@@ -11,12 +11,17 @@ Affichage
 
 
 
-<form method="post" action="">
+
+<form method="post" action="{{url('eleve')}}">
 	{{ csrf_field() }}
-<p> Nom: <input type=text name=nom><br>
+	<p> Nom: <input type=text name=nom><br>
 	Prenom: <input type=text name=prenom><br>
 	<input type=submit name=rechercher value=Rechercher><br> </p>
 </form>
+
+
+
+
 
 
 

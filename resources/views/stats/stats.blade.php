@@ -11,7 +11,7 @@ Choix Statistiques
   
 
 
-<form method="post" action="{{url('affichage')}}">
+<form method="post" action="{{url('choix')}}">
    <p>{{ csrf_field() }}
        <label for="choix">Quelle statistiques voulez-vous  ?</label><br />
        <select name="choix">
@@ -19,6 +19,7 @@ Choix Statistiques
            <option value="sous_partie">par sous-partie</option>
            <option value="partie">par partie</option>
            <option value="promo">par promotion</option>
+           <option value="sujet">par sujet</option>
        </select>
    </p>
    

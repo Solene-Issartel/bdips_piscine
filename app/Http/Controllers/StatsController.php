@@ -28,20 +28,24 @@ class StatsController extends Controller
 
     public function checkchoice(){
         $choix=request('choix');
-        if($choix=='eleve'){
-            return view('/stats/stats_eleve');
-        }
-        elseif($choix=='sous_partie'){
-            return view('/stats/stats_sousparties');
-        }
-        elseif ($choix=='partie'){
-            return view('/stats/stats_partie');
-        }
-        elseif ($choix=='promo'){
-            return view('/stats/stats_promo');
-        }
-        else{return view('welcome');}
+        // if($choix=='eleve'){
+        //     return view('/stats/eleve');
+        // }
+        // elseif($choix=='sous_partie'){
+        //     return view('/stats/sousparties');
+        // }
+        // elseif ($choix=='partie'){
+        //     return view('/stats/partie');
+        // }
+        // elseif ($choix=='promo'){
+        //     return view('/stats/promo');
+       
+        // }
+        return view('/stats/choix', ['choix'=>$choix]);
     }
-
-
+    
 }
+    // public function recherche_eleve(request $request){
+    //     //$prenom=request('prenom')
+    //     return('Le nom est ' .$requet->input('nom'));
+    // }

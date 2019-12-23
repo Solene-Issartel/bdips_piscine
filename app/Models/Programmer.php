@@ -46,7 +46,7 @@ class Programmer extends Model
     public static function accessSession($id_user,$id_session)
     {
            /* $user = "SELECT DISTINCT * FROM users INNER JOIN programmer ON users.idPromotion=programmer.idPromotion WHERE programmer.idSession=25 and users.id = 16";*/
-           $users = DB::table('programmer')
+           $user = DB::table('programmer')
            		->distinct()
                 ->select('users.*')
                 ->join('users', 'programmer.idPromotion', '=', 'programmer.idPromotion')

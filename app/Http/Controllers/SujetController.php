@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Sujet;
 use App\Models\Question;
+use App\Models\Programmer;
+use App\User;
 use Illuminate\Http\Request;
 
 class SujetController extends Controller
@@ -36,7 +39,13 @@ class SujetController extends Controller
      */
     public function newSubject()
     {
-        return view('create_sujet');
+        $id=Auth::user()->id;
+        if($id == null){
+            return view('create_sujet');
+        } else {
+             $user=User::find($id);
+            return view('welcome');
+        }
     }
     
 
@@ -52,7 +61,11 @@ class SujetController extends Controller
         if($last_id == null){
             $last_id = 0;
         }
-
+        $users=Programmer::gerUsersForSession(14);
+        var_dump($users);
+        $u=Programmer::accessSession(15,14);
+        var_dump($u);
+        $last_id = Question::getLastId();
         return view('question', ['id_sujet' => $sujet->id,'last_id' => $last_id]);
     }
 }

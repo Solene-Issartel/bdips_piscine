@@ -11,7 +11,7 @@
                     {!! Form::open(['url' => 'create_subject','method'=>'post']) !!}
                         {!! Form::label('subject_name', 'Subject name : ') !!}
                         {!! Form::text('subject_name') !!}
-                        {!! Form::hidden('author_name',Auth::user()->name) !!}
+                        {!! Form::hidden('author_name',$user->name) !!}
                         {!! Form::submit('Next') !!}
                     {!! Form::close() !!}
                 </div>

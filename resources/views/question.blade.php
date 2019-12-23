@@ -15,12 +15,13 @@
                         <div class="col-sm-4">
                           First part : 
                             <div><br>
+                                <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 <?php $k = $last_id+1; ?>
                                 @for ($i = 1; $i <= 6; $i++)
                                     {!! Form::hidden('num_question'.$k,$i) !!}
                                     {!! Form::hidden('id_souspartie'.$k,1) !!}
                                     {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} 
+                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                                     <?php $k++;?>
                                     <br><br>
                                 @endfor
@@ -30,10 +31,12 @@
                           Second part : 
                             <div><br>
                                 @for ($i = 7; $i <= 31; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,2) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} <br><br>
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,2) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>
@@ -41,10 +44,12 @@
                           Third part : 
                             <div><br>
                                 @for ($i = 32; $i <= 70; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,3) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} <br><br>
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,3) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>
@@ -54,10 +59,12 @@
                           Fourth part : 
                             <div><br>
                                 @for ($i = 71; $i <= 100; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,4) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} <br><br>
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,4) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>
@@ -68,10 +75,12 @@
                           Fifth part :
                             <div><br>
                                 @for ($i = 101; $i <= 130; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,5) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} <br><br>
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,5) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>
@@ -79,10 +88,12 @@
                           Sixth part :
                             <div><br>
                                 @for ($i = 131; $i <= 146; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,6) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) }} <br><br>
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,6) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>
@@ -90,15 +101,17 @@
                           Seventh part : 
                             <div><br>
                                 @for ($i = 147; $i <= 200; $i++)
-                                    {!! Form::hidden('num_question'.$i,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$i,7) !!}
-                                    {!! Form::label("rep_question".$i,"Question ".$i." :") !!}
+                                    {!! Form::hidden('num_question'.$k,$i) !!}
+                                    {!! Form::hidden('id_souspartie'.$k,7) !!}
+                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
                                     
                                     @if($i==200)
-                                        {!! Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "upper(rep_question".$i.")")) !!}
+                                        {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "upper(rep_question".$k.")")) !!}
                                     @else 
-                                        {!! Form::text("rep_question".$i,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$i.",rep_question".($i+1).",1)")) !!}
-                                    @endif <br><br>
+                                        {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) !!}
+                                    @endif 
+                                    <?php $k++;?>
+                                    <br><br>
                                 @endfor
                             </div>
                         </div>

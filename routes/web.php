@@ -34,6 +34,7 @@ Route::get('/check', 'Auth\RegisterController@check')->name('check');
 Route::get('/user', 'UserController@index')->name('user');
 Route::post('/user_update', 'UserController@update')->name('user_update');
 Route::get('/users_list', 'UserController@listing')->name('users_list');
+Route::post('/user_delete', 'UserController@delete')->name('user_delete');
 
 //Sessions
 Route::get('/add_session', 'SessionController@index')->name('add_session');

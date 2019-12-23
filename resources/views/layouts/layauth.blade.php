@@ -15,6 +15,9 @@
     <!-- My CSS -->
     <link rel="stylesheet" type="text/css" href="../public/css/style.css">
     <link rel="icon" type="image/png" href="../public/img/dice.png">
+    <!-- JS -->
+    <script src="{{ asset('../resources/assets/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('../resources/assets/js/bootstrap.min.js') }}"></script>
   </head> 
 
   <body>

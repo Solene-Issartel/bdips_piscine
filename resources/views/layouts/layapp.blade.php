@@ -15,6 +15,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/appjs.js') }}"></script>
+    <script src="{{ asset('../resources/assets/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('../resources/assets/js/bootstrap.min.js') }}"></script>
     <link rel="icon" type="image/png" href="../public/img/dice.png">
   </head>
 <body>

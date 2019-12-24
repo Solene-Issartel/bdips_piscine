@@ -6,14 +6,14 @@ PAr sous parties
 
 @section('content')
 @if ($choix=='eleve')
-<form method="post" action="{{url('eleve')}}">
+<form method="post" action="{{url('affichage')}}">
 	{{ csrf_field() }}
 	<p> Nom: <input type=text name=nom><br>
 	Prenom: <input type=text name=prenom><br>
-	<input type=submit name=rechercher value=Rechercher><br> </p>
+	<input type=submit name=okEleve value=Rechercher><br> </p>
 </form>
 @elseif ($choix=='sous_partie')
-	<form method="post" action="{{url('sous_partie')}}">
+	<form method="post" action="{{url('affichage')}}">
    		<p>{{ csrf_field() }}
        <label for="choix">Quelle sous-partie voulez-vous  ?</label><br />
        <select name="sous_partie">
@@ -29,7 +29,7 @@ PAr sous parties
    <input type="submit" name="okSousPartie"/>
 </form>
 @elseif ($choix=='partie')
-	<form method="post" action="{{url('partie')}}">
+	<form method="post" action="{{url('affichage')}}">
    		<p>{{ csrf_field() }}
        <label for="choix">Quelle partie voulez-vous  ?</label><br />
        <select name="partie">
@@ -41,7 +41,7 @@ PAr sous parties
 </form>
 
 @elseif ($choix=='promo')
-<form method="post" action="{{url('promo')}}">
+<form method="post" action="{{url('affichage')}}">
    		<p>{{ csrf_field() }}
        <label for="choix">Quelle promo voulez-vous  ?</label><br />
        <select name="promo">
@@ -59,7 +59,7 @@ PAr sous parties
   		</select>
      	
    </p>
-   <input type="submit" name="okSousPartie"/>
+   <input type="submit" name="okPromo"/>
 </form>
 @elseif ($choix=='sujet')
 wait for now

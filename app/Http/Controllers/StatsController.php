@@ -28,19 +28,6 @@ class StatsController extends Controller
 
     public function checkchoice(){
         $choix=request('choix');
-        // if($choix=='eleve'){
-        //     return view('/stats/eleve');
-        // }
-        // elseif($choix=='sous_partie'){
-        //     return view('/stats/sousparties');
-        // }
-        // elseif ($choix=='partie'){
-        //     return view('/stats/partie');
-        // }
-        // elseif ($choix=='promo'){
-        //     return view('/stats/promo');
-       
-        // }
         return view('/stats/choix', ['choix'=>$choix]);
     }
 

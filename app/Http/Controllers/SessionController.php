@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Auth;
 use App\Models\Sujet;
 use App\Models\Session;
 use App\Models\Promotion;
@@ -35,23 +37,28 @@ class SessionController extends Controller
 
     public function create()
     {
-        $promos = Promotion::getAllPromosOfCurrentYear();
+        if(User::find(Auth::user()->id)->isAdmin()){
+            $promos = Promotion::getAllPromosOfCurrentYear();
 
-        $session = new Session;
+            $session = new Session;
 
-        $tab_promo = request('promo');
-        $session->dateSession = request('date_session');
-        $heure = request('heure_session').':00';
-        $session->heureDebut = $heure;
-        $session->idSujet = request('idSujet');
-        $session->save();
+            $tab_promo = request('promo');
+            $session->dateSession = request('date_session');
+            $heure = request('heure_session').':00';
+            $session->heureDebut = $heure;
+            $session->idSujet = request('idSujet');
+            $session->save();
 
-        $id_s=$session->id;
+            $id_s=$session->id;
 
-        foreach ($tab_promo as $val) {
-            $prog = Programmer::create($id_s,$val);
+            foreach ($tab_promo as $val) {
+                $prog = Programmer::create($id_s,$val);
+            }
+
+            return view('home');
+        
+        } else {
+            return view('error.eror_403');
         }
-
-        return view('home');
     }
 }

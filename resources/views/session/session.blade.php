@@ -9,7 +9,7 @@ Add Session
     <div class="container-fluid">
       <!-- Titre -->
       <div class="container-fluid text-center pad">
-        <h1 class="display-4">Programmer une session</h1>
+        <h1 class="display-4">Schedule a session</h1>
         <hr style="border-top: 2px solid #b4b4b4; width: 40%; margin-top: .9rem; margin-bottom: 1rem;">
       </div>
       <!-- Formulaire -->
@@ -20,7 +20,7 @@ Add Session
           <div class="row">
             <div class="col-sm-3"></div>
             <div class="col-sm-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-              <label class="control-label" for="date_session">Date session : </label>
+              <label class="control-label" for="date_session">Session date : </label>
               <input name="date_session" data-provide="datepicker" id="date_session" onload="putDate()" type="date">
 
               @if ($errors->has('date_session'))
@@ -31,7 +31,7 @@ Add Session
             </div>
 
             <div class="col-sm-3 form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-              <label class="control-label" for="heure_session">Heure session : </label>
+              <label class="control-label" for="heure_session">Session hour : </label>
               <input type="time" id="heure_session" name="heure_session" min="08:00" max="18:00" required>
 
               @if ($errors->has('heure_session'))
@@ -46,7 +46,7 @@ Add Session
           <div class="row">
             <!-- sujet -->
             <div class="col-sm-12 form-group">
-              <label class="control-label" for="idSujet">Sujet : </label>
+              <label class="control-label" for="idSujet">Subject : </label>
               <select name="idSujet" class="mdb-select colorful-select dropdown-primary md-form">
                 @foreach ($tab_sujets as $sujet)
                       <option value="{{ $sujet->idSujet }}">{{ $sujet->libelleSujet }}</option>
@@ -68,7 +68,7 @@ Add Session
         <!-- Ligne 4 (Bouton) -->
           <div class="row pad2">
             <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary">C'est parti</button>
+              <button type="submit" class="btn btn-primary">Let's go</button>
             </div>
           </div>
         </form>

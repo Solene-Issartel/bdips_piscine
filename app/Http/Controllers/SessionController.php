@@ -52,6 +52,6 @@ class SessionController extends Controller
             $prog = Programmer::create($id_s,$val);
         }
 
-        return view('user');
+        return view('home');
     }
 }

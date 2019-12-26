@@ -52,3 +52,6 @@ Route::post('/create_question', 'QuestionController@create');
 //Stats
 Route::get('/stats','StatsController@index')->name('stats');
 
+//Questionnaire
+Route::get('/quiz','QuestionController@quiz')->name('quiz');
+

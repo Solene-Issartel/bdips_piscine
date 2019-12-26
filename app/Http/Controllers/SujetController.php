@@ -40,10 +40,10 @@ class SujetController extends Controller
     public function newSubject()
     {
         $id=Auth::user()->id;
-        if($id == null){
-            return view('create_sujet');
+        if($id != null){
+            $user=User::find($id);
+            return view('create_sujet',['user' => $user]);
         } else {
-             $user=User::find($id);
             return view('welcome');
         }
     }
@@ -61,10 +61,7 @@ class SujetController extends Controller
         if($last_id == null){
             $last_id = 0;
         }
-        $users=Programmer::gerUsersForSession(14);
-        var_dump($users);
-        $u=Programmer::accessSession(15,14);
-        var_dump($u);
+        
         $last_id = Question::getLastId();
         return view('question', ['id_sujet' => $sujet->id,'last_id' => $last_id]);
     }

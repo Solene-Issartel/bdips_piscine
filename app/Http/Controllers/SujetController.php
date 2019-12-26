@@ -51,18 +51,36 @@ class SujetController extends Controller
 
     public function create()
     {
-        $sujet = new Sujet;
+        if (User::find(Auth::user()->id)->isAdmin()) {
+            $sujet = new Sujet;
         
-        $sujet->libelleSujet = request('subject_name');
-        $sujet->nomAuteur = request('author_name');
-        $sujet->save();
+            $sujet->libelleSujet = request('subject_name');
+            $sujet->nomAuteur = request('author_name');
+            $sujet->save();
 
-        $last_id = Question::getLastId();
-        if($last_id == null){
-            $last_id = 0;
+            $last_id = Question::getLastId();
+            if($last_id == null){
+                $last_id = 0;
+            }
+            
+            $last_id = Question::getLastId();
+            return view('question', ['id_sujet' => $sujet->id,'last_id' => $last_id]);
+        } else {
+            return view('error.error_403');
         }
         
-        $last_id = Question::getLastId();
-        return view('question', ['id_sujet' => $sujet->id,'last_id' => $last_id]);
+    }
+
+    public function delete()
+    {
+        if (User::find(Auth::user()->id)->isAdmin()) {
+            $id = request('idSujet');
+            $sjt = Sujet::find($id);
+            $sjt->delete();
+
+            return redirect('/subject')->with('success', 'Subject deleted!');
+        } else {
+            return view('error.error_403');
+        }
     }
 }

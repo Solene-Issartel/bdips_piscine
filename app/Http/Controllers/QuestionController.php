@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Auth;
 use App\Models\Question;
 use App\Models\Programmer;
 use App\Models\Sujet;
@@ -31,24 +33,25 @@ class QuestionController extends Controller
 
     public function create()
     {
-        $last_id=Question::getLastId() + 1;
-        for ($i=$last_id; $i <=$last_id+199 ; $i++) { 
-           $question = new Question;
-           $question->numeroQuestion = request('num_question'.$i);
-           $question->reponseQuestion = request('rep_question'.$i);
-           $question->idSujet = request('id_sujet');
-           $question->idSousPartie = request('id_souspartie'.$i);
-           $question->save();
+        if(User::find(Auth::user()->id)->isAdmin()){
+            $last_id=Question::getLastId() + 1;
+            for ($i=$last_id; $i <=$last_id+199 ; $i++) { 
+               $question = new Question;
+               $question->numeroQuestion = request('num_question'.$i);
+               $question->reponseQuestion = request('rep_question'.$i);
+               $question->idSujet = request('id_sujet');
+               $question->idSousPartie = request('id_souspartie'.$i);
+               $question->save();
+            }
+
+            $sujets = Sujet::getAllSujets();
+            return view('sujet', ['sujets' => $sujets]);
+        } else {
+            return view('error.error_403');
         }
-
-        $sujets = Sujet::getAllSujets();
-        return view('sujet', ['sujets' => $sujets]);
+        
         
         
     }
 
-    public function quiz()
-    {
-        return view('questionnaire/quiz');
-    }
 }

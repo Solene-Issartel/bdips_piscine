@@ -31,7 +31,7 @@
 
     <!-- Build the future -->
 
-    <div class="container-fluid padding">
+    <div class="container-fluid pad pad-bottom">
     <div class="row">
         <div class="col-lg-6">
           <h1 class="my-marginTwo">We build the future...</h1>
@@ -60,7 +60,7 @@
 
     <!-- Features -->
 
-    <div class="container-fluid padding" id="features">
+    <div class="container-fluid pad" id="features">
     <div class="row welcome text-center padding">
       <div class="col-12">
         <h1 class="display-4">Features</h1>
@@ -114,7 +114,7 @@
 
     <!-- Cards -->
 
-    <div class="container-fluid padding">
+    <div class="container-fluid pad">
     <div class="row justify-content-center padding">
       <div class="col-md-4">
         <div class="card">
@@ -180,7 +180,7 @@
     <!-- Our philosophy -->
 
     <div class="container-fluid padding">
-    <div class="row padding">
+      <div class="row padding">
         <div class="col-lg-6">
           <img src="../public/img/illustration.jpg" class="image-fluid my-margin" width="600px">
         </div>
@@ -191,7 +191,7 @@
           </p>
           <br>
         </div>
-    </div>
+      </div>
     </div>
 
     <hr class="my-4 padding">
@@ -199,16 +199,16 @@
     <!-- Keep in touch -->
 
     <div class="container-fluid padding" id="contact">
-    <div class="row text-center">
+      <div class="row text-center">
         <div class="col-12 justify-content-center">
           <h1>We keep in touch !</h1>
         </div>
         <div class="col-12 social padding">
-          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ecole.polytechmontpellier/" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://twitter.com/PolytechMontp" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/ecole.polytechmontpellier" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-    </div>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -228,20 +228,20 @@
 
           <div class="col-md-4">
             <hr class="light">
-            <h5>Our hours</h5>
+            <h5>Polytech's network</h5>
             <hr class="light">
-            <p>Monday : 10am-5pm</p>
-            <p>Saturday : 10am-5pm</p>
-            <p>Sunday : closed</p>
+            <p>Angers | Annecy-Chambery | Clermont-Ferrand | Grenoble | Lille</p>
+            <p>Lyon | Marseille | Montpellier | Nancy | Nantes</p>
+            <p>Nice-Sophia | Orléans | Paris-Sud | Sorbonne | Tours</p>
           </div>
 
           <div class="col-md-4">
             <hr class="light">
-            <h5>Service areas</h5>
+            <h5>Contact</h5>
             <hr class="light">
-            <p>398402</p>
-            <p>29380</p>
-            <p>394840</p>
+            <p>Reception : 04.67.14.31.60</p>
+            <p>Fax : 04.67.14.45.14</p>
+            <p>Mail : polytech-responsable-ig@umontpellier.fr</p>
           </div>
 
           <div class="col-12">

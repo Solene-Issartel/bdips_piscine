@@ -21,7 +21,7 @@ Add Session
             <div class="col-sm-3"></div>
             <div class="col-sm-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
               <label class="control-label" for="date_session">Session date : </label>
-              <input name="date_session" data-provide="datepicker" id="date_session" onload="putDate()" type="date">
+              <input name="date_session" data-provide="datepicker" id="date_session" onload="putDate()" type="date" required>
 
               @if ($errors->has('date_session'))
                   <span class="help-block">
@@ -61,7 +61,7 @@ Add Session
               @foreach ($promos as $promo)
                       <input type="checkbox" class="checkbox_promo" id="promo{{ $promo->idPromotion}}" name="promo[]" onclick="progFormValuesID({{ $promo->idPromotion}})">
               <label for="promo[]">{{$promo->libellePromotion}}</label>
-                @endforeach
+              @endforeach
               
             </div>
           </div>

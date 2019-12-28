@@ -57,5 +57,5 @@ Route::post('/affichage','StatsController@affichage')->name('affichage');
 
 
 //Questionnaire
-Route::get('/quiz','QuestionController@quiz')->name('quiz');
+Route::get('/quiz','ResultatSousPartieController@index')->name('quiz');
 

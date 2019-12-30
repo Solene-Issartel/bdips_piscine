@@ -62,4 +62,26 @@ class Programmer extends Model
             }
     }
 
+    public function getUser ()
+    {
+        $id=Auth::user()->id;
+        if($id != null){
+            $user=User::find($id);
+            return $user[libelle_Promotion];
+        }
+    }
+
+    public static function displaySubject($libelle_Promotion)
+    {
+        $subject = DB::table('sujet')
+            ->distinct()
+            ->select('libelleSujet')
+            ->join('session','session.idSujet','=','sujet.idSujet')
+            ->join('programmer','programmer.idSession','=','session.idSession')
+            ->join('promotion','promotion.idPromotion','=','programmer.idPromotion')
+            ->where('promotion.libellePromotion','=', $libelle_Promotion)
+            ->get();
+        return $subject;
+    }
+
 }

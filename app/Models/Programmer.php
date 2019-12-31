@@ -67,11 +67,26 @@ class Programmer extends Model
         $id=Auth::user()->id;
         if($id != null){
             $user=User::find($id);
-            return $user[libelle_Promotion];
+            return $user['id_Promotion'];
         }
     }
 
-    public static function displaySubject($libelle_Promotion)
+    public static function displaySubject($id_promo){
+        $date = date('Y-m-d');
+        $id_subject = DB::table('programmer')
+                ->distinct()
+                ->join('session', 'session.idSession', '=', 'programmer.idSession')
+                ->join('sujet','sujet.idSujet','=','session.idSujet')
+                ->select('sujet.idSujet','sujet.libelleSujet','session.idSession')
+                ->where('programmer.idPromotion','=',$id_promo)
+
+                ->where('session.dateSession', '=', $date)
+                ->get();
+        return $id_subject;
+    }
+
+
+    /*public static function displaySubject($libelle_Promotion)
     {
         $subject = DB::table('sujet')
             ->distinct()
@@ -82,6 +97,6 @@ class Programmer extends Model
             ->where('promotion.libellePromotion','=', $libelle_Promotion)
             ->get();
         return $subject;
-    }
+    }*/
 
 }

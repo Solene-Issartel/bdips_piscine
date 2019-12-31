@@ -14,6 +14,8 @@ Quiz
                 <div class="panel-body">
                     <form method="POST" action="{{ url('res_quiz') }}">
                         {{ csrf_field() }}
+                     
+
                     <div class="container">
                         <p> Listening :</p>
                       <div id="accordion">
@@ -96,8 +98,10 @@ Quiz
                         </div>
                     </div>
                     
+                    <!-- il faut tester si les id sont vides ou non  --> 
+                    <input type="hidden" name="id_session" value="{{(isset($id_session) ? $id_session : '')}}">
+                    <input type="hidden" name="id_sujet" value="{{(isset($id_sujet) ? $id_sujet : '')}}">
                     
-
                     @auth
                         <button type="submit" class="btn btn-primary">
                           Next

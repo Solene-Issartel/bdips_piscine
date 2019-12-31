@@ -40,6 +40,8 @@ Route::post('/user_delete', 'UserController@delete')->name('user_delete');
 Route::get('/add_session', 'SessionController@index')->name('add_session');
 Route::post('/create_session', 'SessionController@create')->name('create_session');
 
+Route::get('/session_user','SessionController@enter_session')->name('session_user');
+
 //Sujets
 Route::get('/subject', 'SujetController@index')->name('subject');
 Route::get('/cr_subject', 'SujetController@newSubject')->name('cr_subject');
@@ -57,5 +59,6 @@ Route::post('/affichage','StatsController@affichage')->name('affichage');
 
 
 //Questionnaire
-Route::get('/quiz','ResultatSousPartieController@index')->name('quiz');
+Route::post('/quiz','ResultatSousPartieController@index')->name('quiz');
+Route::post('/res_quiz','ResultatSousPartieController@result')->name('res_quiz');
 

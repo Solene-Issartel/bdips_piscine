@@ -61,4 +61,11 @@ class SessionController extends Controller
             return view('error.eror_403');
         }
     }
+
+    public function enter_session()
+    {
+        $sujets=Programmer::displaySubject(Auth::user()['idPromotion']);
+        return view('session.session_user',['sujets' => $sujets]);
+    
+    }
 }

@@ -41,7 +41,7 @@ class ResultatSousPartieController extends Controller
             $id_session = request('id_session'); //à mettre dans le questionnaire
             $id_sujet = request('id_sujet');
             //récupération des rep de chaques sous parties
-            for ($i=1;$i<=2;$i++){ 
+            for ($i=1;$i<=7;$i++){ 
                 $res = 0;
 
                 $subject_answers = Question::getAnswersFromSousPartie($i,$id_sujet); //id_sujet à remplacer
@@ -70,13 +70,15 @@ class ResultatSousPartieController extends Controller
                 $resultat -> save();
             }
             
+            $score_list=ResultatSousPartie::getScoreListening($id_session,$id);
+            $score_read=ResultatSousPartie::getScoreReading($id_session,$id);
 
-            return view('questionnaire.quiz');
+            $score_final=$score_list+$score_read;
+
+            return view('questionnaire.result_quiz',['score_final' => $score_final]);
         } else {
             return view('questionnaire.quiz');
         }
     }
-
-
     
 }

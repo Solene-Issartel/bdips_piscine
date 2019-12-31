@@ -35,12 +35,24 @@
               <a href="{{ url('/home') }}" class="nav-link strong">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/user') }}">User</a>
+              <a class="nav-link" href="{{ url('/user') }}">Update profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
-            </li>
-            </li>
+                <a class="nav-link" href="{{ url('/subject') }}">Subjects</a>
+              </li>
+            @if(Auth::user()->isAdmin())
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/users_list') }}">Users</a>
+              </li>
+            @else
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/session_user') }}">Session</a>
+              </li>
+            @endif
+
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/stats') }}">Stats</a>
             </li>

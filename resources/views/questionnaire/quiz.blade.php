@@ -96,12 +96,117 @@ Quiz
                             </div>
                           </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                              <h5 class="mb-0">
+                                <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                  Part 4
+                                  <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                </div>
+                              </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                              <div class="card-body">
+                                <div><br>
+                                <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
+                                @for ($i = 71; $i <= 100; $i++)
+                                    Question {{$i}} :
+                                    <input type="radio" name="result{{$i}}" value="A" checked>
+                                    <input type="radio" name="result{{$i}}" value="B">
+                                    <input type="radio" name="result{{$i}}" value="C">
+                                    <input type="radio" name="result{{$i}}" value="D">
+
+                                    <br><br>
+                                @endfor
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <p> Reading :</p>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                              <h5 class="mb-0">
+                                <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                  Part 5
+                                </div>
+                              </h5>
+                            </div>
+
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                              <div class="card-body">
+                                <div><br>
+                                <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
+                                @for ($i = 101; $i <= 130; $i++)
+                                    Question {{$i}} :
+                                    <input type="radio" name="result{{$i}}" value="A" checked>
+                                    <input type="radio" name="result{{$i}}" value="B">
+                                    <input type="radio" name="result{{$i}}" value="C">
+                                    <input type="radio" name="result{{$i}}" value="D">
+
+                                    <br><br>
+                                @endfor
+                            </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header" id="headingSix">
+                              <h5 class="mb-0">
+                                <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                  Part 6
+                                  <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                </div>
+                              </h5>
+                            </div>
+                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                              <div class="card-body">
+                                <div><br>
+                                <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
+                                @for ($i = 131; $i <= 146; $i++)
+                                    Question {{$i}} :
+                                    <input type="radio" name="result{{$i}}" value="A" checked>
+                                    <input type="radio" name="result{{$i}}" value="B">
+                                    <input type="radio" name="result{{$i}}" value="C">
+                                    <input type="radio" name="result{{$i}}" value="D">
+
+                                    <br><br>
+                                @endfor
+                            </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header" id="headingSeven">
+                              <h5 class="mb-0">
+                                <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                  Part 7
+                                  <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                </div>
+                              </h5>
+                            </div>
+                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                              <div class="card-body">
+                                <div><br>
+                                <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
+                                @for ($i = 147; $i <= 200; $i++)
+                                    Question {{$i}} :
+                                    <input type="radio" name="result{{$i}}" value="A" checked>
+                                    <input type="radio" name="result{{$i}}" value="B">
+                                    <input type="radio" name="result{{$i}}" value="C">
+                                    <input type="radio" name="result{{$i}}" value="D">
+
+                                    <br><br>
+                                @endfor
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                     
                     <!-- il faut tester si les id sont vides ou non  --> 
                     <input type="hidden" name="id_session" value="{{(isset($id_session) ? $id_session : '')}}">
                     <input type="hidden" name="id_sujet" value="{{(isset($id_sujet) ? $id_sujet : '')}}">
-                    
+
                     @auth
                         <button type="submit" class="btn btn-primary">
                           Next
@@ -138,6 +243,7 @@ Quiz
                       </div>
                     </div>
                     </form>
+                  </div>
                 </div>
             </div>
         </div>

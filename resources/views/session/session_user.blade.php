@@ -29,7 +29,7 @@ Session User
             <a class="dropdown-item" href="#">Subject 12</a>
           </div>
         </div> -->
-        <form class="form-horizontal" method="POST" action="{{ url('quiz')}}">
+        <form class="form-horizontal" method="POST" action="{{ url('waiting_session')}}">
                         {{ csrf_field() }}
           <div class="form-group">
             <label for="form-session">Search session</label>

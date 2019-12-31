@@ -85,18 +85,4 @@ class Programmer extends Model
         return $id_subject;
     }
 
-
-    /*public static function displaySubject($libelle_Promotion)
-    {
-        $subject = DB::table('sujet')
-            ->distinct()
-            ->select('libelleSujet')
-            ->join('session','session.idSujet','=','sujet.idSujet')
-            ->join('programmer','programmer.idSession','=','session.idSession')
-            ->join('promotion','promotion.idPromotion','=','programmer.idPromotion')
-            ->where('promotion.libellePromotion','=', $libelle_Promotion)
-            ->get();
-        return $subject;
-    }*/
-
 }

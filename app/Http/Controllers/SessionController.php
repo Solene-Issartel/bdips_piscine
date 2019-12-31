@@ -66,6 +66,21 @@ class SessionController extends Controller
     {
         $sujets=Programmer::displaySubject(Auth::user()['idPromotion']);
         return view('session.session_user',['sujets' => $sujets]);
-    
+    }
+
+    public function waiting_session()
+    {
+        $id_sujet=request('id_sujet');
+        $id_session=request('id_session');
+        $hour=Session::hourSession($id_session);
+        $current_hour = date('H:m:s');
+        if($current_hour < $hour[0]){
+            $access = false;
+        }
+        else {
+            $access = true;
+        }
+        
+        return view('session.waiting_session',['id_sujet' => $id_sujet,'id_session' => $id_session,'access'=>$access]);
     }
 }

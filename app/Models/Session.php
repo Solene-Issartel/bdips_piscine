@@ -27,4 +27,14 @@ class Session extends Model
 	 $session = DB::table($table)->whereId($this->id);
 	 return $session;
 	}
+
+    public static function hourSession($id_session)
+    {
+        $hour = DB::table('session')
+            ->distinct()
+            
+            ->where('idSession','=', $id_session)
+            ->pluck('heureDebut');
+        return $hour;
+    }
 }

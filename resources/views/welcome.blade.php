@@ -48,8 +48,8 @@
           <br>
           <a href="https://www.polytech.umontpellier.fr/" target="_blank"><button type="button" class="btn btn-primary my-marginTwo">Visit our school</button></a>
         </div>
-        <div class="col-lg-6">
-          <img src="../public/img/city.gif" class="gif">
+        <div class="col-sm-6">
+          <img src="../public/img/city.gif" class="gif" style="width:100%;height:auto;">
         </div>
     </div>
     </div>

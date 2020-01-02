@@ -21,7 +21,7 @@ Add Session
             <div class="col-sm-3"></div>
             <div class="col-sm-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
               <label class="control-label" for="date_session">Session date : </label>
-              <input name="date_session" data-provide="datepicker" id="date_session" onload="putDate()" type="date" required>
+              <input name="date_session" data-provide="datepicker" id="date_session" onload="putDate()" type="date" required class="form-control">
 
               @if ($errors->has('date_session'))
                   <span class="help-block">
@@ -47,7 +47,7 @@ Add Session
             <!-- sujet -->
             <div class="col-sm-12 form-group">
               <label class="control-label" for="idSujet">Subject : </label>
-              <select name="idSujet" class="mdb-select colorful-select dropdown-primary md-form">
+              <select name="idSujet" class="mdb-select dropdown-primary md-form">
                 @foreach ($tab_sujets as $sujet)
                       <option value="{{ $sujet->idSujet }}">{{ $sujet->libelleSujet }}</option>
                 @endforeach

@@ -1,44 +1,83 @@
 @extends('layouts.layauth')
 
 @section('title')
-PAr sous parties
+Par sous parties
 @endsection
 
+<!-- Titre -->
+<div class="container-fluid text-center pad">
+  <h1 class="display-4">Statistics</h1>
+  <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
+</div>
+
 @section('content')
+
 @if ($choix=='eleve')
-<form method="post" action="{{url('affichage')}}">
-	{{ csrf_field() }}
-	<p> Nom: <input type=text name=nom><br>
-	Prenom: <input type=text name=prenom><br>
-	<input type=submit name=okEleve value=Rechercher><br> </p>
-</form>
+<div style="margin-top: 4rem;">
+  <form class="form-inline" method="post" action="{{url('affichage')}}">
+    {{ csrf_field() }}
+    <div class="container-fluid">
+      <div class="row" style="padding-left:40%;padding-top:25px;">
+        <input type=text class="form-control" name=nom placeholder="Surname" style="width:35%;">
+      </div>
+      <div class="row" style="padding-left:40%;padding-top:25px;">
+        <input type=text class="form-control" name=prenom placeholder="Name" style="width:35%;">
+      </div>
+      <div class="row" style="padding-left:40%;padding-top:25px;">
+        <button type="submit" class="btn btn-primary" name="okEleve" style="width:35%;">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
 @elseif ($choix=='sous_partie')
-	<form method="post" action="{{url('affichage')}}">
-   		<p>{{ csrf_field() }}
-       <label for="choix">Quelle sous-partie voulez-vous  ?</label><br />
-       <select name="sous_partie">
-           <option value="P1">Part 1</option>
-           <option value="P2">Part 2</option>
-           <option value="P3">Part 3</option>
-           <option value="P4">Part 4</option>
-           <option value="P5">Part 5</option>
-           <option value="P6">Part 6</option>
-           <option value="P7">Part 7</option>
- 		</select>
-   </p>
-   <input type="submit" name="okSousPartie"/>
-</form>
+<div class="container-fluid text-center pad2">
+  <form method="post" action="{{url('affichage')}}">
+       {{ csrf_field() }}
+    <div class="form-row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 my-1">
+      <!-- Selections -->
+        <select class="custom-select mr-sm-2" name="sous_partie">
+          <option value="listening">Listening</option>
+          <option value="part2">part2</option>
+          <option value="part3">part3</option>
+          <option value="part4">part4</option>
+          <option value="part5">part5</option>
+        </select>
+        </div>
+      </div>
+    <!-- Button -->
+    <div class="row pad2">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary" name="okSousPartie">Let's go</button>
+      </div>
+    </div>            
+  </form>
+</div>
+
 @elseif ($choix=='partie')
-	<form method="post" action="{{url('affichage')}}">
-   		<p>{{ csrf_field() }}
-       <label for="choix">Quelle partie voulez-vous  ?</label><br />
-       <select name="partie">
-           <option value="listening">Listening</option>
-           <option value="readinf">Reading</option>
- </select>
-   </p>
-   <input type="submit" name="okPartie"/>
-</form>
+<div class="container-fluid text-center pad2">
+  <form method="post" action="{{url('affichage')}}">
+       {{ csrf_field() }}
+    <div class="form-row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 my-1">
+      <!-- Selections -->
+        <select class="custom-select mr-sm-2" name="partie">
+          <option value="listening">Listening</option>
+          <option value="reading">Reading</option>
+        </select>
+        </div>
+      </div>
+    <!-- Button -->
+    <div class="row pad2">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary" name="okPartie">Let's go</button>
+      </div>
+    </div>            
+  </form>
+</div>
 
 @elseif ($choix=='promo')
 <form method="post" action="{{url('affichage')}}">

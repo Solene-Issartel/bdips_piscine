@@ -87,7 +87,7 @@ class SujetController extends Controller
             $sujet = Sujet::find($id);
             $sujet->delete();
 
-            return redirect('/subject')->with('success', 'Subject deleted!');
+            return redirect('subject')->with('success', 'Subject deleted!');
         } else {
             return view('error.error_403');
         }

@@ -1,16 +1,17 @@
-@extends('layouts.layauth')
+@extends('layouts.layhome')
 
 @section('title')
 Par sous parties
 @endsection
 
+
+
+@section('content')
 <!-- Titre -->
 <div class="container-fluid text-center pad">
   <h1 class="display-4">Statistics</h1>
   <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
 </div>
-
-@section('content')
 
 @if ($choix=='eleve')
 <div style="margin-top: 4rem;">
@@ -80,26 +81,28 @@ Par sous parties
 </div>
 
 @elseif ($choix=='promo')
-<form method="post" action="{{url('affichage')}}">
-   		<p>{{ csrf_field() }}
-       <label for="choix">Quelle promo voulez-vous  ?</label><br />
-       <select name="promo">
-           <option value="GBA">GBA</option>
-           <option value="IG">IG</option>
-           <option value="MAT">MAT</option>
-           <option value="MEA">MEA</option>
-           <option value="MI">MI</option>
-           <option value="STE">STE</option>
-  		</select>
-  		<select name="annee">
-  			<option value="3">3</option>
-  			<option value="4">4</option>
-  			<option value="5">5</option>
-  		</select>
-     	
-   </p>
-   <input type="submit" name="okPromo"/>
-</form>
+<div class="container-fluid text-center pad2">
+  <form method="post" action="{{url('affichage')}}">
+        <p>{{ csrf_field() }}
+        <label for="choix">Quelle promo voulez-vous  ?</label><br />
+        <select name="promo">
+            <option value="GBA">GBA</option>
+            <option value="IG">IG</option>
+            <option value="MAT">MAT</option>
+            <option value="MEA">MEA</option>
+            <option value="MI">MI</option>
+            <option value="STE">STE</option>
+        </select>
+        <select name="annee">
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        
+    </p>
+    <input type="submit" name="okPromo"/>
+  </form>
+</div>
 @elseif ($choix=='sujet')
 wait for now
 @else

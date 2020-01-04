@@ -1,14 +1,10 @@
-@extends('layouts.layauth')
+@extends('layouts.layhome')
 
 @section('title')
 Choix Statistiques
 @endsection
 
 @section('content')
-
-
-
-  
 
 <div class="container-fluid">
     <!-- Titre -->

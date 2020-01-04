@@ -43,9 +43,9 @@ Subject
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <form class="form-horizontal" method="POST" action="{{ url('subject_delete') }}">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="idSujet" value="{{$sujet->idSujet}}">
-                                    <button type="submit" class="btn btn-primary">Yes</button>
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="idSujet" value="{{$sujet->idSujet}}">
+                                        <button type="submit" class="btn btn-primary">Yes</button>
                                     </form>
                                 </div>
                             </div>

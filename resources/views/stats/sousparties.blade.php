@@ -1,4 +1,4 @@
-@extends('layouts.layauth')
+@extends('layouts.layhome')
 
 @section('title')
 PAr sous parties

@@ -5,26 +5,27 @@ Subject
 @endsection
 
 @section('content')
-<div class="container">
+
+<!-- Titre -->
+<div class="container-fluid text-center pad">
+  <h1 class="display-4">Subjects</h1>
+  <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
+  <a href="{{ url('cr_subject') }}"> Create new subject</a>
+</div>
+
+
+
+<div class="container" style="padding-top: 2em;">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <h4 class="panel-heading">Subject list</h4>
-
-                <div class="panel-body">
-                    <a href="{{ url('cr_subject') }}"> Create new subject</a> <br><br>
-
-
-                    @if ($sujets != null)
-                        @foreach($sujets as $sujet)
-                            {{ $sujet->libelleSujet }}
-                            <br>
-                        @endforeach
-                    @endif
-
-                    
-                </div>
-            </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <ul class="list-group">
+                @if ($sujets != null)
+                    @foreach($sujets as $sujet)
+                        <li class="list-group-item">{{ $sujet->libelleSujet }}</li>
+                    @endforeach
+                @endif
+            </ul>
         </div>
     </div>
 </div>

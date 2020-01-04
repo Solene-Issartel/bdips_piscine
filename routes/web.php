@@ -47,6 +47,7 @@ Route::post('/waiting_session','SessionController@waiting_session')->name('waiti
 Route::get('/subject', 'SujetController@index')->name('subject');
 Route::get('/cr_subject', 'SujetController@newSubject')->name('cr_subject');
 Route::post('/create_subject', 'SujetController@create');
+Route::post('/subject_delete','SujetController@delete')->name('subject_delete');
 
 //Questions
 Route::get('/question', 'QuestionController@index')->name('question');
@@ -56,8 +57,6 @@ Route::post('/create_question', 'QuestionController@create');
 Route::get('/stats','StatsController@index')->name('stats');
 Route::post('/choix','StatsController@checkchoice')->name('choix');
 Route::post('/affichage','StatsController@affichage')->name('affichage');
-
-
 
 //Questionnaire
 Route::post('/quiz','ResultatSousPartieController@index')->name('quiz');

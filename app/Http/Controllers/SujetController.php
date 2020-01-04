@@ -83,10 +83,9 @@ class SujetController extends Controller
     public function delete()
     {
         if (User::find(Auth::user()->id)->isAdmin()) {
-            $id = request('idSujet');
-            $sujet = Sujet::find($id);
-            $sujet->delete();
-
+            $idSujet = request('idSujet');
+            $sujet = Sujet::deleteSujet($idSujet);
+            
             return redirect('/subject')->with('success', 'Subject deleted!');
         } else {
             return view('error.error_403');

@@ -28,6 +28,12 @@ class Sujet extends Model
 	 return $tab_s;
 	}
 
+	public static function deleteSujet($id_sujet)
+	{
+		//on recupere tous les satellites qui appartiennent à la planète courante
+	 $sujet = DB::table('sujet')->where('idSujet','=',$id_sujet)->delete();
+	 return $sujet;
+	}
 
     public function get_questions()
 	{

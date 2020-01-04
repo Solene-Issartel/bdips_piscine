@@ -5,7 +5,7 @@ Users list
 @endsection
 
 @section('content')
-<!-- Partie basse -->
+<!-- Titre -->
 <div class="container-fluid text-center pad">
   <h1 class="display-4">Students</h1>
   <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">

@@ -26,14 +26,14 @@ User
             <!-- Ligne 1 (nom + prenom) -->
             <div class="row">
               <div> 
-                <input type="hidden" name="id"value="{{$user->id}}">
+                <input type="hidden" name="id" value="{{$user->id}}">
               </div>
               <div class="col form-group">
-                <label for="name">Name *</label>
+                <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
               </div>
               <div class="col form-group">
-                <label for="firstname">Surname *</label>
+                <label for="firstname">Surname</label>
                 <input type="text" class="form-control" name="firstname" id="firstname" value="{{$user->firstname}}" required>
               </div>
             </div>
@@ -74,15 +74,6 @@ User
                   <option value="18">STE5</option>
                 </select>
               </div>
-              <!-- Sexe -->
-              <!-- <div class="col-sm-3 form-group">
-                <label for="gender">Gender</label>
-                <select class="form-control">
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
-                </select>
-              </div> -->
             </div>
           <!-- Ligne 4 (Bouton) -->
             <div class="row" style="padding-top: 2em;">

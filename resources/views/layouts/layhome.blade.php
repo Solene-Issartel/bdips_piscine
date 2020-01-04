@@ -35,17 +35,17 @@
               <a href="{{ url('/home') }}" class="nav-link strong">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/user') }}">Update profile</a>
+              <a class="nav-link" href="{{ url('/user') }}">User</a>
             </li>
-            <li class="nav-item">
+            @if(Auth::user()->isAdmin())
+              <li class="nav-item">
                 <a class="nav-link" href="{{ url('/subject') }}">Subjects</a>
               </li>
-            @if(Auth::user()->isAdmin())
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/users_list') }}">Users</a>
+                <a class="nav-link" href="{{ url('/users_list') }}">Students</a>
               </li>
             @else
               <li class="nav-item">
@@ -69,7 +69,7 @@
         </div>   
       </div>     
     </nav>
-     @yield('content')
+    @yield('content')
 
 
 </body>

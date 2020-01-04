@@ -1,22 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.layhome')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Subject creation</div>
+<!-- Titre -->
+<div class="container-fluid text-center pad">
+  <h1 class="display-4">Subject creation</h1>
+  <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
+</div>
 
-                <div class="panel-body">
-                    {!! Form::open(['url' => 'create_subject','method'=>'post']) !!}
-                        {!! Form::label('subject_name', 'Subject name : ') !!}
-                        {!! Form::text('subject_name') !!}
-                        {!! Form::hidden('author_name',$user->name) !!}
-                        {!! Form::submit('Next') !!}
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
+
+<div class="row pad2">
+    <!-- sujet -->
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2 form-group text-center">
+        <form class="form-horizontal" method="POST" action="{{ url('create_subject') }}">
+            {{ csrf_field() }}
+            <input type="hidden" name="author_name" value="{{$user->name}}">
+            <input type="text" class="form-control text-center" id="subject_name" name="subject_name" placeholder="Subject name" required>
+            <br>
+            <button type="submit" class="btn btn-primary">Next</button>
+        </form>
+ 
+
     </div>
 </div>
 @endsection

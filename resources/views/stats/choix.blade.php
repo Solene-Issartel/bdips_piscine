@@ -1,16 +1,18 @@
-@extends('layouts.layauth')
+@extends('layouts.layhome')
 
 @section('title')
 Par sous parties
 @endsection
+
+
+
+@section('content')
 
 <!-- Titre -->
 <div class="container-fluid text-center pad">
   <h1 class="display-4">Statistics</h1>
   <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
 </div>
-
-@section('content')
 
 @if ($choix=='eleve')
 <div style="margin-top: 4rem;">
@@ -30,31 +32,6 @@ Par sous parties
   </form>
 </div>
 
-@elseif ($choix=='sous_partie')
-<div class="container-fluid text-center pad2">
-  <form method="post" action="{{url('affichage')}}">
-       {{ csrf_field() }}
-    <div class="form-row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-4 my-1">
-      <!-- Selections -->
-        <select class="custom-select mr-sm-2" name="sous_partie">
-          <option value="listening">Listening</option>
-          <option value="part2">part2</option>
-          <option value="part3">part3</option>
-          <option value="part4">part4</option>
-          <option value="part5">part5</option>
-        </select>
-        </div>
-      </div>
-    <!-- Button -->
-    <div class="row pad2">
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary" name="okSousPartie">Let's go</button>
-      </div>
-    </div>            
-  </form>
-</div>
 
 @elseif ($choix=='partie')
 <div class="container-fluid text-center pad2">

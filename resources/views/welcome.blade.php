@@ -81,17 +81,17 @@
         <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 150px">
           <i class="fas fa-user"></i>
           <h4 style="font-weight: bold;">USER</h4>
-          <p class="my-marginTwo" style="padding-top: 20px;">You can check your personal account, update your informations and send requests/complaint to professors</p>          
+          <p class="my-marginTwo" style="padding-top: 20px;">You can check your personal account, update your informations and password</p>          
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <i class="fas fa-tasks"></i>
           <h4 style="font-weight: bold;">SESSION</h4>
-          <p class="my-marginTwo" style="padding-top: 20px;">You can join a session to pass the mock Toeic with other candidates. At the end, you will recieve your answer sheet and score</p>          
+          <p class="my-marginTwo" style="padding-top: 20px;">You can join a session to pass the mock Toeic with other candidates. At the end, you will recieve your score</p>          
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <i class="fas fa-chart-pie"></i>
           <h4 style="font-weight: bold;">STATS</h4>
-          <p class="my-marginTwo" style="padding-top: 20px;">You can analyze your performance for each Toeic you passed and see your personal progress. You are free to share your score</p>         
+          <p class="my-marginTwo" style="padding-top: 20px;">You can analyze your performance for each Toeic you passed and see your personal progress</p>         
         </div>
     </div>
     </div>
@@ -109,7 +109,7 @@
       </div>
       <hr>
       <div class="col-12">
-        <p class="lead">Because we know how boring is to correct 200 questions, we created this solution. This saves students and teachers time and prevent errors in corrections.</p>
+        <p class="lead">We are five French students from Polytech Montpellier. We worked for four months to deliver the best solution and to fill with specifications</p>
       </div>
     </div>      
     </div>
@@ -123,8 +123,8 @@
           <img class="card-img-top" src="../public/img/people1.jpg">
           <div class="card-body">
             <h4 class="card-title">Solène Issartel</h4>
-            <p class="card-text">John is eipfjae aezfaez fazefqsf zrfazf dfzefazef azefaezf ezafefd.</p>
-            <a href="#" class="btn btn-outline-primary">See profile</a>
+            <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
+            <a href="#" class="btn btn-outline-primary">Say thanks to Solène</a>
           </div>
         </div>
       </div>
@@ -134,8 +134,8 @@
           <img class="card-img-top" src="../public/img/people1.jpg">
           <div class="card-body">
             <h4 class="card-title">Pierre Perrin</h4>
-            <p class="card-text"> John is eipfjae aezfaez fazefqsf zrfazf dfzefazef azefaezf ezafefd.</p>
-            <a href="#" class="btn btn-outline-primary">See profile</a>
+            <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
+            <a href="#" class="btn btn-outline-primary">Say thanks to Pierre</a>
           </div>
         </div>
       </div>
@@ -145,8 +145,8 @@
           <img class="card-img-top" src="../public/img/people1.jpg">
           <div class="card-body">
             <h4 class="card-title">Chloé Serre-Combe</h4>
-            <p class="card-text"> John is eipfjae aezfaez fazefqsf zrfazf dfzefazef azefaezf ezafefd.</p>
-            <a href="#" class="btn btn-outline-primary">See profile</a>
+            <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
+            <a href="#" class="btn btn-outline-primary">Say thanks to Chloé</a>
           </div>
         </div>
       </div>
@@ -158,8 +158,8 @@
           <img class="card-img-top" src="../public/img/people1.jpg">
           <div class="card-body">
             <h4 class="card-title">Axel Duval</h4>
-            <p class="card-text">Etudiant en première année du cursur ingénieur Informatique & Gestion.</p>
-            <a href="#" class="btn btn-outline-primary">See profile</a>
+            <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
+            <a href="#" class="btn btn-outline-primary">Say thanks to Axel</a>
           </div>
         </div>
       </div>
@@ -169,8 +169,8 @@
           <img class="card-img-top" src="../public/img/people1.jpg">
           <div class="card-body">
             <h4 class="card-title">Bryan Barbou</h4>
-            <p class="card-text"> John is eipfjae aezfaez fazefqsf zrfazf dfzefazef azefaezf ezafefd.</p>
-            <a href="#" class="btn btn-outline-primary">See profile</a>
+            <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
+            <a href="#" class="btn btn-outline-primary">Say thanks to Bryan</a>
           </div>
         </div>
       </div>
@@ -186,12 +186,11 @@
         <div class="col-lg-6">
           <img src="../public/img/illustration.jpg" class="image-fluid my-margin" width="600px">
         </div>
-        <div class="col-lg-6 text-justify">
+        <div class="col-lg-6 text-justify pad2">
           <h1 class="my-marginTwo">Our philosophy</h1>
-          <br>
-          <p class="my-marginTwo">Because we know how boring is to correct 200 questions, we created this solution. This saves students and teachers time and prevent errors in corrections. Moreover, thanks to the performance monitoring, students are informed of their situations very quickly. Teachers can take steps to help struggling students.<br>Because we know how boring is to correct 200 questions, we created this solution. This saves students and teachers time and prevent errors in corrections. Moreover, thanks to the performance monitoring, students are informed of their situations very quickly. Teachers can take steps to help struggling students.
-          </p>
-          <br>
+          <h3 style="font-size:80px;margin-left:10%;">,,</h3>
+          <p class="my-marginTwo">Because we know how boring is to correct 200 questions, we created the solution...<br>This solutions saves student's and teacher's time and prevent errors during the correction. Moreover, thanks to the performance monitoring, students are informed of their situations very quickly. Teachers can take steps to help struggling students.</p>
+          <h3 style="font-size:80px;margin-left:68%;margin-top:-85px;">,,</h3>
         </div>
       </div>
     </div>
@@ -256,13 +255,6 @@
     </footer>
 
 @endsection
-
-
-
-
-
-
-
 
 
 

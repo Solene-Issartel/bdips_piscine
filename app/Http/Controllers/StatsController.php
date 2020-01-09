@@ -61,9 +61,32 @@ class StatsController extends Controller
             return view('/stats/affichage',['partie'=> $partie]);
         }
         elseif(isset($_POST['okPromo'])){
-            $promo=request('promo');
-            $annee=request('annee');
-            return view('/stats/affichage',['promo'=> $promo, 'annee'=> $annee]); 
+            $id_promo=request('promo');
+            $en_fonction=request('statsPromo');
+            $sessions::ResultatSousPartie::get_promoSessions($id_promo);
+            $libSujet=array();
+            $users=User::get_promoUsers($id_promo);
+            $resultat=array();
+            for ($i=0; $i<count($id_sessions); $i++){
+                $lib=Session::get_LibSujet($id_sessions[$i]);
+                array_push($libSujet,$lib);
+            }
+            if $en_fonction=='subject'{
+                for ($i=0; $i<count($id_sessions); $i++){
+                    $tmp=array()
+                    for ($j=0; $j<count($users); $j++){
+                      $res=ResultatSousPartie::getScoreTot($id_sessions[$i],$users[$j]);
+                      // FAIRE LA MOYENNE DU SUJET ET METTRE DANS RESULTAT
+                      array_push($tmp, $res); 
+                    }
+                    $array_push($resultat,$tmp);
+                }
+                return view('/stats/affichage',['id_promo'=> $id_promo, 'resultat'=> $resultat]);
+            }
+            else{
+                // A FAIRE 
+                return view('/stats/affichage',['id_promo'=> $id_promo, ''=> $]);             
+                }
 
         }
         else{

@@ -401,6 +401,17 @@ class ResultatSousPartie extends Model
         $id_session= DB::select('SELECT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user]);
         return $id_session;
     }
+    public static function get_promoSessions($id_promo){
+    	$id_session= DB::select('SELECT idSession FROM resultatsouspartie JOIN users ON resultatsouspartie.idUtilisateur=users.id WHERE users.idPromotion=?',[$id_promo]);
+    	return $id_session;
+    }
+    public static function get_promoPartScore($id_promo,$id_session){
 
+    }
+
+    public static function get_userPartScore($id_souspartie,$id_user,$id_session){
+    	$result=DB::select('SELECT scoreSousPartie FROM resultatsouspartie WHERE idSousPartie=? AND idUtilisateur=? AND idSession=?',[$id_souspartie],[$id_user],[$id_session]);
+    	return $result
+    }
 }
 

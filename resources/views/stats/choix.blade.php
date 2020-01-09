@@ -25,7 +25,8 @@ Par sous parties
       <div class="row" style="padding-left:40%;padding-top:25px;">
         <input type=text class="form-control" name=prenom placeholder="Name" style="width:35%;">
       </div>
-      <label for="promotion">Promotion </label>
+      <div class="row" style="padding-left:40%;padding-top:25px;">
+         <label for="promotion">Promotion :  </label>
                 <select class="form-control" name="promotion">
                   <option value="1">IG3</option>
                   <option value="2">IG4</option>
@@ -46,6 +47,7 @@ Par sous parties
                   <option value="17">STE4</option>
                   <option value="18">STE5</option>
                 </select>
+      </div>
       <div class="row" style="padding-left:40%;padding-top:25px;">
         <button type="submit" class="btn btn-primary" name="okEleve" style="width:35%;">Search</button>
       </div>

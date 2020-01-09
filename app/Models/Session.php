@@ -5,6 +5,7 @@ namespace App\Models;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Session extends Model
 {
 	protected $table = 'session';
@@ -38,4 +39,12 @@ class Session extends Model
             ->pluck('heureDebut');
         return $hour;
     }
+
+    public static function get_LibSujet($id_session)
+    {
+        $lib=DB::select('SELECT libelleSujet FROM session JOIN sujet ON session.idSujet=sujet.idSujet WHERE idSession=?',[$id_session]);
+        return $lib;
+    }
+
+    
 }

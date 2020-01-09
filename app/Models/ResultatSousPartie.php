@@ -390,9 +390,17 @@ class ResultatSousPartie extends Model
 		
 	 	return $score_read;
 	}
+
+	public static function getScoreTot($id_session,$id_user)
+	{
+		return getScoreReading($id_session,$id_user)+getScoreListening($id_session,$id_user);
+	}
+
 	public static function get_userSessions($id_user)
     {
-        $session= DB::table('resultatsouspartie')->where('')
+        $id_session= DB::select('SELECT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user]);
+        return $id_session;
     }
+
 }
 

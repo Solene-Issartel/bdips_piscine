@@ -70,8 +70,8 @@ class SessionController extends Controller
 
     public function waiting_session()
     {
-        $id_sujet=request('id_sujet');
         $id_session=request('id_session');
+        $id_sujet=Session::getSubjectFromSession($id_session);
         $hour=Session::hourSession($id_session);
         $current_hour = date('H:m:s');
         if($current_hour < $hour[0]){

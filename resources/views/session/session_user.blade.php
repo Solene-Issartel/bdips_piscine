@@ -19,16 +19,21 @@ Session User
   <div class="col-sm-12 text-center">
     <form class="form-horizontal" method="POST" action="{{ url('waiting_session')}}">
                     {{ csrf_field() }}
-      <div class="form-group">
-        <select class="form-control" id="form-session" name="id_sujet">
-          @foreach($sujets as $sujet)
-            <option value="{{$sujet->idSujet}}">{{$sujet->libelleSujet}}</option>
-          @endforeach
-        </select>
-      </div>
-      <input type="hidden" name="id_session" value="{{$sujet->idSession}}">
-      <button type="submit" class="btn btn-primary">Enter</button>
-    </form>
+      
+        @if (isset($sujets))
+          <div class="form-group">
+            <select class="form-control" id="form-session" name="id_session">
+              @foreach($sujets as $sujet)
+                <option value="{{$sujet->idSession}}">{{$sujet->libelleSujet}}</option>
+              @endforeach
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Enter</button>
+        </form>
+        @else
+          <p>No session schedule for today</p>
+        @endif
+      
   </div>
 </div>
 @endsection

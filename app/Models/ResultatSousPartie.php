@@ -2,18 +2,25 @@
 
 namespace App\Models;
 
+use Carbon;
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class ResultatSousPartie extends Model
 {
 	protected $table = 'resultatsouspartie';
 
+	public $timestamps = false;
+
     public function get_score($id_utilisateur,$id_session)
 	{
-		//on recupere tous les satellites qui appartiennent à la planète courante
-	 $score = DB::table($table)->where('idUtilisateur',$id_utilisateur)->where('idSession',$id_session)->pluck('scoreSousPartie');
+	 $score = DB::table($table)
+	 			->where('idUtilisateur',$id_utilisateur)
+	 			->where('idSession',$id_session)
+	 			->pluck('scoreSousPartie');
 	 return $score;
 	}
+
 	public static function getScoreListening($id_session,$id_utilisateur)
 	{
 		$score_l = 0;
@@ -25,6 +32,7 @@ class ResultatSousPartie extends Model
 	 			->pluck('scoreSousPartie');
 	 		$score_l += $score[0];
 		}
+
 		if($score_l<=6){
 			$score_list=5;
 		} elseif ($score_l==7) {
@@ -199,6 +207,7 @@ class ResultatSousPartie extends Model
 		
 	 	return $score_list;
 	}
+
 	public static function getScoreReading($id_session,$id_utilisateur)
 	{
 		$score_l = 0;
@@ -210,6 +219,7 @@ class ResultatSousPartie extends Model
 	 			->pluck('scoreSousPartie');
 	 		$score_l += $score[0];
 		}
+
 		if($score_l<=15){
 			$score_read=5;
 		} elseif ($score_l==16) {

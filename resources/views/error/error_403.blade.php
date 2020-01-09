@@ -5,12 +5,11 @@ Error 403
 @endsection
 
 @section('content')
-    <!-- Creation d'une ligne -->
-    <div class="container-fluid row pad">
-      <!-- Colone 1 (image) -->
-      <div class="col-sm-8">
-        <div class="container-fluid">
-          ERROR 403 : Vous n'êtes pas autoriser à faire cette action
-      </div>
+<br>
+<br>
+<div class="container-fluid">
+  <img src="../public/img/error404.png" style="width:100%;height:auto;">
+</div>
+
       
 @endsection

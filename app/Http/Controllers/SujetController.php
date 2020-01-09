@@ -28,8 +28,12 @@ class SujetController extends Controller
      */
     public function index()
     {
-        $sujets = Sujet::getAllSujets();
-        return view('sujet', ['sujets' => $sujets]);
+        if (User::find(Auth::user()->id)->isAdmin()) {
+            $sujets = Sujet::getAllSujets();
+            return view('sujet', ['sujets' => $sujets]);
+        } else {
+            return view('error.error_403');
+        }
     }
 
      /**
@@ -42,7 +46,12 @@ class SujetController extends Controller
         $id=Auth::user()->id;
         if($id != null){
             $user=User::find($id);
-            return view('create_sujet',['user' => $user]);
+            if ($user->isAdmin()){
+                return view('create_sujet',['user' => $user]);
+            } else {
+                return view('home');
+            }
+            
         } else {
             return view('welcome');
         }
@@ -74,10 +83,9 @@ class SujetController extends Controller
     public function delete()
     {
         if (User::find(Auth::user()->id)->isAdmin()) {
-            $id = request('idSujet');
-            $sjt = Sujet::find($id);
-            $sjt->delete();
-
+            $idSujet = request('idSujet');
+            $sujet = Sujet::deleteSujet($idSujet);
+            
             return redirect('/subject')->with('success', 'Subject deleted!');
         } else {
             return view('error.error_403');

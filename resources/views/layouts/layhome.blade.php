@@ -37,10 +37,22 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/user') }}">User</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
-            </li>
-            </li>
+            @if(Auth::user()->isAdmin())
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/subject') }}">Subjects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/users_list') }}">Students</a>
+              </li>
+            @else
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/session_user') }}">Session</a>
+              </li>
+            @endif
+
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/stats') }}">Stats</a>
             </li>
@@ -57,7 +69,7 @@
         </div>   
       </div>     
     </nav>
-     @yield('content')
+    @yield('content')
 
 
 </body>

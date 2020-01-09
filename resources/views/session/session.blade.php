@@ -1,4 +1,4 @@
-@extends('layouts.layauth')
+@extends('layouts.layhome')
 
 @section('title')
 Add Session
@@ -32,7 +32,7 @@ Add Session
 
             <div class="col-sm-3 form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
               <label class="control-label" for="heure_session">Session hour : </label>
-              <input type="time" id="heure_session" name="heure_session" min="08:00" max="18:00" required>
+              <input type="time" id="heure_session" name="heure_session" min="08:00" max="18:00" required class="form-control">
 
               @if ($errors->has('heure_session'))
                   <span class="help-block">
@@ -45,9 +45,10 @@ Add Session
           <!-- Sujet + promotion -->
           <div class="row">
             <!-- sujet -->
-            <div class="col-sm-12 form-group">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2 form-group">
               <label class="control-label" for="idSujet">Subject : </label>
-              <select name="idSujet" class="mdb-select dropdown-primary md-form">
+              <select name="idSujet" class="mdb-select dropdown-primary md-form form-control">
                 @foreach ($tab_sujets as $sujet)
                       <option value="{{ $sujet->idSujet }}">{{ $sujet->libelleSujet }}</option>
                 @endforeach

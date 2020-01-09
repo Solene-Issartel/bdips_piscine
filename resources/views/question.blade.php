@@ -1,131 +1,144 @@
-@extends('layouts.app')
+@extends('layouts.layhome')
+
+@section('title')
+Subject creation
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md">
-            <div class="panel panel-default">
-                <div class="panel-heading">Subject creation</div>
+<!-- Titre -->
+<div class="container-fluid text-center pad">
+  <h1 class="display-4">Subject creation</h1>
+  <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
+</div>
 
-                <div class="panel-body">
-                    {!! Form::open(['url' => 'create_question','method'=>'post']) !!}
-                    <div class="container">
-                        <p> Listening :</p>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          First part : 
-                            <div><br>
-                                <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
-                                <?php $k = $last_id+1; ?>
-                                @for ($i = 1; $i <= 6; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,1) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                          Second part : 
-                            <div><br>
-                                @for ($i = 7; $i <= 31; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,2) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                          Third part : 
-                            <div><br>
-                                @for ($i = 32; $i <= 70; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,3) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          Fourth part : 
-                            <div><br>
-                                @for ($i = 71; $i <= 100; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,4) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                      </div>
-                      <br><p> Reading :</p>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          Fifth part :
-                            <div><br>
-                                @for ($i = 101; $i <= 130; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,5) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                          Sixth part :
-                            <div><br>
-                                @for ($i = 131; $i <= 146; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,6) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                          Seventh part : 
-                            <div><br>
-                                @for ($i = 147; $i <= 200; $i++)
-                                    {!! Form::hidden('num_question'.$k,$i) !!}
-                                    {!! Form::hidden('id_souspartie'.$k,7) !!}
-                                    {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                                    
-                                    @if($i==200)
-                                        {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "upper(rep_question".$k.")")) !!}
-                                    @else 
-                                        {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) !!}
-                                    @endif 
-                                    <?php $k++;?>
-                                    <br><br>
-                                @endfor
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                        {!! Form::hidden('id_sujet',$id_sujet) !!}
-                        {!! Form::submit('Next') !!}
-                    {!! Form::close() !!}
+
+
+
+<form class="form-group text-center" method="POST" action="{{ url('create_question') }}">
+    {{ csrf_field() }}
+    {!! Form::hidden('id_sujet',$id_sujet) !!}
+    <div class="container-fluid row pad2">    
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+
+            <!-- Photographs --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Photographs</p>
+                </div>
+            </div>                       
+            <?php $k = $last_id+1; ?>
+            @for ($i = 1; $i <= 6; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,1) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <!-- Question & Answer --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Question & Answer</p>
                 </div>
             </div>
+            @for ($i = 7; $i <= 31; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,2) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <!-- Short Conversations --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Short Conversations</p>
+                </div>
+            </div>
+            @for ($i = 32; $i <= 70; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,3) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <!-- Short Talks --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Short Talks</p>
+                </div>
+            </div>
+            @for ($i = 71; $i <= 100; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,4) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <!-- Incomplete Sentences --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Incomplete Sentences</p>
+                </div>
+            </div>
+            @for ($i = 101; $i <= 130; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,5) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <!-- Text Completion --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Text Completion</p>
+                </div>
+            </div>
+            @for ($i = 131; $i <= 146; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,6) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <!-- Reading Comprehension --> 
+            <div class="container-fluid" style="background-color:#E9ECEF;">
+                <div class="container">
+                    <p class="lead">Reading Comprehension</p>
+                </div>
+            </div>
+            @for ($i = 147; $i <= 200; $i++)
+                {!! Form::hidden('num_question'.$k,$i) !!}
+                {!! Form::hidden('id_souspartie'.$k,7) !!}
+                {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
+                
+                @if($i==200)
+                    {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "upper(rep_question".$k.")")) !!}
+                @else 
+                    {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) !!}
+                @endif 
+                <?php $k++;?>
+                <br><br>
+            @endfor
+
+            <br>
+            <button type="submit" class="btn btn-primary">Next</button>
         </div>
     </div>
-</div>
+</form>
+
+
 <script type="text/javascript">
     function suivant(encours, suivant, limite) 
     {

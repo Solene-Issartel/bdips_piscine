@@ -28,4 +28,26 @@ class Question extends Model
 	 	 $last_id = DB::select($sql);*/
 		 return $last_id;
 	}
+
+	public static function getAnswersFromSousPartie($id_sous_partie,$id_sujet)
+	{
+		$answers = DB::table('question')
+					->where('idSousPartie',$id_sous_partie)
+					->where('idSujet',$id_sujet)
+					->pluck('reponseQuestion');
+
+		return $answers;
+	}
+
+	public static function getFirstIdFromSousPartie($id_sous_partie)
+	{
+		$first_id = DB::table('question')
+					->where('idSousPartie',$id_sous_partie)
+					->min('numeroQuestion');
+
+		/*$sql = 'SELECT MAX(`numeroQuestion`) FROM question';
+	 
+	 	 $last_id = DB::select($sql);*/
+		 return $first_id;
+	}
 }

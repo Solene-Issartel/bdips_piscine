@@ -29,7 +29,18 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $tab_sujets = Sujet::getAllSujets();
+        if (User::find(Auth::user()->id)->isAdmin()) {
+            $sessions = Session::getAllSessions();
+                return view('session/liste_session', ['sessions' => $sessions]);
+
+        } else {
+        	return view('error.error_403');
+        }
+    }
+
+    public function newSession()
+    {
+    	$tab_sujets = Sujet::getAllSujets();
         $promos = Promotion::getAllPromosOfCurrentYear();
 
         return view('session/session', ['tab_sujets' => $tab_sujets,'promos' => $promos]); 
@@ -82,5 +93,17 @@ class SessionController extends Controller
         }
         
         return view('session.waiting_session',['id_sujet' => $id_sujet,'id_session' => $id_session,'access'=>$access]);
+    }
+
+    public function delete()
+    {
+        if (User::find(Auth::user()->id)->isAdmin()) {
+            $idSession = request('idSession');
+            $session = Session::deleteSession($idSession);
+            
+            return redirect('/session')->with('success', 'Session deleted!');
+        } else {
+            return view('error.error_403');
+        }
     }
 }

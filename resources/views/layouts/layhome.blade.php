@@ -42,7 +42,7 @@
                 <a class="nav-link" href="{{ url('/subject') }}">Subjects</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/add_session') }}">Session</a>
+                <a class="nav-link" href="{{ url('/session') }}">Session</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('/users_list') }}">Students</a>

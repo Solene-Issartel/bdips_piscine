@@ -37,8 +37,10 @@ Route::get('/users_list', 'UserController@listing')->name('users_list');
 Route::post('/user_delete', 'UserController@delete')->name('user_delete');
 
 //Sessions
-Route::get('/add_session', 'SessionController@index')->name('add_session');
+Route::get('/session', 'SessionController@index')->name('session');
+Route::get('/add_session', 'SessionController@newSession')->name('add_session');
 Route::post('/create_session', 'SessionController@create')->name('create_session');
+Route::post('/session_delete','SessionController@delete')->name('session_delete');
 
 Route::get('/session_user','SessionController@enter_session')->name('session_user');
 Route::post('/waiting_session','SessionController@waiting_session')->name('waiting_session');

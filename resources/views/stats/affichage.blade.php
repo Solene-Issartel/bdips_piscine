@@ -13,6 +13,7 @@ Affichage
 
 @if (isset($prenom))
 	<p>il s'appelle : {{$prenom}}</p>
+
 @elseif (isset($part))
 	<p> voila la sous-partie choisie : {{$part}}</p>
 @elseif (isset($partie))

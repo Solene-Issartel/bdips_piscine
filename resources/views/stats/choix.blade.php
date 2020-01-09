@@ -23,6 +23,27 @@ Par sous parties
       <div class="row" style="padding-left:40%;padding-top:25px;">
         <input type=text class="form-control" name=prenom placeholder="Name" style="width:35%;">
       </div>
+      <label for="promotion">Promotion </label>
+                <select class="form-control" name="promotion">
+                  <option value="1">IG3</option>
+                  <option value="2">IG4</option>
+                  <option value="3">IG5</option>
+                  <option value="4">GBA3</option>
+                  <option value="5">GBA4</option>
+                  <option value="6">GBA5</option>
+                  <option value="7">MAT3</option>
+                  <option value="8">MAT4</option>
+                  <option value="9">MAT5</option>
+                  <option value="10">MI3</option>
+                  <option value="11">MI4</option>
+                  <option value="12">MI5</option>
+                  <option value="13">MEA3</option>
+                  <option value="14">MEA4</option>
+                  <option value="15">MEA5</option>
+                  <option value="16">STE3</option>
+                  <option value="17">STE4</option>
+                  <option value="18">STE5</option>
+                </select>
       <div class="row" style="padding-left:40%;padding-top:25px;">
         <button type="submit" class="btn btn-primary" name="okEleve" style="width:35%;">Search</button>
       </div>

@@ -27,4 +27,6 @@ class Session extends Model
 	 $session = DB::table($table)->whereId($this->id);
 	 return $session;
 	}
+
+    
 }

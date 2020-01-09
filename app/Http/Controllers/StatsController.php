@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class StatsController extends Controller
 {
     /**
@@ -35,7 +35,13 @@ class StatsController extends Controller
         if(isset($_POST['okEleve'])){
             $nom= request('name');
             $prenom=request('prenom');
-            return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom]);   
+            $promo=request('promotion');
+            $id_user=User::get_user($name,$firstname,$promo);
+
+
+
+            
+            return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom,]);   
         }
         elseif(isset($_POST['okSousPartie'])){
             $part=request('sous_partie');

@@ -60,4 +60,12 @@ class Sujet extends Model
         		
         return $lib;
     }
+
+    public static function get_AllIdSujets()
+    {
+    	$id_sujet=DB::table('sujet')
+    				->select('idSujet')
+    				->get();    	
+    	return $id_sujet;
+    }
 }

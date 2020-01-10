@@ -38,5 +38,14 @@ class Session extends Model
             ->where('idSession','=', $id_session)
             ->pluck('heureDebut');
         return $hour;
-    }    
+    }
+public static function get_SujetSessions($id_sujet)
+{
+    $sessions=DB::table('session')
+                ->select('idSession')
+                ->where('idSujet','=',$id_sujet)
+                ->get();
+    return $sessions;
+}
+
 }

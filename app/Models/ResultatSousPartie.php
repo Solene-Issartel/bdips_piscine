@@ -430,5 +430,16 @@ class ResultatSousPartie extends Model
     				->get();
     	return $result;
     }
+
+    public static function get_SessionUsers($id_session)
+    {
+    	$users=DB::table('resultatsouspartie')
+    				->select('idUtilisateur')
+    				->distinct()
+    				->where('idSession','=',$id_session)
+    				->get();
+    	return $users;
+    }
+
 }
 

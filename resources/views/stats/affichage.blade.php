@@ -99,6 +99,45 @@ Statistiques
 	    }
 	});
 	</script>
+@elseif (isset($moySujet))
+	<script>
+	let myChart=document.getElementById('myChart').getContext('2d');
+	Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+	let graph = new Chart(myChart, {
+	    type: 'bar',
+	    data: {
+	        labels: <?php echo json_encode($libSujet);?>,
+	        datasets: [{
+	            label: 'Score',
+	            data: <?php echo json_encode($moySujet);?> ,
+	            backgroundColor:'rgba(54, 162, 235, 0.2)',
+	            borderColor:'rgba(54, 162, 235, 1)',
+	            borderWidth: 1,
+	            barThickness : 50 
+	        }]
+	    },
+	    options: {
+	    	title:{
+	    		display:true,
+	    		text:'All Subjects\'s score',
+	    		fontSize:32
+	    	},
+	    	legend:{
+	    		position:'right'
+	    	},
+	    	scales:{
+	    		yAxes:[{
+	    			ticks: {
+	        		min: 0,
+	        		max : 990
+	    		}
+	    		}]
+	    	}  	
+	    }
+	});
+	</script>
 @else
 	<p> a déf</p>
 @endif

@@ -32,7 +32,59 @@ class StatsController extends Controller
 
     public function checkchoice(){
         $choix=request('choix');
-        return view('/stats/choix', ['choix'=>$choix]);
+        if($choix=='sujet'){
+            //récupere toutes les ids des sujets
+            $sujet=Sujet::getAllSujets();
+            var_dump($sujet);
+            $libSujet=array();   
+            $moySujet=array();
+            for ($i=0; $i<count($sujet); $i++){
+                //ajout du lib sujet correspondant dans le tab
+                array_push($libSujet,$sujet[$i]->libelleSujet);
+                //ajoute l'id de tous les sujets
+                $id=$sujet[$i]->idSujet;
+                //tableau ou on va toruver la moyenne de chaque session ou le sujet à été traité
+                $moysess=array();
+                //récupère les id_sessions grâce à l'id du sujet
+                $tmpsess=Session::get_SujetSessions($id);
+                //var_dump($tmpsess);
+                for ($j=0; $j<count($tmpsess); $j++){
+                    //recupere tous les users de la sessions j
+                    $users=ResultatSousPartie::get_SessionUsers($tmpsess[$j]->idSession);
+                    //var_dump($users);
+                    $tmpres=array();
+                    for ($k=0; $k<count($users); $k++){
+                        //calcule le score de chaque users pour le sujet j
+                        $resuser=ResultatSousPartie::getScoreReading($tmpsess[$j]->idSession,$users[$k]->idUtilisateur)+ResultatSousPartie::getScoreListening($tmpsess[$j]->idSession,$users[$k]->idUtilisateur);
+                        array_push($tmpres,$resuser);
+                        //var_dump($tmpres);
+
+                    }
+                    
+                    $tmpmoysess=array_sum($tmpres)/count($tmpres);
+                    array_push($moysess,$tmpmoysess);
+                    // recuperer les users de la sessions et calcuelr le score de chaque user pour ensuite faire la moyenne qui est a ajouter dans le tableau moyenne 
+                }
+                var_dump($moysess);
+                array_push($moySujet,array_sum($moysess)/count($moysess));
+
+            }
+            var_dump($moySujet);
+            var_dump($libSujet);
+            
+            //recupere toutes les sessions qui utilise ce sujet
+
+            
+
+
+            return view('/stats/affichage', ['libSujet'=>$libSujet,'moySujet'=>$moySujet]);
+        }
+        else{
+           return view('/stats/choix', ['choix'=>$choix]);  
+        }
+        
+        
+        
     }
 
     public function affichage(){
@@ -43,24 +95,27 @@ class StatsController extends Controller
             $user=User::get_user($nom,$prenom,$promo);
             if(isset($user)){
                 $id_user = (array) $user;
-            $id_user=$id_user['id'];
-            $sessions=ResultatSousPartie::get_userSessions($id_user);           
-            $libSujet=array();
-            $resultat=array();
-            //Récupère tous les libélé de sujets et les résultat par sujet 
-            for ($i=0; $i<count($sessions); $i++){
-                $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                array_push($libSujet,$lib[$i]->libelleSujet);
-                $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
+                $id_user=$id_user['id'];
+                $sessions=ResultatSousPartie::get_userSessions($id_user);
+                           
+                $libSujet=array();
+                $resultat=array();
+                //Récupère tous les libélé de sujets et les résultat par sujet 
+                for ($i=0; $i<count($sessions); $i++){
+                    $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
+                    
+                    array_push($libSujet,$lib[0]->libelleSujet);
+                    $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
 
-                array_push($resultat,$tmp);
-            }            
-            return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom, 'libSujet'=> $libSujet, 'resultat'=> $resultat]);   
-        }
-        else{
-            $not_found=true;
-            return view('/stats/choix',['choix'=>'eleve','not_found'=>$not_found]);
-        }
+                    array_push($resultat,$tmp);
+                }
+                           
+                return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom, 'libSujet'=> $libSujet, 'resultat'=> $resultat]);   
+            }
+            else{
+                $not_found=true;
+                return view('/stats/choix',['choix'=>'eleve','not_found'=>$not_found]);
+            }
             
         }
         elseif(isset($_POST['okSousPartie'])){
@@ -69,6 +124,7 @@ class StatsController extends Controller
         }
         elseif(isset($_POST['okPartie'])){
             $partie=request('partie');
+
             return view('/stats/affichage',['partie'=> $partie]);
         }
         elseif(isset($_POST['okPromo'])){
@@ -132,8 +188,6 @@ class StatsController extends Controller
         else{
             return view('welcome');
         }
-        
-
     }
     
 }

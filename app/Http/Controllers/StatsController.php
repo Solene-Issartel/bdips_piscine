@@ -7,6 +7,7 @@ use App\User;
 use App\Models\ResultatSousPartie;
 use App\Models\Session;
 use App\Models\Sujet;
+use App\Models\Promotion;
 class StatsController extends Controller
 {
     /**
@@ -43,27 +44,16 @@ class StatsController extends Controller
             if(isset($user)){
                 $id_user = (array) $user;
             $id_user=$id_user['id'];
-            var_dump($id_user);
-            //$id_user->id_user;
-            //var_dump(gettype($id_user));
-            $sessions=ResultatSousPartie::get_userSessions($id_user);
-            // $id_sessions= (array) $sessions;
-            var_dump(count($sessions));
-            
+            $sessions=ResultatSousPartie::get_userSessions($id_user);           
             $libSujet=array();
             $resultat=array();
             //Récupère tous les libélé de sujets et les résultat par sujet 
             for ($i=0; $i<count($sessions); $i++){
-                var_dump($i);
                 $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                
                 array_push($libSujet,$lib[$i]->libelleSujet);
-                var_dump($libSujet);
-
                 $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
-                var_dump($tmp);
+
                 array_push($resultat,$tmp);
-                var_dump($resultat);
             }            
             return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom, 'libSujet'=> $libSujet, 'resultat'=> $resultat]);   
         }
@@ -83,32 +73,61 @@ class StatsController extends Controller
         }
         elseif(isset($_POST['okPromo'])){
             $id_promo=request('promotion');
+            $libPromo=Promotion::getLibPromoById($id_promo);
             $en_fonction=request('statsPromo');
             $sessions=ResultatSousPartie::get_promoSessions($id_promo);
             $libSujet=array();
             $users=User::get_promoUsers($id_promo);
             $resultat=array();
             for ($i=0; $i<count($sessions); $i++){
-                $lib=Sujet::get_LibSujet($id_sessions[$i]);
-                array_push($libSujet,$lib);
+                $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
+                array_push($libSujet,$lib[0]->libelleSujet);
             }
             if(request('statsPromo')=='subject'){
+                $subPart='';
+                $max=990;
                 for ($i=0; $i<count($sessions); $i++){
                     $tmp=array();
                     for ($j=0; $j<count($users); $j++){
-                      $res=ResultatSousPartie::getScoreTot($id_sessions[$i],$users[$j]);
-                      // FAIRE LA MOYENNE DU SUJET ET METTRE DANS RESULTAT
+                      $res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->id)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->id);
                       array_push($tmp, $res); 
                     }
-                    $array_push($resultat,$tmp);
+                    $moy=array_sum($tmp)/count($tmp);
+                    array_push($resultat,$moy);
                 }
-                return view('/stats/affichage',['id_promo'=> $id_promo, 'resultat'=> $resultat]);
+                return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
             }
             else{
-                // A FAIRE 
-                return view('/stats/affichage',['id_promo'=> $id_promo]);             
+                $max=495;
+                if(request('statsPromo')=='listening'){
+                    $subPart=request('statsPromo');
+                    for ($i=0; $i<count($sessions); $i++){
+                        $tmp=array();
+                        for ($j=0; $j<count($users); $j++){
+                          $res=ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->id);
+                          // FAIRE LA MOYENNE DU SUJET ET METTRE DANS RESULTAT
+
+                          array_push($tmp, $res); 
+                        }
+                        $moy=array_sum($tmp)/count($tmp);
+                        array_push($resultat,$moy);
+                    }
+                    return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max, 'subPart'=>$subPart]);
                 }
-            return view('/stats/affichage',['id_promo'=> $id_promo]);
+                else{
+                    $subPart=request('statsPromo');
+                    for ($i=0; $i<count($sessions); $i++){
+                        $tmp=array();
+                        for ($j=0; $j<count($users); $j++){
+                          $res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->id);
+                          array_push($tmp, $res); 
+                        }
+                        $moy=array_sum($tmp)/count($tmp);
+                        array_push($resultat,$moy);
+                    }
+                    return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
+                }   
+            }
         }
         else{
             return view('welcome');

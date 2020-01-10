@@ -131,7 +131,7 @@ Par sous parties
     </div>
     <div class="row" style="padding-left:40%;padding-top:5px;">
         <select name="statsPromo">
-           <option value="subject">Subject</option>
+           <option value="subject">All</option>
            <optgroup label="Parts">
               <option value="listening">Listening</option>
               <option value="reading">Reading</option>

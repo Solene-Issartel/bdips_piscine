@@ -48,4 +48,16 @@ class Sujet extends Model
 		$this->auteurSujet = $author_name;
 		$this->save();
 	}*/
+
+	public static function get_LibSujet($id_session)
+    {
+        // $lib=DB::select('SELECT libelleSujet FROM sujet JOIN session ON sujet.idSujet=session.idSujet WHERE session.idSession=?',[$id_session]);
+        $lib=DB::table('sujet')
+        		->join('session','sujet.idSujet','=','session.idSujet')
+        		->select('libelleSujet')
+        		->where('session.idSession','=',$id_session)
+        		->get();
+        		
+        return $lib;
+    }
 }

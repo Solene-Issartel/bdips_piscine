@@ -56,7 +56,8 @@ class User extends Authenticatable
                     ->where('name',$name)
                     ->where('firstname',$firstname)
                     ->where('idPromotion',$promo)
-                    ->get();
+                    ->first();
+                    
         return $user;
     }
     public static function get_promoUsers($id_promo){

@@ -391,18 +391,23 @@ class ResultatSousPartie extends Model
 	 	return $score_read;
 	}
 
-	public static function getScoreTot($id_session,$id_user)
-	{
-		return getScoreReading($id_session,$id_user)+getScoreListening($id_session,$id_user);
-	}
+	// public static function getScoreTot($id_session,$id_user)
+	// {
+	// 	return $this.getScoreReading($id_session,$id_user)+$this.getScoreListening($id_session,$id_user);
+	// }
 
 	public static function get_userSessions($id_user)
     {
-        $id_session= DB::select('SELECT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user]);
+        // $id_session= DB::select('SELECT DISTINCT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user]);
+        $id_session=DB::table('resultatsouspartie')
+        				->distinct()
+        				->select('idSession')
+        				->where('idUtilisateur','=',$id_user)
+        				->get();
         return $id_session;
     }
     public static function get_promoSessions($id_promo){
-    	$id_session= DB::select('SELECT idSession FROM resultatsouspartie JOIN users ON resultatsouspartie.idUtilisateur=users.id WHERE users.idPromotion=?',[$id_promo]);
+    	$id_session= DB::select('SELECT DISTINCT idSession FROM resultatsouspartie JOIN users ON resultatsouspartie.idUtilisateur=users.id WHERE users.idPromotion=?',[$id_promo]);
     	return $id_session;
     }
     public static function get_promoPartScore($id_promo,$id_session){
@@ -411,7 +416,7 @@ class ResultatSousPartie extends Model
 
     public static function get_userPartScore($id_souspartie,$id_user,$id_session){
     	$result=DB::select('SELECT scoreSousPartie FROM resultatsouspartie WHERE idSousPartie=? AND idUtilisateur=? AND idSession=?',[$id_souspartie],[$id_user],[$id_session]);
-    	return $result
+    	return $result;
     }
 }
 

@@ -49,6 +49,12 @@ Par sous parties
                 </select>
       </div>
       <div class="row" style="padding-left:40%;padding-top:25px;">
+        @if(isset($not_found))
+          <p> User not found</p>
+        @endif
+      </div>
+
+      <div class="row" style="padding-left:40%;padding-top:25px;">
         <button type="submit" class="btn btn-primary" name="okEleve" style="width:35%;">Search</button>
       </div>
     </div>

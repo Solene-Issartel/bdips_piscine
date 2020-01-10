@@ -14,7 +14,8 @@ Statistiques
 	<canvas id="myChart"></canvas>
 </div>
 
-@if (isset($prenom))	
+@if (isset($prenom))
+	
 	<script>
 	let myChart=document.getElementById('myChart').getContext('2d');
 	Chart.defaults.global.defaultFontFamily = 'Lato';
@@ -29,7 +30,8 @@ Statistiques
 	            data: <?php echo json_encode($resultat);?> ,
 	            backgroundColor:'rgba(54, 162, 235, 0.2)',
 	            borderColor:'rgba(54, 162, 235, 1)',
-	            borderWidth: 1
+	            borderWidth: 1,
+	            barThickness : 50 
 	        }]
 	    },
 	    options: {
@@ -40,7 +42,15 @@ Statistiques
 	    	},
 	    	legend:{
 	    		position:'right'
-	    	}
+	    	},
+	    	scales:{
+	    		yAxes:[{
+	    			ticks: {
+	        		min: 0,
+	        		max : 990
+	    		}
+	    		}]
+	    	}  	
 	    }
 	});
 	</script>
@@ -48,8 +58,8 @@ Statistiques
 	<p> voila la sous-partie choisie : {{$part}}</p>
 @elseif (isset($partie))
 	<p> voila la partie choisie : {{$partie}}</p>
-@elseif (isset($promo))
-	<p> voila la promo choisie : {{$promo}} {{$annee}}</p>
+@elseif (isset($id_promo))
+	<p> voila la promo choisie : {{$id_promo}}</p>
 @else
 	<p> a déf</p>
 @endif

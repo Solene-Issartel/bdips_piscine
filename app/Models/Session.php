@@ -5,6 +5,7 @@ namespace App\Models;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Session extends Model
 {
 	protected $table = 'session';
@@ -28,7 +29,7 @@ class Session extends Model
         $tab_s = DB::table('session')
             ->distinct()
 
-            ->where('dateSession','>=',$current_date)
+            ->where('dateSession','>',$current_date)
             ->get();
         return $tab_s;
     }
@@ -39,11 +40,13 @@ class Session extends Model
      return $session;
     }
 
-    public function get_session()
+    public static function get_session()
 	{
-	   $session = DB::table($table)->whereId($this->id);
+		//on recupere tous les satellites qui appartiennent à la planète courante
+	 $session = DB::table('session')->get();
 	 return $session;
 	}
+
 
     public static function hourSession($id_session)
     {
@@ -63,4 +66,22 @@ class Session extends Model
             ->pluck('idSujet');
         return $id_sujet[0];
     }
+
+    public static function get_SujetSessions($id_sujet)
+    {
+        $sessions=DB::table('session')
+                    ->select('idSession')
+                    ->where('idSujet','=',$id_sujet)
+                    ->get();
+        return $sessions;
+    }
+    public static function dateSession($id_session)
+    {
+        $date = DB::table('session')
+            ->select('dateSession','heureDebut')
+            ->where('idSession','=', $id_session)
+            ->get();
+        return $date;
+    }
+
 }

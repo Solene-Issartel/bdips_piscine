@@ -30,7 +30,6 @@ class ResultatSousPartie extends Model
 	 			->where('idSession',$id_session)
 	 			->where('idSousPartie',$i)
 	 			->pluck('scoreSousPartie');
-
 	 		$score_l += $score[0];
 		}
 
@@ -218,7 +217,6 @@ class ResultatSousPartie extends Model
 	 			->where('idSession',$id_session)
 	 			->where('idSousPartie',$i)
 	 			->pluck('scoreSousPartie');
-
 	 		$score_l += $score[0];
 		}
 
@@ -392,4 +390,56 @@ class ResultatSousPartie extends Model
 		
 	 	return $score_read;
 	}
+
+	// public static function getScoreTot($id_session,$id_user)
+	// {
+	// 	return $this.getScoreReading($id_session,$id_user)+$this.getScoreListening($id_session,$id_user);
+	// }
+
+	public static function get_userSessions($id_user)
+    {
+        // $id_session= DB::select('SELECT DISTINCT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user]);
+        $id_session=DB::table('resultatsouspartie')
+        				->distinct()
+        				->select('idSession')
+        				->where('idUtilisateur','=',$id_user)
+        				->get();
+        return $id_session;
+    }
+    public static function get_promoSessions($id_promo){
+    	//$id_session= DB::select('SELECT DISTINCT idSession FROM resultatsouspartie JOIN users ON resultatsouspartie.idUtilisateur=users.id WHERE users.idPromotion=?',[$id_promo]);
+    	$id_session= DB::table('resultatsouspartie')
+    					->distinct()
+    					->select('idSession')
+    					->join('users','resultatsouspartie.idUtilisateur','=','users.id')
+    					->where('users.idPromotion','=',$id_promo)
+    					->get();
+    	return $id_session;
+    }
+    //public static function get_promoPartScore($id_promo,$id_session){
+
+    //}
+
+    public static function get_userPartScore($id_souspartie,$id_user,$id_session){
+    	//$result=DB::select('SELECT scoreSousPartie FROM resultatsouspartie WHERE idSousPartie=? AND idUtilisateur=? AND idSession=?',[$id_souspartie],[$id_user],[$id_session]);
+    	$result=DB::table('resultatsouspartie')
+    				->select('scoreSousPartie')
+    				->where('idSousPartie','=',$id_souspartie)
+    				->where('idUtilisateur','=',$id_user)
+    				->where('idSession','=',$id_session)
+    				->get();
+    	return $result;
+    }
+
+    public static function get_SessionUsers($id_session)
+    {
+    	$users=DB::table('resultatsouspartie')
+    				->select('idUtilisateur')
+    				->distinct()
+    				->where('idSession','=',$id_session)
+    				->get();
+    	return $users;
+    }
+
 }
+

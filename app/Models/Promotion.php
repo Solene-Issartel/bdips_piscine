@@ -44,4 +44,12 @@ class Promotion extends Model
 		$promo = DB::table($table)->where('idPromotion',$id_promotion);
 		return $promo;
 	}
+	public static function getLibPromoById($id_promo)
+	{
+		$promo=DB::table('Promotion')
+				->select('libellePromotion')
+				->where('idPromotion','=',$id_promo)
+				->get();
+		return $promo;
+	}
 }

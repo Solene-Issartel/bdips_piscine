@@ -26,6 +26,35 @@ Par sous parties
         <input type=text class="form-control" name=prenom placeholder="Name" style="width:35%;">
       </div>
       <div class="row" style="padding-left:40%;padding-top:25px;">
+         <label for="promotion">Promotion :  </label>
+                <select class="form-control" name="promotion">
+                  <option value="1">IG3</option>
+                  <option value="2">IG4</option>
+                  <option value="3">IG5</option>
+                  <option value="4">GBA3</option>
+                  <option value="5">GBA4</option>
+                  <option value="6">GBA5</option>
+                  <option value="7">MAT3</option>
+                  <option value="8">MAT4</option>
+                  <option value="9">MAT5</option>
+                  <option value="10">MI3</option>
+                  <option value="11">MI4</option>
+                  <option value="12">MI5</option>
+                  <option value="13">MEA3</option>
+                  <option value="14">MEA4</option>
+                  <option value="15">MEA5</option>
+                  <option value="16">STE3</option>
+                  <option value="17">STE4</option>
+                  <option value="18">STE5</option>
+                </select>
+      </div>
+      <div class="row" style="padding-left:40%;padding-top:25px;">
+        @if(isset($not_found))
+          <p> User not found</p>
+        @endif
+      </div>
+
+      <div class="row" style="padding-left:40%;padding-top:25px;">
         <button type="submit" class="btn btn-primary" name="okEleve" style="width:35%;">Search</button>
       </div>
     </div>
@@ -58,28 +87,78 @@ Par sous parties
 
 @elseif ($choix=='promo')
 <form method="post" action="{{url('affichage')}}">
-   		<p>{{ csrf_field() }}
-       <label for="choix">Quelle promo voulez-vous  ?</label><br />
-       <select name="promo">
-           <option value="GBA">GBA</option>
-           <option value="IG">IG</option>
-           <option value="MAT">MAT</option>
-           <option value="MEA">MEA</option>
-           <option value="MI">MI</option>
-           <option value="STE">STE</option>
-  		</select>
-  		<select name="annee">
-  			<option value="3">3</option>
-  			<option value="4">4</option>
-  			<option value="5">5</option>
-  		</select>
-     	
-   </p>
+   		{{ csrf_field() }}
+    <div class="row" style="padding-left:40%;padding-top:25px;">
+       <label for="choix">Which section would you like ?</label><br />
+     </div>
+     <div class="row" style="padding-left:40%;padding-top:5px;">
+       <select name="promotion">
+        <optgroup label="IG">
+          <option value="1">IG3</option>
+          <option value="2">IG4</option>
+          <option value="3">IG5</option>
+        </optgroup>
+        <optgroup label="GBA">
+          <option value="4">GBA3</option>
+          <option value="5">GBA4</option>
+          <option value="6">GBA5</option>
+        </optgroup>
+        <optgroup label="MAT">
+          <option value="7">MAT3</option>
+          <option value="8">MAT4</option>
+          <option value="9">MAT5</option>
+        </optgroup>
+        <optgroup label="MI">
+          <option value="10">MI3</option>
+          <option value="11">MI4</option>
+          <option value="12">MI5</option>
+        </optgroup>
+        <optgroup label="MEA">
+          <option value="13">MEA3</option>
+          <option value="14">MEA4</option>
+          <option value="15">MEA5</option>
+        </optgroup>
+        <optgroup label="STE">
+          <option value="16">STE3</option>
+          <option value="17">STE4</option>
+          <option value="18">STE5</option>
+        </optgroup>
+        </select>
+     </div>
+
+    <div class="row" style="padding-left:40%;padding-top:25px;">
+      <label for="pour">What stats would you like?</label><br />
+    </div>
+    <div class="row" style="padding-left:40%;padding-top:5px;">
+        <select name="statsPromo">
+           <option value="subject">All</option>
+           <optgroup label="Parts">
+              <option value="listening">Listening</option>
+              <option value="reading">Reading</option>
+           </optgroup>
+        </select>
+      </div>
+   <div class="row" style="padding-left:40%;padding-top:25px;">
    <input type="submit" name="okPromo"/>
+ </div>
 </form>
-@elseif ($choix=='sujet')
-wait for now
+@elseif ($choix=='session')
+  <form method="post" action="{{url('affichage')}}">
+      {{ csrf_field() }}
+    <div class="row" style="padding-left:40%;padding-top:25px;">
+       <label for="choix">Which session would you like ?</label><br />
+    </div>
+    <div class="row" style="padding-left:40%;padding-top:5px;">
+      <select name="idsess">
+        <?php for($i=0; $i<count($id_session);$i++){
+          echo "\t",'<option value="',$id_session[$i],'">',$date_session[$i]."  ".$heure_session[$i],'</option>',"\n";
+        }?>
+      </select>
+    </div>
+    <div class="row" style="padding-left:40%;padding-top:25px;">
+      <input type="submit" name="okSession"/>
+    </div>
 @else
-	What are you doin?
+	What are you doing?
 @endif
 @endsection

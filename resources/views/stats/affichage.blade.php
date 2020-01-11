@@ -1,4 +1,4 @@
-@extends('layouts.layauth')
+@extends('layouts.layhome')
 
 @section('title')
 Statistiques
@@ -9,18 +9,16 @@ Statistiques
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-
-<div class="container">
+@if (isset($prenom))
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
 	<canvas id="myChart"></canvas>
 </div>
-
-@if (isset($prenom))
 	
-	<script>
+<script>
 	let myChart=document.getElementById('myChart').getContext('2d');
-	Chart.defaults.global.defaultFontFamily = 'Lato';
+	Chart.defaults.global.defaultFontFamily = 'Quicksand';
     Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#777';
+    Chart.defaults.global.defaultFontColor = '#000000';
 	let graph = new Chart(myChart, {
 	    type: 'bar',
 	    data: {
@@ -28,21 +26,21 @@ Statistiques
 	        datasets: [{
 	            label: 'Score',
 	            data: <?php echo json_encode($resultat);?> ,
-	            backgroundColor:'rgba(54, 162, 235, 0.2)',
-	            borderColor:'rgba(54, 162, 235, 1)',
-	            borderWidth: 1,
-	            barThickness : 50 
+	            backgroundColor:'rgba(0, 123, 255, 1)',
+				borderColor:'rgba(0, 123, 255, 1)',
+				borderWidth: 1,
+				barThickness : 50 
 	        }]
 	    },
 	    options: {
 	    	title:{
 	    		display:true,
 	    		text:'<?php echo $nom." ".$prenom ; ?>\'s score',
-	    		fontSize:32
+	    		fontSize:70,
+				fontColor:'#000000',
+				padding:30
 	    	},
-	    	legend:{
-	    		position:'right'
-	    	},
+	    	legend:{position:'bottom',display: false},
 	    	scales:{
 	    		yAxes:[{
 	    			ticks: {
@@ -53,13 +51,18 @@ Statistiques
 	    	}  	
 	    }
 	});
-	</script>
+</script>
+
 @elseif (isset($moySousPartie))
-	<script>
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
+	<canvas id="myChart"></canvas>
+</div>
+
+<script>
 		let myChart=document.getElementById('myChart').getContext('2d');
-		Chart.defaults.global.defaultFontFamily = 'Lato';
+		Chart.defaults.global.defaultFontFamily = 'Quicksand';
 	    Chart.defaults.global.defaultFontSize = 18;
-	    Chart.defaults.global.defaultFontColor = '#777';
+    	Chart.defaults.global.defaultFontColor = '#000000';
 		let graph = new Chart(myChart, {
 		    type: 'polarArea',
 		    data: {
@@ -68,37 +71,37 @@ Statistiques
 		            label: 'Score',
 		            data: <?php echo json_encode($moySousPartie);?> ,
 		            backgroundColor:[
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(25, 25, 79, 0.2)',
-            ],
-		            borderColor:'rgba(54, 162, 235, 1)',
-		            borderWidth: 1,
-		            barThickness : 50 
-		        }]
+					'rgba(231, 76, 60, 1)',
+					'rgba(230, 126, 34, 1)',
+					'rgba(241, 196, 15, 1)',
+					'rgba(39, 174, 96, 1)',
+					'rgba(0, 123, 255, 1)',
+					'rgba(142, 68, 173, 1)',
+					'rgba(127, 140, 141, 1)'],borderWidth: 1,barThickness : 50 }]
 		    },
 		    options: {
 		    	title:{
 		    		display:true,
-		    		text:'Selected Session\'s score',
-		    		fontSize:32
+		    		text:'Selected session\'s score',
+		    		fontSize:70,
+					fontColor:'#000000',
+					padding:30
 		    	},
-		    	legend:{
-		    		position:'right'
-		    	}, 	
+		    	legend:{position:'right',display: true},
 		    }
 		});
-	</script>
+</script>
+
 @elseif (isset($partie))
-	<script>
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
+	<canvas id="myChart"></canvas>
+</div>
+
+<script>
 		let myChart=document.getElementById('myChart').getContext('2d');
-		Chart.defaults.global.defaultFontFamily = 'Lato';
+		Chart.defaults.global.defaultFontFamily = 'Quicksand';
 	    Chart.defaults.global.defaultFontSize = 18;
-	    Chart.defaults.global.defaultFontColor = '#777';
+    	Chart.defaults.global.defaultFontColor = '#000000';
 		let graph = new Chart(myChart, {
 		    type: 'bar',
 		    data: {
@@ -106,21 +109,21 @@ Statistiques
 		        datasets: [{
 		            label: 'Score',
 		            data: <?php echo json_encode($moySujet);?> ,
-		            backgroundColor:'rgba(54, 162, 235, 0.2)',
-		            borderColor:'rgba(54, 162, 235, 1)',
-		            borderWidth: 1,
-		            barThickness : 50 
+		            backgroundColor:'rgba(0, 123, 255, 1)',
+					borderColor:'rgba(0, 123, 255, 1)',
+					borderWidth: 1,
+					barThickness : 50 
 		        }]
 		    },
 		    options: {
 		    	title:{
 		    		display:true,
 		    		text:'All <?php echo $partie;?>\'s score',
-		    		fontSize:32
+		    		fontSize:70,
+					fontColor:'#000000',
+					padding:30
 		    	},
-		    	legend:{
-		    		position:'right'
-		    	},
+		    	legend:{position:'bottom',display: false},
 		    	scales:{
 		    		yAxes:[{
 		    			ticks: {
@@ -131,15 +134,18 @@ Statistiques
 		    	}  	
 		    }
 		});
-	</script>
+</script>
+
 @elseif (isset($libPromo))
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
+	<canvas id="myChart"></canvas>
+</div>
 
-
-	<script>
+<script>
 	let myChart=document.getElementById('myChart').getContext('2d');
-	Chart.defaults.global.defaultFontFamily = 'Lato';
+	Chart.defaults.global.defaultFontFamily = 'Quicksand';
     Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#777';
+    Chart.defaults.global.defaultFontColor = '#000000';
 	let graph = new Chart(myChart, {
 	    type: 'bar',
 	    data: {
@@ -147,21 +153,21 @@ Statistiques
 	        datasets: [{
 	            label: 'Score',
 	            data: <?php echo json_encode($resultat);?> ,
-	            backgroundColor:'rgba(54, 162, 235, 0.2)',
-	            borderColor:'rgba(54, 162, 235, 1)',
-	            borderWidth: 1,
-	            barThickness : 50 
+	            backgroundColor:'rgba(0, 123, 255, 1)',
+				borderColor:'rgba(0, 123, 255, 1)',
+				borderWidth: 1,
+				barThickness : 50 
 	        }]
 	    },
 	    options: {
 	    	title:{
 	    		display:true,
 	    		text:'<?php echo $libPromo."\'s ".$subPart;?> score',
-	    		fontSize:32
+	    		fontSize:70,
+				fontColor:'#000000',
+				padding:30
 	    	},
-	    	legend:{
-	    		position:'right'
-	    	},
+	    	legend:{position:'bottom',display: false},
 	    	scales:{
 	    		yAxes:[{
 	    			ticks: {
@@ -172,35 +178,33 @@ Statistiques
 	    	}  	
 	    }
 	});
-	</script>
+</script>
 @elseif (isset($moySujet))
-	<script>
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
+	<canvas id="myChart"></canvas>
+</div>
+
+<script>
 	let myChart=document.getElementById('myChart').getContext('2d');
-	Chart.defaults.global.defaultFontFamily = 'Lato';
+	Chart.defaults.global.defaultFontFamily = 'Quicksand';
     Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#777';
+    Chart.defaults.global.defaultFontColor = '#000000';
 	let graph = new Chart(myChart, {
 	    type: 'bar',
 	    data: {
 	        labels: <?php echo json_encode($libSujet);?>,
 	        datasets: [{
 	            label: 'Score',
-	            data: <?php echo json_encode($moySujet);?> ,
-	            backgroundColor:'rgba(54, 162, 235, 0.2)',
-	            borderColor:'rgba(54, 162, 235, 1)',
-	            borderWidth: 1,
-	            barThickness : 50 
+	            data: <?php echo json_encode($moySujet);?>,
+				backgroundColor:'rgba(0, 123, 255, 1)',
+				borderColor:'rgba(0, 123, 255, 1)',
+				borderWidth: 1,
+				barThickness : 50 
 	        }]
 	    },
 	    options: {
-	    	title:{
-	    		display:true,
-	    		text:'All Subjects\'s score',
-	    		fontSize:32
-	    	},
-	    	legend:{
-	    		position:'right'
-	    	},
+	    	title:{display:true,text:'All subject\'s scores',fontSize:70,fontColor:'#000000',padding:30},
+	    	legend:{position:'bottom',display: false},
 	    	scales:{
 	    		yAxes:[{
 	    			ticks: {
@@ -211,124 +215,108 @@ Statistiques
 	    	}  	
 	    }
 	});
-	</script>
+</script>
 
 @elseif (isset($id_user))
-	<div class="container" style="width: 20%;">
-		<canvas id="myChart"></canvas>
-	</div>
-	<script>
-	let myChart=document.getElementById('myChart').getContext('2d');
-	Chart.defaults.global.defaultFontFamily = 'Lato';
-    Chart.defaults.global.defaultFontSize = 18;	
-    Chart.defaults.global.defaultFontColor = '#777';
-	let graph = new Chart(myChart, {
-	    type: 'bar',
-	    data: {
-	        labels: <?php echo json_encode($libSujet);?>,
-	        datasets: [{
-	            label: 'Score',
-	            data: <?php echo json_encode($resultatSujet);?> ,
-	            backgroundColor:'rgba(54, 162, 235, 0.2)',
-	            borderColor:'rgba(54, 162, 235, 1)',
-	            borderWidth: 1,
-	            barThickness : 50 
-	        }]
-	    },
-	    options: {
-	    	title:{
-	    		display:true,
-	    		text:'Your scores',
-	    		fontSize:32
-	    	},
-	    	legend:{
-	    		position:'bottom'
-	    	},
-	    	scales:{
-	    		yAxes:[{
-	    			ticks: {
-	        		min: 0,
-	        		max : 990
-	    		}
-	    		}]
-	    	}  	
-	    }
-	});
-	</script><br/>
-	<h3 align="center"> SubPart's Score </h3>
-	<form method="post" action="{{url('affichage')}}">
-   		{{ csrf_field() }}
-		<div class="row" style="padding-left:40%;padding-top:25px;">
-	      <label for="pour">What session would you like?</label><br />
-	    </div>
-	    <div class="row" style="padding-left:40%;padding-top:5px;">
-	        <select name="userSubPart">
-	        	<?php for($i=0; $i<count($userHour);$i++){
-		        	$selected='';
-		        	if($i==(count($userHour)-1)){
-		        		$selected='selected="selected"';
-		        	}
-		        	
-	          		echo "\t",'<option value="',$userIdSession[$i],'"',$selected,'>',$userDate[$i]."  ".$userHour[$i],'</option>',"\n";
-       	 		}?>
-	        </select>
-	      </div>
-	   <div class="row" style="padding-left:40%;padding-top:25px;">
-	   <input type="submit" name="okUserSubPart"/>
-	 </div>
-	</form>
 
-	<div class="container" style="width: 70%;">
-		<canvas id="user"></canvas>
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
+	<p>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">Scores timeline</button>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">Select session</button>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Selected session score</button>
+	</p>
+	<div class="collapse" id="collapse1">
+		<div class="card card-body">
+			<canvas id="myChart"></canvas>
+		</div>
 	</div>
+	<div class="collapse" id="collapse2">
+		<div class="card card-body text-center">
+			<h2 style="margin-bottom:20px;">Which session do you want to analyse ?</h2>
+			<form method="post" action="{{url('affichage')}}">
+				{{ csrf_field() }}
+				<select class="form-control" name="userSubPart" style="width:20%;height:auto;margin-left:40%;">
+					<?php for($i=0; $i<count($userHour);$i++){
+						$selected='';
+						if($i==(count($userHour)-1)){
+							$selected='selected="selected"';
+						}
+						
+						echo "\t",'<option value="',$userIdSession[$i],'"',$selected,'>',$userDate[$i]."  ".$userHour[$i],'</option>',"\n";
+					}?>
+				</select>
+				</br>
+				<input type="submit" name="okUserSubPart" class="btn btn-primary" value="Submit" style="margin-top:15px;"/>			
+			</form>
+		</div>
+	</div>
+	<div class="collapse" id="collapse3">
+		<div class="card card-body">
+			<canvas id="user"></canvas>
+		</div>
+	</div>
+</div>
+
+<script>
+	let myChart=document.getElementById('myChart').getContext('2d');
+	Chart.defaults.global.defaultFontFamily = 'Quicksand';
+	Chart.defaults.global.defaultFontSize = 18;
+	Chart.defaults.global.defaultFontColor = '#000000';
+	let graph = new Chart(myChart, {
+		type: 'bar',
+		data: {
+			labels: <?php echo json_encode($libSujet);?>,
+			datasets: [{
+				label: 'Score',
+				data: <?php echo json_encode($resultatSujet);?> ,
+				backgroundColor:'rgba(0, 123, 255, 1)',
+				borderColor:'rgba(0, 123, 255, 1)',
+				borderWidth: 1,
+				barThickness : 50 
+			}]
+		},
+		options: {
+			title:{display:true,text:'Scores timeline',fontSize:70,fontColor:'#000000',padding:30},
+			legend:{position:'bottom',display: false},
+			scales:{
+				yAxes:[{
+					ticks: {
+					min: 0,
+					max : 990
+				}
+				}]
+			}  	
+		}
+	});
+</script>
+
 <script>
 	let mySubChart=document.getElementById('user').getContext('2d');
 	let Subgraph = new Chart(mySubChart, {
-	    type: 'polarArea',
-	    data: {
-	        labels: <?php echo json_encode($libSousParties);?>,
-	        datasets: [{
-	            label: 'Score',
-	            data: <?php echo json_encode($resSousPartie);?> ,
-	            backgroundColor:[
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(25, 25, 79, 0.2)',
-            ],
-	            borderColor:'rgba(54, 162, 235, 1)',
-	            borderWidth: 1,
-	            barThickness : 50 
-	        }]
-	    },
-	    options: {
-	    	title:{
-	    		display:true,
-	    		text:'Selected Session\'s score',
-	    		fontSize:32
-	    	},
-	    	legend:{
-	    		position:'right'
-	    	},  	
-	    }
+		type: 'polarArea',
+		data: {
+			labels: <?php echo json_encode($libSousParties);?>,
+			datasets: [{
+				label: 'Score',
+				data: <?php echo json_encode($resSousPartie);?> ,
+				backgroundColor:[
+				'rgba(231, 76, 60, 1)',
+				'rgba(230, 126, 34, 1)',
+				'rgba(241, 196, 15, 1)',
+				'rgba(39, 174, 96, 1)',
+				'rgba(0, 123, 255, 1)',
+				'rgba(142, 68, 173, 1)',
+				'rgba(127, 140, 141, 1)'],borderWidth: 1,barThickness : 50 
+			}]
+		},
+		options: {
+			title:{display:true,text:'Selected session\'s score',fontSize:70,position: 'top',fontColor:'#000000',padding:30},
+			legend:{position:'right'},  	
+		}
 	});
-	</script>
-
+</script>
 @else
 	<p> Where are you going ? </p>
 @endif
-
-
-
-
-
-
-
-
-
-
 
 @endsection

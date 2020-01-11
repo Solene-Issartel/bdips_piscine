@@ -60,7 +60,6 @@ class StatsController extends Controller
             if (isset($_POST['okUserSubPart'])){
                 $selectedSession=request('userSubPart');
             }
-            var_dump($selectedSession);
             $resSousPartie=array();
             for ($i=1;$i<8;$i++){
                 array_push($libSousParties,$lib_SousParties[$i-1]->libelleSousPartie);
@@ -312,7 +311,6 @@ class StatsController extends Controller
         }
         elseif(isset($_POST['okUserSubPart'])){
             $selected=request('userSubPart');
-            var_dump($selected);
             return $this->index();
         }
         else{
@@ -321,7 +319,3 @@ class StatsController extends Controller
     }
     
 }
-    // public function recherche_eleve(request $request){
-    //     //$prenom=request('prenom')
-    //     return('Le nom est ' .$requet->input('nom'));
-    // }

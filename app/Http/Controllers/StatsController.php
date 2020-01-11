@@ -48,13 +48,14 @@ class StatsController extends Controller
                 //Récupère tous les libélé de sujets et les résultat par sujet
                 array_push($userIdSession,$sessions[$i]->idSession);
                 $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                array_push($libSujet,$lib[0]->libelleSujet);
+                
                 $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
                 array_push($resultatSujet,$tmp);
                 //Récupère la date et l'heure
                 $date=Session::dateSession($sessions[$i]->idSession);
                 array_push($userDate,$date[0]->dateSession);
-                array_push($userHour,$date[0]->heureDebut);            
+                array_push($userHour,$date[0]->heureDebut);
+                array_push($libSujet,$lib[0]->libelleSujet." ".$userDate[$i]);            
                 }
             $selectedSession=$sessions[$i-1]->idSession;
             if (isset($_POST['okUserSubPart'])){
@@ -145,7 +146,8 @@ class StatsController extends Controller
                 for ($i=0; $i<count($sessions); $i++){
                     //Récupère tous les libélé de sujets et les résultat par sujet
                     $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                    array_push($libSujet,$lib[0]->libelleSujet);
+                    $date=Session::dateSession($sessions[$i]->idSession);
+                    array_push($libSujet,$lib[0]->libelleSujet." ".$date[0]->dateSession);
                     $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
                     array_push($resultat,$tmp);
                 }
@@ -241,7 +243,8 @@ class StatsController extends Controller
             $resultat=array();
             for ($i=0; $i<count($sessions); $i++){
                 $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                array_push($libSujet,$lib[0]->libelleSujet);
+                $date=Session::dateSession($sessions[$i]->idSession);
+                array_push($libSujet,$lib[0]->libelleSujet." ".$date[0]->dateSession);
             }
             if(request('statsPromo')=='subject'){
                 $subPart='';

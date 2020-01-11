@@ -21,7 +21,7 @@ Add Session
             <div class="col-sm-3"></div>
             <div class="col-sm-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
               <label class="control-label" for="date_session">Session date : </label>
-              <input name="date_session" data-provide="datepicker" id="date_session" onload="putDate()" type="date" required class="form-control">
+              <input name="date_session" data-provide="datepicker" id="date_session" placeholder="YYYY-MM-DD" onload="putDate()" type="date" required class="form-control">
 
               @if ($errors->has('date_session'))
                   <span class="help-block">
@@ -32,7 +32,7 @@ Add Session
 
             <div class="col-sm-3 form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
               <label class="control-label" for="heure_session">Session hour : </label>
-              <input type="time" id="heure_session" name="heure_session" min="08:00" max="18:00" required class="form-control">
+              <input type="time" id="heure_session" placeholder="HH:MM" name="heure_session" min="08:00" max="18:00" required class="form-control">
 
               @if ($errors->has('heure_session'))
                   <span class="help-block">

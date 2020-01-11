@@ -23,7 +23,7 @@ Session list
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-md-3">Session {{ $session->idSession }}</div>
-                            <div class="col-md-6">Date : {{ $session->dateSession }} Heure : {{ $session->heureDebut }}</div>
+                            <div class="col-md-6">Date : {{ $session->dateSession }} <br> Heure : {{ $session->heureDebut }}</div>
                             <div class="col-md-3"><button type="button" class="btn btn-danger" style="margin-right:10%;" data-toggle="modal" data-target="#validationModal{{$session->idSession}}">Delete</button></div>
                         </div>
                     </li>

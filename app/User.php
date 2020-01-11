@@ -49,4 +49,19 @@ class User extends Authenticatable
         $users = DB::table('users')->distinct()->where('admin',0)->get();
         return $users;
     }
+    public static function get_user($name,$firstname,$promo)
+    {
+        $user=DB::table('users')
+                    ->select('id')
+                    ->where('name',$name)
+                    ->where('firstname',$firstname)
+                    ->where('idPromotion',$promo)
+                    ->first();
+                    
+        return $user;
+    }
+    public static function get_promoUsers($id_promo){
+        $users=DB::select('SELECT id FROM users WHERE idPromotion=?',[$id_promo]);
+        return $users;
+    }
 }

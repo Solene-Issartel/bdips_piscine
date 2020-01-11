@@ -26,6 +26,7 @@ Choix Statistiques
                     <!-- Selections -->
                     <select class="custom-select mr-sm-2" name="choix">
                         <option value="eleve">Student</option>
+                        <option value="session">Session</option>
                         <option value="partie">Part</option>
                         <option value="promo">Promotion</option>
                         <option value="sujet">Subject</option>

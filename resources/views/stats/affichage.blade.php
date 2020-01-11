@@ -118,7 +118,7 @@ Statistiques
 		    options: {
 		    	title:{
 		    		display:true,
-		    		text:'All <?php echo $partie;?>\'s score',
+		    		text:'All subject <?php echo $partie;?>\'s score',
 		    		fontSize:70,
 					fontColor:'#000000',
 					padding:30

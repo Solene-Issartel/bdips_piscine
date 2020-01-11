@@ -1,10 +1,8 @@
 @extends('layouts.layhome')
 
 @section('title')
-Par sous parties
+Statistics
 @endsection
-
-
 
 @section('content')
 
@@ -25,7 +23,7 @@ Par sous parties
       <div class="row" style="padding-left:40%;padding-top:25px;">
         <input type=text class="form-control" name=prenom placeholder="Name" style="width:35%;">
       </div>
-      <div class="row" style="padding-left:40%;padding-top:25px;">
+      <div class="row text-center" style="padding-left:40%;padding-top:25px;">
          <label for="promotion">Promotion :  </label>
                 <select class="form-control" name="promotion">
                   <option value="1">IG3</option>
@@ -50,7 +48,7 @@ Par sous parties
       </div>
       <div class="row" style="padding-left:40%;padding-top:25px;">
         @if(isset($not_found))
-          <p> User not found</p>
+          <p> Sorry, user not found</p>
         @endif
       </div>
 

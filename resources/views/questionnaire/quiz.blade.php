@@ -5,25 +5,29 @@ Quiz
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md">
-            <div class="panel panel-default">
-                <div class="panel-heading">Toeic</div>
+<!-- Titre -->
+<div class="container-fluid text-center" style="margin-top:60px;">
+  <h1 class="display-4">Good luck !</h1>
+  <hr style="border-top: 2px solid #b4b4b4; width: 21%; margin-top: .9rem; margin-bottom: 1rem;">
+</div>
 
+<div class="container pad2">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
                 <div class="panel-body">
                     <form method="POST" action="{{ url('res_quiz') }}">
                         {{ csrf_field() }}
                      
 
-                    <div class="container">
-                        <p> Listening :</p>
+                    <div class="container text-center">
                       <div id="accordion">
                           <div class="card">
                             <div class="card-header" id="headingOne">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                  Part 1
+                                    Photographs
                                 </div>
                               </h5>
                             </div>
@@ -45,11 +49,11 @@ Quiz
                               </div>
                             </div>
                           </div>
-                          <div class="card">
+                          <div class="card" style="margin-top:10px;">
                             <div class="card-header" id="headingTwo">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                  Part 2
+                                  Question & Answer
                                   <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                 </div>
                               </h5>
@@ -70,11 +74,11 @@ Quiz
                               </div>
                             </div>
                           </div>
-                          <div class="card">
+                          <div class="card" style="margin-top:10px;">
                             <div class="card-header" id="headingThree">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                  Part 3
+                                  Short conversations
                                   <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                 </div>
                               </h5>
@@ -96,11 +100,11 @@ Quiz
                             </div>
                           </div>
                         </div>
-                        <div class="card">
+                        <div class="card" style="margin-top:10px;">
                             <div class="card-header" id="headingFour">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                  Part 4
+                                  Short talks
                                   <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                 </div>
                               </h5>
@@ -122,12 +126,11 @@ Quiz
                             </div>
                           </div>
                         </div>
-                        <p> Reading :</p>
-                        <div class="card">
+                        <div class="card" style="margin-top:10px;">
                             <div class="card-header" id="headingFive">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                  Part 5
+                                  Incomplete sentences
                                 </div>
                               </h5>
                             </div>
@@ -149,11 +152,11 @@ Quiz
                               </div>
                             </div>
                           </div>
-                          <div class="card">
+                          <div class="card" style="margin-top:10px;">
                             <div class="card-header" id="headingSix">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                  Part 6
+                                  Text completion
                                   <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                 </div>
                               </h5>
@@ -175,11 +178,11 @@ Quiz
                               </div>
                             </div>
                           </div>
-                          <div class="card">
+                          <div class="card" style="margin-top:10px;">
                             <div class="card-header" id="headingSeven">
                               <h5 class="mb-0">
                                 <div role="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                  Part 7
+                                  Reading comprehension
                                   <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                 </div>
                               </h5>
@@ -208,7 +211,7 @@ Quiz
                     <input type="hidden" name="id_sujet" value="{{(isset($id_sujet) ? $id_sujet : '')}}">
 
                     @auth
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" style="margin-top:20px;margin-bottom:40px;">
                           Next
                         </button>
                     @endauth

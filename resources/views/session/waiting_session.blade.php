@@ -9,15 +9,13 @@ Waiting session
     <!-- Creation du container-->
     <div class="container-fluid">
       <!-- Titre-->
-      <div class="row welcome text-center padding">
-        <div class="col-12">
-          <h1 class="display-4">Waiting session</h1>
-          <hr class="padding">
-        </div>
-      </div>
+      <div class="container-fluid text-center pad">
+        <h1 class="display-4">Waiting classmates</h1>
+        <hr style="border-top: 2px solid #b4b4b4; width: 32%; margin-top: .9rem; margin-bottom: 1rem;">
+    </div>
 
       <!-- Example single danger button -->
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-12 text-center pad2">
         <form class="form-horizontal" method="POST" action="{{ url('quiz')}}">
                         {{ csrf_field() }}
           

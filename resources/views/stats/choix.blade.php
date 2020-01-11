@@ -159,6 +159,6 @@ Par sous parties
       <input type="submit" name="okSession"/>
     </div>
 @else
-	What are you doin?
+	What are you doing?
 @endif
 @endsection

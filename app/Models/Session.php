@@ -39,13 +39,21 @@ class Session extends Model
             ->pluck('heureDebut');
         return $hour;
     }
-public static function get_SujetSessions($id_sujet)
-{
-    $sessions=DB::table('session')
-                ->select('idSession')
-                ->where('idSujet','=',$id_sujet)
-                ->get();
-    return $sessions;
-}
+    public static function get_SujetSessions($id_sujet)
+    {
+        $sessions=DB::table('session')
+                    ->select('idSession')
+                    ->where('idSujet','=',$id_sujet)
+                    ->get();
+        return $sessions;
+    }
+    public static function dateSession($id_session)
+    {
+        $date = DB::table('session')
+            ->select('dateSession','heureDebut')
+            ->where('idSession','=', $id_session)
+            ->get();
+        return $date;
+    }
 
 }

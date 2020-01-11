@@ -9,6 +9,7 @@ use App\Models\Session;
 use App\Models\Sujet;
 use App\Models\Promotion;
 use App\Models\SousPartie;
+use Auth;
 class StatsController extends Controller
 {
     /**
@@ -28,8 +29,50 @@ class StatsController extends Controller
      */
     public function index()
     {
-        return view('/stats/stats');
+        if(Auth::user()->isAdmin()){
+            return view('/stats/stats');
+        }
+        else{
+            $id_user=Auth::user()->id;
+            $sessions=ResultatSousPartie::get_userSessions($id_user);
+            $libSujet=array();
+            $resultatSujet=array();
+            $userDate=array();
+            $userHour=array();
+            $userIdSession=array();
+
+            $percentage=array(100/6,100/25,100/39,100/30,100/30,100/16,100/54);
+            $lib_SousParties=SousPartie::get_LibSousParties();
+            $libSousParties=array();
+            for ($i=0; $i<count($sessions); $i++){
+                //Récupère tous les libélé de sujets et les résultat par sujet
+                array_push($userIdSession,$sessions[$i]->idSession);
+                $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
+                array_push($libSujet,$lib[0]->libelleSujet);
+                $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
+                array_push($resultatSujet,$tmp);
+                //Récupère la date et l'heure
+                $date=Session::dateSession($sessions[$i]->idSession);
+                array_push($userDate,$date[0]->dateSession);
+                array_push($userHour,$date[0]->heureDebut);            
+                }
+            $selectedSession=$sessions[$i-1]->idSession;
+            if (isset($_POST['okUserSubPart'])){
+                $selectedSession=request('userSubPart');
+            }
+            var_dump($selectedSession);
+            $resSousPartie=array();
+            for ($i=1;$i<8;$i++){
+                array_push($libSousParties,$lib_SousParties[$i-1]->libelleSousPartie);
+                $res=ResultatSousPartie::get_userPartScore($i,$id_user,$selectedSession);
+                array_push($resSousPartie,$res[0]->scoreSousPartie*$percentage[$i-1]);
+
+            }
+            return view('/stats/affichage',['id_user'=>$id_user,'libSujet'=> $libSujet, 'resultatSujet'=> $resultatSujet,'userDate'=>$userDate,'userHour'=>$userHour,'userIdSession'=>$userIdSession,'libSousParties'=>$libSousParties,'resSousPartie'=>$resSousPartie]);
+            }
+            
     }
+    
 
     public function checkchoice(){
         $choix=request('choix');
@@ -99,15 +142,15 @@ class StatsController extends Controller
                            
                 $libSujet=array();
                 $resultat=array();
-                //Récupère tous les libélé de sujets et les résultat par sujet 
+                 
                 for ($i=0; $i<count($sessions); $i++){
+                    //Récupère tous les libélé de sujets et les résultat par sujet
                     $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                    
                     array_push($libSujet,$lib[0]->libelleSujet);
                     $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
-
                     array_push($resultat,$tmp);
                 }
+
                            
                 return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom, 'libSujet'=> $libSujet, 'resultat'=> $resultat]);   
             }
@@ -266,6 +309,11 @@ class StatsController extends Controller
                 array_push($moySousPartie,$tmpmoy);
             }
             return view('/stats/affichage',['libSousParties'=>$libSousParties,'moySousPartie'=>$moySousPartie]);
+        }
+        elseif(isset($_POST['okUserSubPart'])){
+            $selected=request('userSubPart');
+            var_dump($selected);
+            return $this->index();
         }
         else{
             return view('welcome');

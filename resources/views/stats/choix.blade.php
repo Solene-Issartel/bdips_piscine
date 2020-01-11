@@ -142,8 +142,22 @@ Par sous parties
    <input type="submit" name="okPromo"/>
  </div>
 </form>
-@elseif ($choix=='sujet')
-wait for now
+@elseif ($choix=='session')
+  <form method="post" action="{{url('affichage')}}">
+      {{ csrf_field() }}
+    <div class="row" style="padding-left:40%;padding-top:25px;">
+       <label for="choix">Which session would you like ?</label><br />
+    </div>
+    <div class="row" style="padding-left:40%;padding-top:5px;">
+      <select name="idsess">
+        <?php for($i=0; $i<count($id_session);$i++){
+          echo "\t",'<option value="',$id_session[$i],'">',$date_session[$i]."  ".$heure_session[$i],'</option>',"\n";
+        }?>
+      </select>
+    </div>
+    <div class="row" style="padding-left:40%;padding-top:25px;">
+      <input type="submit" name="okSession"/>
+    </div>
 @else
 	What are you doin?
 @endif

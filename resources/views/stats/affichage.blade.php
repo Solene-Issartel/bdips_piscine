@@ -54,8 +54,45 @@ Statistiques
 	    }
 	});
 	</script>
-@elseif (isset($part))
-	<p> voila la sous-partie choisie : {{$part}}</p>
+@elseif (isset($moySousPartie))
+	<script>
+		let myChart=document.getElementById('myChart').getContext('2d');
+		Chart.defaults.global.defaultFontFamily = 'Lato';
+	    Chart.defaults.global.defaultFontSize = 18;
+	    Chart.defaults.global.defaultFontColor = '#777';
+		let graph = new Chart(myChart, {
+		    type: 'polarArea',
+		    data: {
+		        labels: <?php echo json_encode($libSousParties);?>,
+		        datasets: [{
+		            label: 'Score',
+		            data: <?php echo json_encode($moySousPartie);?> ,
+		            backgroundColor:[
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(25, 25, 79, 0.2)',
+            ],
+		            borderColor:'rgba(54, 162, 235, 1)',
+		            borderWidth: 1,
+		            barThickness : 50 
+		        }]
+		    },
+		    options: {
+		    	title:{
+		    		display:true,
+		    		text:'Name Session\'s score',
+		    		fontSize:32
+		    	},
+		    	legend:{
+		    		position:'right'
+		    	}, 	
+		    }
+		});
+	</script>
 @elseif (isset($partie))
 	<script>
 		let myChart=document.getElementById('myChart').getContext('2d');
@@ -176,7 +213,7 @@ Statistiques
 	});
 	</script>
 @else
-	<p> a déf</p>
+	<p> Where are you going ? </p>
 @endif
 
 

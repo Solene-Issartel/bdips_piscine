@@ -8,6 +8,7 @@ use App\Models\ResultatSousPartie;
 use App\Models\Session;
 use App\Models\Sujet;
 use App\Models\Promotion;
+use App\Models\SousPartie;
 class StatsController extends Controller
 {
     /**
@@ -62,6 +63,20 @@ class StatsController extends Controller
                 array_push($moySujet,array_sum($moysess)/count($moysess));
             }
             return view('/stats/affichage', ['libSujet'=>$libSujet,'moySujet'=>$moySujet]);
+        }
+        elseif($choix=='session'){
+            //recupere toutes les dates de session
+            $session=Session::get_session();
+            $id_session=array();
+            $date_session=array();
+            $heure_session=array();
+            for ($i=0; $i<count($session); $i++){
+                array_push($id_session,$session[$i]->idSession);                
+                array_push($date_session,$session[$i]->dateSession);
+                array_push($heure_session,$session[$i]->heureDebut);               
+            }
+            return view('/stats/choix', ['choix'=>$choix,'id_session'=>$id_session,'date_session'=>$date_session,'heure_session'=>$heure_session]);
+
         }
         else{
            return view('/stats/choix', ['choix'=>$choix]);  
@@ -231,6 +246,26 @@ class StatsController extends Controller
                     return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
                 }   
             }
+        }
+        elseif(isset($_POST['okSession'])){
+            $id_session=request('idsess');
+            $users=ResultatSousPartie::get_SessionUsers($id_session);
+            $sous_parties=SousPartie::get_LibSousParties();
+            $moySousPartie=array();
+            $libSousParties=array();
+            $percentage=array(100/6,100/25,100/39,100/30,100/30,100/16,100/54);
+            for ($i=1;$i<8;$i++){
+                array_push($libSousParties,$sous_parties[$i-1]->libelleSousPartie);
+                $tmp=array();
+                for ($j=0;$j<count($users);$j++){
+                    $res=ResultatSousPartie::get_userPartScore($i,$users[$j]->idUtilisateur,$id_session);
+                    array_push($tmp,$res[0]->scoreSousPartie);
+                    
+                }
+                $tmpmoy=array_sum($tmp)/count($tmp)*$percentage[$i-1];
+                array_push($moySousPartie,$tmpmoy);
+            }
+            return view('/stats/affichage',['libSousParties'=>$libSousParties,'moySousPartie'=>$moySousPartie]);
         }
         else{
             return view('welcome');

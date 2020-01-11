@@ -22,10 +22,10 @@ class Session extends Model
     //To don't use 'created_at and updated_at' in database
     public $timestamps = false;
 
-    public function get_session()
+    public static function get_session()
 	{
 		//on recupere tous les satellites qui appartiennent à la planète courante
-	 $session = DB::table($table)->whereId($this->id);
+	 $session = DB::table('session')->get();
 	 return $session;
 	}
 

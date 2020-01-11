@@ -81,10 +81,14 @@ class SessionController extends Controller
 
     public function waiting_session()
     {
+        date_default_timezone_set('Europe/Paris'); //fuseau horaire français
+
         $id_session=request('id_session');
         $id_sujet=Session::getSubjectFromSession($id_session);
         $hour=Session::hourSession($id_session);
-        $current_hour = date('H:m:s');
+        $current_hour = date('H:i:s');
+
+        //on compare l'heure de la session à l'heure actuelle, si l'heure est égale ou dépassée l'étudiant peut entrer dans la session
         if($current_hour < $hour[0]){
             $access = false;
         }

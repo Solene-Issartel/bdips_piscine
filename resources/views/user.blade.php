@@ -52,7 +52,7 @@ User
             <div class="row">
               <!-- Promotion -->
               <div class="col-sm-3 form-group">
-                <label for="promotion">Promotion *</label>
+                <label for="promotion">Promotion</label>
                 <select class="form-control" name="promotion">
                   <option value="1">IG3</option>
                   <option value="2">IG4</option>

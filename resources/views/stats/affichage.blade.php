@@ -71,13 +71,13 @@ Statistiques
 		            label: 'Score',
 		            data: <?php echo json_encode($moySousPartie);?> ,
 		            backgroundColor:[
-					'rgba(231, 76, 60, 1)',
-					'rgba(230, 126, 34, 1)',
-					'rgba(241, 196, 15, 1)',
-					'rgba(39, 174, 96, 1)',
-					'rgba(0, 123, 255, 1)',
-					'rgba(142, 68, 173, 1)',
-					'rgba(127, 140, 141, 1)'],borderWidth: 1,barThickness : 50 }]
+					'rgba(231, 76, 60, 0.5)',
+					'rgba(230, 126, 34, 0.5)',
+					'rgba(241, 196, 15, 0.5)',
+					'rgba(39, 174, 96, 0.5)',
+					'rgba(0, 123, 255, 0.5)',
+					'rgba(142, 68, 173, 0.5)',
+					'rgba(127, 140, 141, 0.5)'],borderWidth: 1,barThickness : 50 }]
 		    },
 		    options: {
 		    	title:{
@@ -300,13 +300,13 @@ Statistiques
 				label: 'Score',
 				data: <?php echo json_encode($resSousPartie);?> ,
 				backgroundColor:[
-				'rgba(231, 76, 60, 1)',
-				'rgba(230, 126, 34, 1)',
-				'rgba(241, 196, 15, 1)',
-				'rgba(39, 174, 96, 1)',
-				'rgba(0, 123, 255, 1)',
-				'rgba(142, 68, 173, 1)',
-				'rgba(127, 140, 141, 1)'],borderWidth: 1,barThickness : 50 
+				'rgba(231, 76, 60, 0.5)',
+				'rgba(230, 126, 34, 0.5)',
+				'rgba(241, 196, 15, 0.5)',
+				'rgba(39, 174, 96, 0.5)',
+				'rgba(0, 123, 255, 0.5)',
+				'rgba(142, 68, 173, 0.5)',
+				'rgba(127, 140, 141, 0.5)'],borderWidth: 1,barThickness : 50 
 			}]
 		},
 		options: {

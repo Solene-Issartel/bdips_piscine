@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Promotion;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $currentuser = User::find($id);
-        return view('user',['user' => $currentuser]);
+        $promos = Promotion::getAllPromosOfCurrentYear();
+        return view('user',['user' => $currentuser, 'promos' => $promos]);
     }
 
     public function update()

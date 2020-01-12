@@ -69,7 +69,7 @@ class SessionController extends Controller
             return view('home');
         
         } else {
-            return view('error.eror_403');
+            return view('error.error_403');
         }
     }
 
@@ -116,7 +116,7 @@ class SessionController extends Controller
             return view('timer');
         
         } else {
-            return view('error.eror_403');
+            return view('error.error_403');
         }
     }
 }

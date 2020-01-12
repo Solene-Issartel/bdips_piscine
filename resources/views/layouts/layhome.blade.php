@@ -45,6 +45,9 @@
                 <a class="nav-link" href="{{ url('/session') }}">Session</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{{ url('/timer') }}">Timer</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{{ url('/users_list') }}">Students</a>
               </li>
             @else

@@ -32,7 +32,7 @@ class SujetController extends Controller
             $sujets = Sujet::getAllSujets();
             return view('sujet', ['sujets' => $sujets]);
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
     }
 
@@ -75,7 +75,7 @@ class SujetController extends Controller
             $last_id = Question::getLastId();
             return view('question', ['id_sujet' => $sujet->id,'last_id' => $last_id]);
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
         
     }
@@ -88,7 +88,7 @@ class SujetController extends Controller
             
             return redirect('/subject')->with('success', 'Subject deleted!');
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
     }
 }

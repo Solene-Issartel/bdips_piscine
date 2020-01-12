@@ -47,7 +47,7 @@ class QuestionController extends Controller
             $sujets = Sujet::getAllSujets();
             return view('sujet', ['sujets' => $sujets]);
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
         
         

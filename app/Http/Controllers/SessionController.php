@@ -116,7 +116,7 @@ class SessionController extends Controller
             return view('timer');
         
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
     }
 }

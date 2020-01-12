@@ -34,7 +34,7 @@ class SessionController extends Controller
                 return view('session/liste_session', ['sessions' => $sessions]);
 
         } else {
-        	return view('error.error_403');
+        	return view('error.error_404');
         }
     }
 
@@ -69,7 +69,7 @@ class SessionController extends Controller
             return view('home');
         
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
     }
 
@@ -107,7 +107,7 @@ class SessionController extends Controller
             
             return redirect('/session')->with('success', 'Session deleted!');
         } else {
-            return view('error.error_403');
+            return view('error.error_404');
         }
     }
     public function timer()

@@ -17,14 +17,14 @@ Choix Statistiques
        <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem; margin-bottom: 1rem;">
     </div>
     <!-- Formulaire -->
-    <div class="container-fluid text-center pad2">
+    <div class="container-fluid text-center" style="margin-top:50px;">
         <form method="post" action="{{url('choix')}}">
             <p>{{ csrf_field() }}
             <div class="form-row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4 my-1">
                     <!-- Selections -->
-                    <select class="custom-select mr-sm-2" name="choix">
+                    <select class="custom-select mr-sm-2" name="choix" style="width:30%;height:auto;">
                         <option value="eleve">Student</option>
                         <option value="session">Session</option>
                         <option value="partie">Part</option>
@@ -35,7 +35,7 @@ Choix Statistiques
             </div>
             </p>
             <!-- Button -->
-            <div class="row pad2">
+            <div class="row" style="margin-top:50px;">
                 <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary">Let's go</button>
                 </div>

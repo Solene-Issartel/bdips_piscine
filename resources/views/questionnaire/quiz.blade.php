@@ -11,7 +11,7 @@ Quiz
   <hr style="border-top: 2px solid #b4b4b4; width: 21%; margin-top: .9rem; margin-bottom: 1rem;">
 </div>
 
-<div class="container pad2">
+<div class="container" style="margin-top:60px;">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -37,11 +37,11 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 1; $i <= 6; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
-                                    <input type="radio" name="result{{$i}}" value="D">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
+                                    D <input type="radio" name="result{{$i}}" value="D">
 
                                     <br><br>
                                 @endfor
@@ -63,10 +63,10 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 7; $i <= 31; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
 
                                     <br><br>
                                 @endfor
@@ -88,11 +88,11 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 32; $i <= 70; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
-                                    <input type="radio" name="result{{$i}}" value="D">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
+                                    D <input type="radio" name="result{{$i}}" value="D">
 
                                     <br><br>
                                 @endfor
@@ -114,11 +114,11 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 71; $i <= 100; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
-                                    <input type="radio" name="result{{$i}}" value="D">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
+                                    D <input type="radio" name="result{{$i}}" value="D">
 
                                     <br><br>
                                 @endfor
@@ -140,11 +140,11 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 101; $i <= 130; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
-                                    <input type="radio" name="result{{$i}}" value="D">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
+                                    D <input type="radio" name="result{{$i}}" value="D">
 
                                     <br><br>
                                 @endfor
@@ -166,11 +166,11 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 131; $i <= 146; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
-                                    <input type="radio" name="result{{$i}}" value="D">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
+                                    D <input type="radio" name="result{{$i}}" value="D">
 
                                     <br><br>
                                 @endfor
@@ -192,11 +192,11 @@ Quiz
                                 <div><br>
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 147; $i <= 200; $i++)
-                                    Question {{$i}} :
-                                    <input type="radio" name="result{{$i}}" value="A" checked>
-                                    <input type="radio" name="result{{$i}}" value="B">
-                                    <input type="radio" name="result{{$i}}" value="C">
-                                    <input type="radio" name="result{{$i}}" value="D">
+                                    {{$i}} -
+                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    B <input type="radio" name="result{{$i}}" value="B">
+                                    C <input type="radio" name="result{{$i}}" value="C">
+                                    D <input type="radio" name="result{{$i}}" value="D">
 
                                     <br><br>
                                 @endfor

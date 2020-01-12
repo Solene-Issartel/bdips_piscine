@@ -5,14 +5,19 @@ Timer
 @endsection
 
 @section('content')
+<!-- Titre -->
 <div class="container-fluid text-center pad">
-    Hours: <input type="number" id="nbHour" min="0"><br/>
-    Minutes:<input type="number" id="nbMinute" min="0"><br/>
-    Seconds:<input type="number" id="nbSecond" min="0"><br/>
-    <button onclick="start()" class="btn btn-primary">Start </button>
-    <button onclick="pause()" class="btn btn-primary">Pause </button>
-    <button onclick="resume()" class="btn btn-primary">Resume </button>
-    <p id="demo"></p>
+  <h1 class="display-4">Timer</h1>
+  <hr style="border-top: 2px solid #b4b4b4; width: 16%; margin-top: .9rem;">
+</div>
+<div class="container-fluid text-center" style="width:40%;height:auto;margin-top:50px;">
+    <input class="form-control" type="number" id="nbHour" min="0" placeholder="Hours" style="margin-top:15px;">
+    <input class="form-control" type="number" id="nbMinute" min="0" placeholder="Minutes" style="margin-top:15px;">
+    <input class="form-control" type="number" id="nbSecond" min="0" placeholder="Seconds" style="margin-top:15px;">
+    <button onclick="start()" class="btn btn-primary" style="margin-top:15px;">Start </button>
+    <button onclick="pause()" class="btn btn-primary" style="margin-top:15px;">Pause </button>
+    <button onclick="resume()" class="btn btn-primary" style="margin-top:15px;">Resume </button>
+    <p class="text-center" style="margin-top:70px;font-size:50px;" id="demo"></p>
 
     <script>
     var is_active;

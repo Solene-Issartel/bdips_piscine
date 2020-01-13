@@ -10,19 +10,14 @@ Quiz
   <h1 class="display-4">Good luck !</h1>
   <hr style="border-top: 2px solid #b4b4b4; width: 21%; margin-top: .9rem; margin-bottom: 1rem;">
   <body onload="start()">
-    <p id="starting_hour" hidden>13</p>
+    <p id="starting_hour" hidden>{{$temps_debut[0][0]*10+$temps_debut[0][1]}}</p>
     <p id="starting_min" hidden>{{$temps_debut[0][3]*10+$temps_debut[0][4]}}</p>
     <p id="starting_sec" hidden>{{$temps_debut[0][6]*10+$temps_debut[0][7]}}</p>  
     <p id="starting_hour" >Session started at : {{$temps_debut[0]}}</p>
-    <p id="demo"></p>
+    <p id="temps_restant"></p>
     <script >
         var timer;
         var total_second;
-        function test(){
-          alert("Test=");
-          var n=document.getElementById("test").innerHTML;
-          alert(n);
-        }
         function start(){
             var dateToday=new Date();     
             var current_hour=dateToday.getHours();
@@ -59,13 +54,13 @@ Quiz
           else{
             var str="";
             str+=Math.floor(n/3600)+"h : "+Math.floor(n/60)%60+"mn : "+n%60+"s"
-          document.getElementById("demo").innerHTML=str
+          document.getElementById("temps_restant").innerHTML=str
           total_second=n;
           timer =setTimeout(function(){ countdown(n-1); }, 1000);
           }
         }
         function end(){
-          document.getElementById("demo").innerHTML="Finished !";
+          document.getElementById("temps_restant").innerHTML="Finished !";
           alert("End of Session.");
         }
     </script>

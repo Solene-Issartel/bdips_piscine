@@ -75,7 +75,15 @@ class SessionController extends Controller
 
     public function enter_session()
     {
-        $sujets=Programmer::displaySubject(Auth::user()['idPromotion']);
+        $Subjects=Programmer::displaySubject(Auth::user()['idPromotion']);
+        $sujets = [];
+        foreach ($Subjects as $sujet){
+            $access=Programmer::accessSubject(Auth::user()['id'],$sujet->idSession);
+            if ($access){
+                array_push($sujets,$sujet);
+            }
+        }
+        
         return view('session.session_user',['sujets' => $sujets]);
     }
 

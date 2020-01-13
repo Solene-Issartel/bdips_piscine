@@ -34,8 +34,8 @@ Quiz
             var diff_hour=ending_hour-current_hour;
             var diff_min=ending_min-current_min;
             var diff_sec=ending_sec-current_sec;
-            //total_second=10;
-            total_second=(3600*diff_hour)+(60*diff_min)+(diff_sec);
+            total_second=-10;
+            //total_second=(3600*diff_hour)+(60*diff_min)+(diff_sec);
             if(total_second<0){
               end();
             } 
@@ -58,6 +58,7 @@ Quiz
         }
         function end(){
           document.getElementById("temps_restant").innerHTML="Finished !";
+          document.getElementById("buttonSub").disabled =true;
           alert("End of Session.");
           window.location.href = "{{url('home')}}";
         }
@@ -265,7 +266,7 @@ Quiz
                     <input type="hidden" name="id_sujet" value="{{(isset($id_sujet) ? $id_sujet : '')}}">
 
                     @auth
-                        <button type="submit" class="btn btn-primary" style="margin-top:20px;margin-bottom:40px;">
+                        <button type="submit" id="buttonSub" class="btn btn-primary" style="margin-top:20px;margin-bottom:40px;">
                           Next
                         </button>
                     @endauth

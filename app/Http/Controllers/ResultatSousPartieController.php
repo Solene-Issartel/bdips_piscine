@@ -8,6 +8,7 @@ use App\Models\ResultatSousPartie;
 use App\Models\Question;
 use App\Models\Programmer;
 use App\Models\Sujet;
+use App\Models\Session;
 use Illuminate\Http\Request;
 
 class ResultatSousPartieController extends Controller
@@ -31,7 +32,8 @@ class ResultatSousPartieController extends Controller
     {
         $id_sujet=request('id_sujet');
         $id_session=request('id_session');
-        return view('questionnaire/quiz',['id_sujet' => $id_sujet,'id_session' => $id_session ]);
+	$temps_debut=Session::hourSession($id_session);
+        return view('questionnaire/quiz',['id_sujet' => $id_sujet,'id_session' => $id_session, 'temps_debut' => $temps_debut ]);
     }
 
     public function result()

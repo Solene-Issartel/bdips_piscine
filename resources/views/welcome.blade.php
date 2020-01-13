@@ -120,7 +120,7 @@
     <div class="row justify-content-center padding">
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top" src="../public/img/people1.jpg">
+          <img class="card-img-top" src="../public/img/solene.png">
           <div class="card-body">
             <h4 class="card-title">Solène Issartel</h4>
             <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
@@ -131,7 +131,7 @@
 
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top" src="../public/img/people1.jpg">
+          <img class="card-img-top" src="../public/img/pierre.png">
           <div class="card-body">
             <h4 class="card-title">Pierre Perrin</h4>
             <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
@@ -142,7 +142,7 @@
 
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top" src="../public/img/people1.jpg">
+          <img class="card-img-top" src="../public/img/chloe.png">
           <div class="card-body">
             <h4 class="card-title">Chloé Serre-Combe</h4>
             <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
@@ -155,7 +155,7 @@
     <div class="row justify-content-center padding">
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top" src="../public/img/people1.jpg">
+          <img class="card-img-top" src="../public/img/axel.png">
           <div class="card-body">
             <h4 class="card-title">Axel Duval</h4>
             <p class="card-text">Student in computer science and management at Polytech Montpellier</p>
@@ -166,7 +166,7 @@
 
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top" src="../public/img/people1.jpg">
+          <img class="card-img-top" src="../public/img/bryan.png">
           <div class="card-body">
             <h4 class="card-title">Bryan Barbou</h4>
             <p class="card-text">Student in computer science and management at Polytech Montpellier</p>

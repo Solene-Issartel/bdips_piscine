@@ -34,7 +34,7 @@ Log In
                 <label for="email" class="control-label">Email</label>
 
                
-              <input id="email" type="email" class="form-control" name="email" placeholder="Ex : name.surnam@etu.umontpellier.fr" value="{{ old('email') }}" required autofocus>
+              <input id="email" type="email" class="form-control" name="email" placeholder="Ex : name.surname@etu.umontpellier.fr" value="{{ old('email') }}" required autofocus>
 
               @if ($errors->has('email'))
                   <span class="help-block">

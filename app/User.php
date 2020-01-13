@@ -61,7 +61,17 @@ class User extends Authenticatable
         return $user;
     }
     public static function get_promoUsers($id_promo){
-        $users=DB::select('SELECT id FROM users WHERE idPromotion=?',[$id_promo]);
+        //$users=DB::select('SELECT id FROM users WHERE idPromotion=?',[$id_promo]);
+        $users=DB::table('users')
+                    ->select('id')
+                    ->where('idPromotion','=',$id_promo)
+                    ->get();
         return $users;
+    }
+    public static function get_userPromo($id_user){
+        $promo=DB::table('users')
+                    ->where('id','=',$id_user)
+                    ->pluck('idPromotion');
+        return $promo;
     }
 }

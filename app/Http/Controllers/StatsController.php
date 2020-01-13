@@ -29,11 +29,13 @@ class StatsController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->isAdmin()){
+        if(Auth::user()->isAdmin()){ // Si l'user est admin
             return view('/stats/stats');
         }
-        else{
+        else{//sinon
+        	//Creation et récupération des variables 
             $id_user=Auth::user()->id;
+            //Recupere les sessions auxquelles a participer l'user 
             $sessions=ResultatSousPartie::get_userSessions($id_user);
             $libSujet=array();
             $resultatSujet=array();
@@ -42,27 +44,31 @@ class StatsController extends Controller
             $userIdSession=array();
 
             $percentage=array(100/6,100/25,100/39,100/30,100/30,100/16,100/54);
+
             $lib_SousParties=SousPartie::get_LibSousParties();
             $libSousParties=array();
             for ($i=0; $i<count($sessions); $i++){
-                //Récupère tous les libélé de sujets et les résultat par sujet
+                //Récupère tous les libélé de sujets 
                 array_push($userIdSession,$sessions[$i]->idSession);
                 $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                
+                //Recupere les  résultats par sujet
                 $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
                 array_push($resultatSujet,$tmp);
-                //Récupère la date et l'heure
+                //Récupère la date et l'heure pour differencier les sessions
                 $date=Session::dateSession($sessions[$i]->idSession);
+                //Ajout dans les variables retour
                 array_push($userDate,$date[0]->dateSession);
                 array_push($userHour,$date[0]->heureDebut);
                 array_push($libSujet,$lib[0]->libelleSujet." ".$userDate[$i]);            
                 }
+            //Recupere la session pour laquelle l'user veut ses stats
             $selectedSession=$sessions[$i-1]->idSession;
             if (isset($_POST['okUserSubPart'])){
                 $selectedSession=request('userSubPart');
             }
             $resSousPartie=array();
             for ($i=1;$i<8;$i++){
+            	//Calcul de son resultat par sous partie
                 array_push($libSousParties,$lib_SousParties[$i-1]->libelleSousPartie);
                 $res=ResultatSousPartie::get_userPartScore($i,$id_user,$selectedSession);
                 array_push($resSousPartie,$res[0]->scoreSousPartie*$percentage[$i-1]);
@@ -99,7 +105,10 @@ class StatsController extends Controller
                         $resuser=ResultatSousPartie::getScoreReading($tmpsess[$j]->idSession,$users[$k]->idUtilisateur)+ResultatSousPartie::getScoreListening($tmpsess[$j]->idSession,$users[$k]->idUtilisateur);
                         array_push($tmpres,$resuser); 
                     }
+                    //Vérification qu'il y a bien un resultat pour ne pas faire une 
+                    //division par 0 
                     if(count($tmpres)!=0){
+                    	//Fait la moyenne du score de la sous partie
                     	$tmpmoysess=array_sum($tmpres)/count($tmpres);
                     	array_push($moysess,$tmpmoysess); 
                     }
@@ -141,18 +150,21 @@ class StatsController extends Controller
             $promo=request('promotion');
             $user=User::get_user($nom,$prenom,$promo);
             if(isset($user)){
+            	//recupere l'id du user
                 $id_user = (array) $user;
                 $id_user=$id_user['id'];
+                //Recupere les sessions avec l'utilisateur
                 $sessions=ResultatSousPartie::get_userSessions($id_user);
                            
                 $libSujet=array();
                 $resultat=array();
                  
                 for ($i=0; $i<count($sessions); $i++){
-                    //Récupère tous les libélé de sujets et les résultat par sujet
+                    //Récupère tous les libélé de sujets et la date de la session correspondante  
                     $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
                     $date=Session::dateSession($sessions[$i]->idSession);
                     array_push($libSujet,$lib[0]->libelleSujet." ".$date[0]->dateSession);
+                    //Recupere les resultats par session
                     $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
                     array_push($resultat,$tmp);
                 }
@@ -161,6 +173,7 @@ class StatsController extends Controller
                 return view('/stats/affichage',['prenom'=> $prenom, 'nom'=> $nom, 'libSujet'=> $libSujet, 'resultat'=> $resultat]);   
             }
             else{
+            	//Si l'utilisateur n'est pas trouvé
                 $not_found=true;
                 return view('/stats/choix',['choix'=>'eleve','not_found'=>$not_found]);
             }
@@ -253,64 +266,62 @@ class StatsController extends Controller
             $en_fonction=request('statsPromo');
             $sessions=ResultatSousPartie::get_promoSessions($id_promo);
             $libSujet=array();
-            $users=User::get_promoUsers($id_promo);
             $resultat=array();
             for ($i=0; $i<count($sessions); $i++){
                 $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
                 $date=Session::dateSession($sessions[$i]->idSession);
                 array_push($libSujet,$lib[0]->libelleSujet." ".$date[0]->dateSession);
             }
+            
             if(request('statsPromo')=='subject'){
-                $subPart='';
-                $max=990;
-                for ($i=0; $i<count($sessions); $i++){
-                    $tmp=array();
-                    for ($j=0; $j<count($users); $j++){
-                      $res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->id)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->id);
-                      array_push($tmp, $res); 
-                    }
-                    if(count($tmp)!=0){
-                    	$moy=array_sum($tmp)/count($tmp);
-                    	array_push($resultat,$moy);
-                    }
-                    
-                }
-                return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
+            	$subPart='';
+            	$choixpromo=0;
+            	$max=990;
             }
             else{
-                $max=495;
-                if(request('statsPromo')=='listening'){
-                    $subPart=request('statsPromo');
-                    for ($i=0; $i<count($sessions); $i++){
-                        $tmp=array();
-                        for ($j=0; $j<count($users); $j++){
-                          $res=ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->id);
-                          // FAIRE LA MOYENNE DU SUJET ET METTRE DANS RESULTAT
-
-                          array_push($tmp, $res); 
-                        }
-                        if(count($tmp)!=0){
-                    		$moy=array_sum($tmp)/count($tmp);
-                    		array_push($resultat,$moy);
-                    	}
-                    }
-                    return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max, 'subPart'=>$subPart]);
-                }
-                else{
-                    $subPart=request('statsPromo');
-                    for ($i=0; $i<count($sessions); $i++){
-                        $tmp=array();
-                        for ($j=0; $j<count($users); $j++){
-                          $res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->id);
-                          array_push($tmp, $res); 
-                        }
-                        if(count($tmp)!=0){
-                    		$moy=array_sum($tmp)/count($tmp);
-                    		array_push($resultat,$moy);
-                    	}                    }
-                    return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
-                }   
+            	$max=495;
+            	if(request('statsPromo')=='listening'){
+            		$subPart='Listening';
+            		$choixpromo=1;
+            	}
+            	elseif (request('statsPromo')=='reading') {
+            		$subPart='Reading';
+					$choixpromo=2;
+            	}
+            	else{
+            		return view('/welcome');
+            	}
             }
+            var_dump($choixpromo);
+            
+            for ($i=0; $i<count($sessions); $i++){
+            	$users=ResultatSousPartie::get_SessionUsers($sessions[$i]->idSession);
+
+                $tmp=array();
+                for ($j=0; $j<count($users); $j++){
+                	$promo=User::get_userPromo($users[$j]->idUtilisateur)[0];
+                	var_dump($promo);
+                	if($promo==$id_promo){
+	                	if($choixpromo==0){
+	                		$res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->idUtilisateur)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->idUtilisateur);
+	                	}
+	                	elseif ($choixpromo==1) {
+	                		$res=ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->idUtilisateur);
+	                	}
+	                	elseif ($choixpromo==2) {
+	                		$res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->idUtilisateur);
+	                	}
+                	}
+                  	array_push($tmp, $res); 
+                  	var_dump($res);
+                }
+                if(count($tmp)!=0){
+                	$moy=array_sum($tmp)/count($tmp);
+                	array_push($resultat,$moy);
+                }
+                
+            }
+            return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
         }
         elseif(isset($_POST['okSession'])){
             $id_session=request('idsess');

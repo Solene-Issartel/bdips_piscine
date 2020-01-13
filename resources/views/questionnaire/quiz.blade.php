@@ -28,11 +28,7 @@ Quiz
             var starting_min=parseInt(document.getElementById("starting_min").innerHTML);
             var starting_sec=parseInt(document.getElementById("starting_sec").innerHTML);
             var ending_hour=starting_hour+2;
-            var ending_min=starting_min+30;
-            if (ending_min>=60){
-              ending_hour+=1;
-              ending_min=ending_min%60;
-            }
+            var ending_min=starting_min;
             var ending_sec=starting_sec;
 
             var diff_hour=ending_hour-current_hour;

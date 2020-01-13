@@ -97,7 +97,12 @@ class SessionController extends Controller
         $current_hour = date('H:i:s');
 
         //on compare l'heure de la session à l'heure actuelle, si l'heure est égale ou dépassée l'étudiant peut entrer dans la session
-        if($current_hour < $hour[0]){
+
+        //on empeche l'utilisateur de rentrer dans la session 30min apres le depart de celle-ci
+        $secs = strtotime("00:30:00")-strtotime("00:00:00");
+        $result = date("H:i:s",strtotime($hour[0])+$secs);
+
+        if($current_hour < $hour[0] || $current_hour > $result){
             $access = false;
         }
         else {

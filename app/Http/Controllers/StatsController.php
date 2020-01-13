@@ -292,7 +292,7 @@ class StatsController extends Controller
             		return view('/welcome');
             	}
             }
-            var_dump($choixpromo);
+            
             
             for ($i=0; $i<count($sessions); $i++){
             	$users=ResultatSousPartie::get_SessionUsers($sessions[$i]->idSession);
@@ -300,7 +300,7 @@ class StatsController extends Controller
                 $tmp=array();
                 for ($j=0; $j<count($users); $j++){
                 	$promo=User::get_userPromo($users[$j]->idUtilisateur)[0];
-                	var_dump($promo);
+                	
                 	if($promo==$id_promo){
 	                	if($choixpromo==0){
 	                		$res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->idUtilisateur)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->idUtilisateur);
@@ -313,7 +313,7 @@ class StatsController extends Controller
 	                	}
                 	}
                   	array_push($tmp, $res); 
-                  	var_dump($res);
+                  	
                 }
                 if(count($tmp)!=0){
                 	$moy=array_sum($tmp)/count($tmp);

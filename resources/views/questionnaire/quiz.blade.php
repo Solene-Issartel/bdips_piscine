@@ -34,10 +34,11 @@ Quiz
             var diff_hour=ending_hour-current_hour;
             var diff_min=ending_min-current_min;
             var diff_sec=ending_sec-current_sec;
+            //total_second=10;
             total_second=(3600*diff_hour)+(60*diff_min)+(diff_sec);
             if(total_second<0){
               end();
-            }
+            } 
             else{
               countdown(total_second);
             }
@@ -45,7 +46,7 @@ Quiz
 
         function countdown(n) {
           if (n==0){
-            end();
+            document.getElementById('quizForm').submit();
           }
           else{
             var str="";
@@ -58,6 +59,7 @@ Quiz
         function end(){
           document.getElementById("temps_restant").innerHTML="Finished !";
           alert("End of Session.");
+          window.location.href = "{{url('home')}}";
         }
     </script>
   </body>
@@ -69,7 +71,7 @@ Quiz
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form method="POST" action="{{ url('res_quiz') }}">
+                    <form method="POST" id="quizForm" action="{{ url('res_quiz') }}">
                         {{ csrf_field() }}
                      
 

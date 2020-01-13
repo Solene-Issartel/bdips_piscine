@@ -9,6 +9,58 @@ Quiz
 <div class="container-fluid text-center" style="margin-top:60px;">
   <h1 class="display-4">Good luck !</h1>
   <hr style="border-top: 2px solid #b4b4b4; width: 21%; margin-top: .9rem; margin-bottom: 1rem;">
+  <body onload="start()">
+    <p id="starting_hour" hidden>{{$temps_debut[0][0]*10+$temps_debut[0][1]}}</p>
+    <p id="starting_min" hidden>{{$temps_debut[0][3]*10+$temps_debut[0][4]}}</p>
+    <p id="starting_sec" hidden>{{$temps_debut[0][6]*10+$temps_debut[0][7]}}</p>  
+    <p id="starting_hour" >Session started at : {{$temps_debut[0]}}</p>
+    <p id="temps_restant"></p>
+    <script >
+        var timer;
+        var total_second;
+        function start(){
+            var dateToday=new Date();     
+            var current_hour=dateToday.getHours();
+            var current_min=dateToday.getMinutes();
+            var current_sec=dateToday.getSeconds();
+
+            var starting_hour=parseInt(document.getElementById("starting_hour").innerHTML);
+            var starting_min=parseInt(document.getElementById("starting_min").innerHTML);
+            var starting_sec=parseInt(document.getElementById("starting_sec").innerHTML);
+            var ending_hour=starting_hour+2;
+            var ending_min=starting_min;
+            var ending_sec=starting_sec;
+
+            var diff_hour=ending_hour-current_hour;
+            var diff_min=ending_min-current_min;
+            var diff_sec=ending_sec-current_sec;
+            total_second=(3600*diff_hour)+(60*diff_min)+(diff_sec);
+            if(total_second<0){
+              end();
+            }
+            else{
+              countdown(total_second);
+            }
+        }
+
+        function countdown(n) {
+          if (n==0){
+            end();
+          }
+          else{
+            var str="";
+            str+=Math.floor(n/3600)+"h : "+Math.floor(n/60)%60+"mn : "+n%60+"s"
+          document.getElementById("temps_restant").innerHTML=str
+          total_second=n;
+          timer =setTimeout(function(){ countdown(n-1); }, 1000);
+          }
+        }
+        function end(){
+          document.getElementById("temps_restant").innerHTML="Finished !";
+          alert("End of Session.");
+        }
+    </script>
+  </body>
 </div>
 
 <div class="container" style="margin-top:60px;">

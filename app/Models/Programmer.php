@@ -62,6 +62,26 @@ class Programmer extends Model
             }
     }
 
+
+    
+    public static function accessSubject($id_user,$id_session)
+    {
+        $user = DB::table('resultatsouspartie')
+            ->distinct()
+            ->select('resultatsouspartie.*')
+            ->where('resultatsouspartie.idUtilisateur', '=', $id_user)
+            ->where('resultatsouspartie.idSession', '=', $id_session)
+            ->get();
+        // si l'utilisateur possède déjà un score pour cette session alors renvoie false
+        
+        if(count($user) == 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+
     public function getUser ()
     {
         $id=Auth::user()->id;

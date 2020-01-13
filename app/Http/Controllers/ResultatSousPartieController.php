@@ -75,7 +75,7 @@ class ResultatSousPartieController extends Controller
 
             $score_final=$score_list+$score_read;
 
-            return view('questionnaire.result_quiz',['score_final' => $score_final]);
+            return view('questionnaire.result_quiz',['score_final' => $score_final,'score_listening' => $score_list,'score_reading'=> $score_read]);
         } else {
             return view('questionnaire.quiz');
         }

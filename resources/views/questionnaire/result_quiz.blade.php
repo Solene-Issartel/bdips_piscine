@@ -15,6 +15,10 @@ Result
     <div class="col-sm-4"></div>
     <div class="col-sm-4 text-center">
       <h1 style="font-size:200px;color:#E3F1FC;">{{$score_final}}/990</h1>
+
+      {{$score_listening}}
+      {{$score_reading}}
+  
     </div>
   </div>
 </div>

@@ -73,10 +73,11 @@ class Programmer extends Model
             ->where('resultatsouspartie.idSession', '=', $id_session)
             ->get();
         // si l'utilisateur possède déjà un score pour cette session alors renvoie false
-        if($user != null){
-            return false;
-        }else {
+        
+        if(count($user) == 0){
             return true;
+        }else {
+            return false;
         }
     }
     

@@ -99,11 +99,16 @@ class StatsController extends Controller
                         $resuser=ResultatSousPartie::getScoreReading($tmpsess[$j]->idSession,$users[$k]->idUtilisateur)+ResultatSousPartie::getScoreListening($tmpsess[$j]->idSession,$users[$k]->idUtilisateur);
                         array_push($tmpres,$resuser); 
                     }
+                    if(count($tmpres)!=0){
+                    	$tmpmoysess=array_sum($tmpres)/count($tmpres);
+                    	array_push($moysess,$tmpmoysess); 
+                    }
                     
-                    $tmpmoysess=array_sum($tmpres)/count($tmpres);
-                    array_push($moysess,$tmpmoysess); 
                 }
-                array_push($moySujet,array_sum($moysess)/count($moysess));
+                if (count($moysess)!=0){
+                	array_push($moySujet,array_sum($moysess)/count($moysess));
+                }
+                
             }
             return view('/stats/affichage', ['libSujet'=>$libSujet,'moySujet'=>$moySujet]);
         }
@@ -190,11 +195,16 @@ class StatsController extends Controller
                             $resuser=ResultatSousPartie::getScoreListening($tmpsess[$j]->idSession,$users[$k]->idUtilisateur);
                             array_push($tmpres,$resuser); 
                         }
+                        if(count($tmpres)!=0){
+                        	$tmpmoysess=array_sum($tmpres)/count($tmpres);
+                        	array_push($moysess,$tmpmoysess);
+                        }
                         
-                        $tmpmoysess=array_sum($tmpres)/count($tmpres);
-                        array_push($moysess,$tmpmoysess);
                     }
-                    array_push($moySujet,array_sum($moysess)/count($moysess));
+                    if(count($moysess)!=0){
+                    	array_push($moySujet,array_sum($moysess)/count($moysess));
+                    }
+                    
                 }
                 return view('/stats/affichage', ['partie'=>$partie,'libSujet'=>$libSujet,'moySujet'=>$moySujet]);
             }
@@ -222,10 +232,14 @@ class StatsController extends Controller
                             array_push($tmpres,$resuser); 
                         }
                         
-                        $tmpmoysess=array_sum($tmpres)/count($tmpres);
-                        array_push($moysess,$tmpmoysess);
+                        if(count($tmpres)!=0){
+                        	$tmpmoysess=array_sum($tmpres)/count($tmpres);
+                        	array_push($moysess,$tmpmoysess);
+                        }
                     }
-                    array_push($moySujet,array_sum($moysess)/count($moysess));
+                    if(count($moysess)!=0){
+                    	array_push($moySujet,array_sum($moysess)/count($moysess));
+                    }
                 }
                 return view('/stats/affichage', ['partie'=>$partie,'libSujet'=>$libSujet,'moySujet'=>$moySujet]); 
 
@@ -255,8 +269,11 @@ class StatsController extends Controller
                       $res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->id)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$users[$j]->id);
                       array_push($tmp, $res); 
                     }
-                    $moy=array_sum($tmp)/count($tmp);
-                    array_push($resultat,$moy);
+                    if(count($tmp)!=0){
+                    	$moy=array_sum($tmp)/count($tmp);
+                    	array_push($resultat,$moy);
+                    }
+                    
                 }
                 return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
             }
@@ -272,8 +289,10 @@ class StatsController extends Controller
 
                           array_push($tmp, $res); 
                         }
-                        $moy=array_sum($tmp)/count($tmp);
-                        array_push($resultat,$moy);
+                        if(count($tmp)!=0){
+                    		$moy=array_sum($tmp)/count($tmp);
+                    		array_push($resultat,$moy);
+                    	}
                     }
                     return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max, 'subPart'=>$subPart]);
                 }
@@ -285,9 +304,10 @@ class StatsController extends Controller
                           $res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->id);
                           array_push($tmp, $res); 
                         }
-                        $moy=array_sum($tmp)/count($tmp);
-                        array_push($resultat,$moy);
-                    }
+                        if(count($tmp)!=0){
+                    		$moy=array_sum($tmp)/count($tmp);
+                    		array_push($resultat,$moy);
+                    	}                    }
                     return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
                 }   
             }
@@ -307,8 +327,11 @@ class StatsController extends Controller
                     array_push($tmp,$res[0]->scoreSousPartie);
                     
                 }
-                $tmpmoy=array_sum($tmp)/count($tmp)*$percentage[$i-1];
-                array_push($moySousPartie,$tmpmoy);
+                if(count($tmp)!=0){
+                	$tmpmoy=array_sum($tmp)/count($tmp)*$percentage[$i-1];
+                	array_push($moySousPartie,$tmpmoy);
+                }
+                
             }
             return view('/stats/affichage',['libSousParties'=>$libSousParties,'moySousPartie'=>$moySousPartie]);
         }

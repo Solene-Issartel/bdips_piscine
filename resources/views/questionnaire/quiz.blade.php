@@ -27,10 +27,21 @@ Quiz
             var starting_hour=parseInt(document.getElementById("starting_hour").innerHTML);
             var starting_min=parseInt(document.getElementById("starting_min").innerHTML);
             var starting_sec=parseInt(document.getElementById("starting_sec").innerHTML);
-            var ending_hour=starting_hour+2;
+            var ending_hour=starting_hour+2; 
             var ending_min=starting_min;
-            var ending_sec=starting_sec;
+            var ending_sec=starting_sec
+	    
+	    //ajout de verifications si jamais on veut changer le temps de la session pour la demo :
+	    if (ending_sec>=60){
+		ending_min+=1
+		ending_sec=ending_sec%60
+	    }
 
+	    if (ending_min>=60){
+	    	ending_hour+=1
+		ending_min=ending_min%60
+	    }
+	    
             var diff_hour=ending_hour-current_hour;
             var diff_min=ending_min-current_min;
             var diff_sec=ending_sec-current_sec;

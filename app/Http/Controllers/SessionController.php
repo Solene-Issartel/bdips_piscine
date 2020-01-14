@@ -123,13 +123,4 @@ class SessionController extends Controller
             return view('error.error_404');
         }
     }
-    public function timer()
-    {
-        if(User::find(Auth::user()->id)->isAdmin()){
-            return view('timer');
-        
-        } else {
-            return view('error.error_404');
-        }
-    }
 }

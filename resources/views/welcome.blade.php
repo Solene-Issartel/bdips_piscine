@@ -69,7 +69,7 @@
       </div>
       <hr>
       <div class="col-12">
-        <p class="lead">This website provide robust and intuitives features designed for easy and aesthetic navigation between different services.</p>
+        <p class="lead">This website provides robust and intuitive features designed for easy and aesthetic navigation between different services.</p>
       </div>
     </div>
     </div>
@@ -86,7 +86,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
           <i class="fas fa-tasks"></i>
           <h4 style="font-weight: bold;">SESSION</h4>
-          <p class="my-marginTwo" style="padding-top: 20px;">You can join a session to pass the mock Toeic with other candidates. At the end, you will recieve your score</p>          
+          <p class="my-marginTwo" style="padding-top: 20px;">You can join a session to pass the mock Toeic with other candidates. At the end, you will receive your score</p>          
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <i class="fas fa-chart-pie"></i>
@@ -189,7 +189,7 @@
         <div class="col-lg-6 text-justify pad2">
           <h1 class="my-marginTwo">Our philosophy</h1>
           <h3 style="font-size:80px;margin-left:10%;">,,</h3>
-          <p class="my-marginTwo">Because we know how boring is to correct 200 questions, we created the solution...<br>This solutions saves student's and teacher's time and prevent errors during the correction. Moreover, thanks to the performance monitoring, students are informed of their situations very quickly. Teachers can take steps to help struggling students.</p>
+          <p class="my-marginTwo">Because we know how boring is to correct 200 questions, we created the solution...<br>This solution saves student's and teacher's time and prevents errors during the correction. Moreover, thanks to the performance monitoring, students are informed of their situations very quickly. Teachers can take steps to help struggling students.</p>
           <h3 style="font-size:80px;margin-left:68%;margin-top:-85px;">,,</h3>
         </div>
       </div>

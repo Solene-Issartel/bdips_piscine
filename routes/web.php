@@ -45,9 +45,6 @@ Route::post('/session_delete','SessionController@delete')->name('session_delete'
 Route::get('/session_user','SessionController@enter_session')->name('session_user');
 Route::post('/waiting_session','SessionController@waiting_session')->name('waiting_session');
 
-//Timer
-Route::get('/timer','SessionController@timer')->name('timer');
-
 //Sujets
 Route::get('/subject', 'SujetController@index')->name('subject');
 Route::get('/cr_subject', 'SujetController@newSubject')->name('cr_subject');

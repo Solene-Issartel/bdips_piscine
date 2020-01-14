@@ -54,9 +54,17 @@ Statistiques
 </script>
 
 @elseif (isset($moySousPartie))
-<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
-	<canvas id="myChart"></canvas>
+<div class="container-fluid text-center" style="margin-top:50px;">
+	<div class="row">
+		<div class="col-sm-6">
+			<canvas id="myChart"></canvas>
+		</div>
+		<div class="col-sm-6">
+			<canvas id="sucessRate"></canvas>
+		</div>
+	</div>
 </div>
+
 
 <script>
 		let myChart=document.getElementById('myChart').getContext('2d');
@@ -83,7 +91,7 @@ Statistiques
 		    	title:{
 		    		display:true,
 		    		text:'Selected session\'s score',
-		    		fontSize:70,
+		    		fontSize:50,
 					fontColor:'#000000',
 					padding:30
 		    	},
@@ -92,9 +100,6 @@ Statistiques
 		});
 </script>
 
-<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
-	<canvas id="sucessRate"></canvas>
-</div>
 <script>
 	let succ=document.getElementById('sucessRate').getContext('2d');
 	Chart.defaults.global.defaultFontFamily = 'Quicksand';
@@ -107,9 +112,7 @@ Statistiques
 	        datasets: [{
 	            label: 'Score',
 	            data: [<?php echo $totalusers-$totaldiff ;?>,<?php echo $totaldiff;?>] ,
-	            backgroundColor:['rgba(0, 123, 255, 1)',"rgb(255, 99, 132)"],
-				//borderColor:'rgba(0, 123, 255, 1)',
-				borderWidth: 1,
+	            backgroundColor:['rgba(231, 76, 60, 0.5)',"rgba(230, 126, 34, 0.5)"],
 				barThickness : 50 
 	        }]
 	    },
@@ -129,6 +132,7 @@ Statistiques
 <?php
 //eleve en difficulté : 
 print_r($difficulte);
+
 ?>
 
 

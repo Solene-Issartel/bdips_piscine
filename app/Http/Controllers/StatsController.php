@@ -47,32 +47,36 @@ class StatsController extends Controller
 
             $lib_SousParties=SousPartie::get_LibSousParties();
             $libSousParties=array();
-            for ($i=0; $i<count($sessions); $i++){
-                //Récupère tous les libélé de sujets 
-                array_push($userIdSession,$sessions[$i]->idSession);
-                $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
-                //Recupere les  résultats par sujet
-                $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
-                array_push($resultatSujet,$tmp);
-                //Récupère la date et l'heure pour differencier les sessions
-                $date=Session::dateSession($sessions[$i]->idSession);
-                //Ajout dans les variables retour
-                array_push($userDate,$date[0]->dateSession);
-                array_push($userHour,$date[0]->heureDebut);
-                array_push($libSujet,$lib[0]->libelleSujet." ".$userDate[$i]);            
-                }
-            //Recupere la session pour laquelle l'user veut ses stats
-            $selectedSession=$sessions[$i-1]->idSession;
-            if (isset($_POST['okUserSubPart'])){
-                $selectedSession=request('userSubPart');
-            }
             $resSousPartie=array();
-            for ($i=1;$i<8;$i++){
-            	//Calcul de son resultat par sous partie
-                array_push($libSousParties,$lib_SousParties[$i-1]->libelleSousPartie);
-                $res=ResultatSousPartie::get_userPartScore($i,$id_user,$selectedSession);
-                array_push($resSousPartie,$res[0]->scoreSousPartie*$percentage[$i-1]);
+            if (count($sessions)>0){
+	            for ($i=0; $i<count($sessions); $i++){
+	                //Récupère tous les libélé de sujets 
+	                array_push($userIdSession,$sessions[$i]->idSession);
+	                $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
+	                //Recupere les  résultats par sujet
+	                $tmp=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$id_user)+ResultatSousPartie::getScoreListening($sessions[$i]->idSession,$id_user);
+	                array_push($resultatSujet,$tmp);
+	                //Récupère la date et l'heure pour differencier les sessions
+	                $date=Session::dateSession($sessions[$i]->idSession);
+	                //Ajout dans les variables retour
+	                array_push($userDate,$date[0]->dateSession);
+	                array_push($userHour,$date[0]->heureDebut);
+	                array_push($libSujet,$lib[0]->libelleSujet." ".$userDate[$i]);            
+	            }
+	            
 
+	            //Recupere la session pour laquelle l'user veut ses stats
+	            $selectedSession=$sessions[$i-1]->idSession;
+	            if (isset($_POST['okUserSubPart'])){
+	                $selectedSession=request('userSubPart');
+	            }
+	            for ($i=1;$i<8;$i++){
+	            	//Calcul de son resultat par sous partie
+	                array_push($libSousParties,$lib_SousParties[$i-1]->libelleSousPartie);
+	                $res=ResultatSousPartie::get_userPartScore($i,$id_user,$selectedSession);
+	                array_push($resSousPartie,$res[0]->scoreSousPartie*$percentage[$i-1]);
+
+	            }
             }
             return view('/stats/affichage',['id_user'=>$id_user,'libSujet'=> $libSujet, 'resultatSujet'=> $resultatSujet,'userDate'=>$userDate,'userHour'=>$userHour,'userIdSession'=>$userIdSession,'libSousParties'=>$libSousParties,'resSousPartie'=>$resSousPartie]);
             }

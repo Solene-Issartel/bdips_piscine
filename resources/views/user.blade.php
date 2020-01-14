@@ -48,22 +48,24 @@ User
                 <input type="password" class="form-control" name="password" id="password" placeholder="Type here to set a new password" value="">
               </div>
             </div>
-            <!-- Ligne 3 (promotion + sexe) -->
-            <div class="row">
-              <!-- Promotion -->
-              <div class="col-sm-3 form-group">
-                <label for="promotion">Promotion</label>
-                <select class="form-control" name="promotion">
-                  @foreach ($promos as $promo)
-                    @if($promo -> idPromotion == $user -> idPromotion)
-                      <option value="{{$promo -> idPromotion}}" selected>{{$promo -> libellePromotion}}</option>
-                    @else
-                      <option value="{{$promo -> idPromotion}}">{{$promo -> libellePromotion}}</option>
-                    @endif
-                  @endforeach
-                </select>
+            @if(!Auth::user()->isAdmin())
+              <!-- Ligne 3 (promotion + sexe) -->
+              <div class="row">
+                <!-- Promotion -->
+                <div class="col-sm-3 form-group">
+                  <label for="promotion">Promotion</label>
+                  <select class="form-control" name="promotion">
+                    @foreach ($promos as $promo)
+                      @if($promo -> idPromotion == $user -> idPromotion)
+                        <option value="{{$promo -> idPromotion}}" selected>{{$promo -> libellePromotion}}</option>
+                      @else
+                        <option value="{{$promo -> idPromotion}}">{{$promo -> libellePromotion}}</option>
+                      @endif
+                    @endforeach
+                  </select>
+                </div>
               </div>
-            </div>
+            @endif
           <!-- Ligne 4 (Bouton) -->
             <div class="row" style="padding-top: 2em;">
               <div class="col-sm-12">

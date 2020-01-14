@@ -32,7 +32,7 @@ Subject creation
                 {!! Form::hidden('num_question'.$k,$i) !!}
                 {!! Form::hidden('id_souspartie'.$k,1) !!}
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                {{ Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                 <?php $k++;?>
                 <br><br>
             @endfor
@@ -47,7 +47,7 @@ Subject creation
                 {!! Form::hidden('num_question'.$k,$i) !!}
                 {!! Form::hidden('id_souspartie'.$k,2) !!}
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                {{ Form::text("rep_question".$k,null,array('pattern'=> "[A-Ca-c]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                 <?php $k++;?>
                 <br><br>
             @endfor
@@ -62,7 +62,7 @@ Subject creation
                 {!! Form::hidden('num_question'.$k,$i) !!}
                 {!! Form::hidden('id_souspartie'.$k,3) !!}
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                {{ Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                 <?php $k++;?>
                 <br><br>
             @endfor
@@ -77,7 +77,7 @@ Subject creation
                 {!! Form::hidden('num_question'.$k,$i) !!}
                 {!! Form::hidden('id_souspartie'.$k,4) !!}
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                {{ Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                 <?php $k++;?>
                 <br><br>
             @endfor
@@ -92,7 +92,7 @@ Subject creation
                 {!! Form::hidden('num_question'.$k,$i) !!}
                 {!! Form::hidden('id_souspartie'.$k,5) !!}
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                {{ Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                 <?php $k++;?>
                 <br><br>
             @endfor
@@ -107,7 +107,7 @@ Subject creation
                 {!! Form::hidden('num_question'.$k,$i) !!}
                 {!! Form::hidden('id_souspartie'.$k,6) !!}
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
-                {{ Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
+                {{ Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) }} 
                 <?php $k++;?>
                 <br><br>
             @endfor
@@ -124,9 +124,9 @@ Subject creation
                 {!! Form::label("rep_question".$k,"Question ".$i." :") !!}
                 
                 @if($i==200)
-                    {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "upper(rep_question".$k.")")) !!}
+                    {!! Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "upper(rep_question".$k.")")) !!}
                 @else 
-                    {!! Form::text("rep_question".$k,null,array('maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) !!}
+                    {!! Form::text("rep_question".$k,null,array('pattern'=> "[A-Da-d]{1}",'maxlength' => 1,'onKeyUp' => "suivant(rep_question".$k.",rep_question".($k+1).",1)")) !!}
                 @endif 
                 <?php $k++;?>
                 <br><br>

@@ -266,25 +266,48 @@ Quiz
                     <input type="hidden" name="id_sujet" value="{{(isset($id_sujet) ? $id_sujet : '')}}">
 
                     @auth
-                        <button type="submit" id="buttonSub" class="btn btn-primary" style="margin-top:20px;margin-bottom:40px;">
+                        <!-- Button trigger modal -->
+                        <div role="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#validateModal" style="margin-top:20px;margin-bottom:40px;">
                           Next
-                        </button>
+                        </div>
                     @endauth
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="validateModal" tabindex="-1" role="dialog" aria-labelledby="validateModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="validateModalLabel">Validation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <br>
+                            Submit your answers ?
+                          <br><br>
+                          </div>
+                          <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Yes</button>
+                      </div>
+                        </div>
+                      </div>
+                    </div>
 
                     @guest
                         <!-- Button trigger modal -->
-                        <div role="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <div role="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#disconnectedModal" style="margin-top:20px;margin-bottom:40px;">
                           Next
                         </div>
                     @endguest
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="disconnectedModal" tabindex="-1" role="dialog" aria-labelledby="disconnectedModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Warning !</h5>
+                            <h5 class="modal-title" id="disconnectedModalLabel">Warning !</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>

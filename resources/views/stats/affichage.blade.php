@@ -92,6 +92,46 @@ Statistiques
 		});
 </script>
 
+<div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
+	<canvas id="sucessRate"></canvas>
+</div>
+<script>
+	let succ=document.getElementById('sucessRate').getContext('2d');
+	Chart.defaults.global.defaultFontFamily = 'Quicksand';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#000000';
+	let succGraph = new Chart(succ, {
+	    type: 'doughnut',
+	    data: {
+	        labels: ['Success','Failure'],
+	        datasets: [{
+	            label: 'Score',
+	            data: [<?php echo $totalusers-$totaldiff ;?>,<?php echo $totaldiff;?>] ,
+	            backgroundColor:['rgba(0, 123, 255, 1)',"rgb(255, 99, 132)"],
+				//borderColor:'rgba(0, 123, 255, 1)',
+				borderWidth: 1,
+				barThickness : 50 
+	        }]
+	    },
+	    options: {
+	    	title:{
+	    		display:true,
+	    		text:' Success Rate',
+	    		fontSize:50,
+				fontColor:'#000000',
+				padding:30
+	    	}
+	    	//legend:{position:'bottom',display: false}  	
+	    }
+	});
+</script>
+
+<?php
+//eleve en difficulté : 
+print_r($difficulte);
+?>
+
+
 @elseif (isset($partie))
 <div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
 	<canvas id="myChart"></canvas>
@@ -179,6 +219,9 @@ Statistiques
 	    }
 	});
 </script>
+
+
+
 @elseif (isset($moySujet))
 <div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
 	<canvas id="myChart"></canvas>

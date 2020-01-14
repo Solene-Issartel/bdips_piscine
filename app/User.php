@@ -74,4 +74,11 @@ class User extends Authenticatable
                     ->pluck('idPromotion');
         return $promo;
     }
+    public static function get_nameUser($id_user){
+        $info=DB::table('users')
+                    ->select('name','firstname')
+                    ->where('id','=',$id_user)
+                    ->get();
+        return $info;
+    }
 }

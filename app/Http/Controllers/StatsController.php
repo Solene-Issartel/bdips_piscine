@@ -271,6 +271,7 @@ class StatsController extends Controller
             $sessions=ResultatSousPartie::get_promoSessions($id_promo);
             $libSujet=array();
             $resultat=array();
+            
             for ($i=0; $i<count($sessions); $i++){
                 $lib=Sujet::get_LibSujet($sessions[$i]->idSession);
                 $date=Session::dateSession($sessions[$i]->idSession);
@@ -281,16 +282,19 @@ class StatsController extends Controller
             	$subPart='';
             	$choixpromo=0;
             	$max=990;
+                
             }
             else{
             	$max=495;
             	if(request('statsPromo')=='listening'){
             		$subPart='Listening';
             		$choixpromo=1;
+                    
             	}
             	elseif (request('statsPromo')=='reading') {
             		$subPart='Reading';
 					$choixpromo=2;
+                    
             	}
             	else{
             		return view('/welcome');
@@ -315,21 +319,22 @@ class StatsController extends Controller
 	                	elseif ($choixpromo==2) {
 	                		$res=ResultatSousPartie::getScoreReading($sessions[$i]->idSession,$users[$j]->idUtilisateur);
 	                	}
+                        array_push($tmp, $res); 
                 	}
-                  	array_push($tmp, $res); 
-                  	
                 }
+                  	
                 if(count($tmp)!=0){
                 	$moy=array_sum($tmp)/count($tmp);
                 	array_push($resultat,$moy);
                 }
-                
             }
             return view('/stats/affichage',['libPromo'=> $libPromo[0]->libellePromotion, 'resultat'=> $resultat, 'libSujet'=>$libSujet,'max'=>$max,'subPart'=>$subPart]);
         }
         elseif(isset($_POST['okSession'])){
             $id_session=request('idsess');
             $users=ResultatSousPartie::get_SessionUsers($id_session);
+            $totalusers=count($users);
+            $difficulte=array();
             $sous_parties=SousPartie::get_LibSousParties();
             $moySousPartie=array();
             $libSousParties=array();
@@ -340,15 +345,30 @@ class StatsController extends Controller
                 for ($j=0;$j<count($users);$j++){
                     $res=ResultatSousPartie::get_userPartScore($i,$users[$j]->idUtilisateur,$id_session);
                     array_push($tmp,$res[0]->scoreSousPartie);
+                    if ($i==7){
+                        $tmpres=ResultatSousPartie::getScoreReading($id_session,$users[$j]->idUtilisateur)+ResultatSousPartie::getScoreListening($id_session,$users[$j]->idUtilisateur);
+                        if($tmpres<785){
+                            $info=User::get_nameUser($users[$j]->idUtilisateur);
+                            array_push($difficulte,$info[0]->name." ".$info[0]->firstname);
+                        }
+                    }
                     
                 }
                 if(count($tmp)!=0){
                 	$tmpmoy=array_sum($tmp)/count($tmp)*$percentage[$i-1];
                 	array_push($moySousPartie,$tmpmoy);
                 }
-                
             }
-            return view('/stats/affichage',['libSousParties'=>$libSousParties,'moySousPartie'=>$moySousPartie]);
+            var_dump($difficulte);
+
+            if($totalusers>0){
+                $totaldiff=count($difficulte);
+            }
+            else{
+                $totaldiff=0;
+            }
+            var_dump($totaldiff);
+            return view('/stats/affichage',['libSousParties'=>$libSousParties,'moySousPartie'=>$moySousPartie,'totalusers'=>$totalusers,'totaldiff'=>$totaldiff,'difficulte'=>$difficulte]);
         }
         elseif(isset($_POST['okUserSubPart'])){
             $selected=request('userSubPart');

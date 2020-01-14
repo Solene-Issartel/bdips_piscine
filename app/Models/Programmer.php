@@ -97,7 +97,7 @@ class Programmer extends Model
                 ->distinct()
                 ->join('session', 'session.idSession', '=', 'programmer.idSession')
                 ->join('sujet','sujet.idSujet','=','session.idSujet')
-                ->select('sujet.idSujet','sujet.libelleSujet','session.idSession')
+                ->select('sujet.idSujet','sujet.libelleSujet','session.idSession','session.dateSession','session.heureDebut')
                 ->where('programmer.idPromotion','=',$id_promo)
 
                 ->where('session.dateSession', '=', $date)

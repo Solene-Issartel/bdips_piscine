@@ -24,7 +24,7 @@ Session User
               <div class="form-group">
                 <select class="form-control" id="form-session" name="id_session">
                   @foreach($sujets as $sujet)
-                    <option value="{{$sujet->idSession}}">{{$sujet->libelleSujet}}</option>
+                    <option value="{{$sujet->idSession}}">{{$sujet->libelleSujet}} heure : {{$sujet->heureDebut}}</option>
                   @endforeach
                 </select>
               </div>

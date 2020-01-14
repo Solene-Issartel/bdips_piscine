@@ -34,8 +34,8 @@ Quiz
             var diff_hour=ending_hour-current_hour;
             var diff_min=ending_min-current_min;
             var diff_sec=ending_sec-current_sec;
-            total_second=-10;
-            //total_second=(3600*diff_hour)+(60*diff_min)+(diff_sec);
+            //total_second=-10;
+            total_second=(3600*diff_hour)+(60*diff_min)+(diff_sec);
             if(total_second<0){
               end();
             } 

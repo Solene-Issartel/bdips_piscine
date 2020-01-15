@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sujet extends Model
 {
+    protected $table = 'sujet';
+
 	/**
      * The attributes that are mass assignable.
      *

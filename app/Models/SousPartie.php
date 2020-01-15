@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SousPartie extends Model
 {
+	protected $table = 'sous-partie'; 
+	
 	//Récupére les libelles des sous parties de la bdd
 	public static function get_LibSousParties()
 	{

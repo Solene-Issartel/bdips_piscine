@@ -25,15 +25,31 @@ class Session extends Model
     //Recupére toutes les sessions programmées après la date et l'heure courante de la bdd
     public static function getAllSessions()
     {
-        //only sessions after today's date to avoid deleting session where students have results
+        //date et heure courantes
         $current_date = date("Y-m-d");
         $current_hour = date("H:i:s");
-        $tab_s = DB::table('session')
+
+        //on récupère les sessions du jour qui ne sont pas encore passées
+        $tab_s_today = DB::table('session')
+            ->distinct()
+
+            ->where('dateSession','=',$current_date)
+            ->where('heureDebut','>',$current_hour)
+            ->get();
+
+        //on récupère les sessions d'après la date courante
+        $tab_s_future = DB::table('session')
             ->distinct()
 
             ->where('dateSession','>',$current_date)
-            ->where('heureDebut','>',$current_hour)
             ->get();
+
+        if(count($tab_s_today)>0){
+            $tab_s=array_merge($tab_s_today,$tab_s_future);
+        } else {
+            $tab_s = $tab_s_future;
+        }
+        
         return $tab_s;
     }
 

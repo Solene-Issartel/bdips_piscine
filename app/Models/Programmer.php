@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Models;
-
 use DB;
 use Illuminate\Database\Eloquent\Model;
-
 class Programmer extends Model
 {
-	/**
+    protected $table = 'programmer';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -15,10 +14,8 @@ class Programmer extends Model
     protected $fillable = [
         'idSession', 'idPromotion',
     ];
-
     //To don't use 'created_at and updated_at' in database
     public $timestamps = false;
-
     //Création d'une nouvelle instance de Programmer
     public static function create($id_session, $id_promo)
     {
@@ -26,44 +23,38 @@ class Programmer extends Model
             $prog->idSession=$id_session;
             $prog->idPromotion=$id_promo;
             $prog->save();
-
             return $prog;
     }
-
     //Select tous les étudiants pour une session donnée
     public static function getUsersForSession($id_session)
     {
         /*"SELECT DISTINCT users.* FROM users INNER JOIN programmer ON users.idPromotion=programmer.idPromotion WHERE programmer.idSession=3";*/
         $users = DB::table('programmer')
-        		->distinct()
+                ->distinct()
                 ->select('users.*')
                 ->join('users', 'programmer.idPromotion', '=', 'programmer.idPromotion')
                 ->where('programmer.idSession','=',$id_session)
                 ->get();
         return $users;
     }
-
     //Renvoie true si l'utilisateur donné peut accèder à une session (= si il a été programmé sur la session donnée), false sinon
     public static function accessSession($id_user,$id_session)
     {
            /* $user = "SELECT DISTINCT * FROM users INNER JOIN programmer ON users.idPromotion=programmer.idPromotion WHERE programmer.idSession=? and users.id = ?";*/
            $user = DB::table('programmer')
-           		->distinct()
+                ->distinct()
                 ->select('users.*')
                 ->join('users', 'programmer.idPromotion', '=', 'programmer.idPromotion')
                 ->where('programmer.idSession','=',$id_session)
                 ->where('users.id','=',$id_user)
                 ->get();
-
             //si l'utilisateur fait partit de la liste pouvant accéder à la session donnée en paramètre, renvoie true
             if($user != null){
-            	return true;
+                return true;
             }else {
-            	return false;
+                return false;
             }
     }
-
-
     //Renvoie true si l'utilisateur donné n'a pas passé la session donnée, false sinon
     public static function accessSubject($id_user,$id_session)
     {
@@ -91,7 +82,6 @@ class Programmer extends Model
             return $user['id_Promotion'];
         }
     }
-
     //Retourne les sujets programmés pour la promo donnée seulement pour la journée courante
     public static function displaySubject($id_promo){
         $date = date('Y-m-d');
@@ -101,10 +91,9 @@ class Programmer extends Model
                 ->join('sujet','sujet.idSujet','=','session.idSujet')
                 ->select('sujet.idSujet','sujet.libelleSujet','session.idSession','session.dateSession','session.heureDebut')
                 ->where('programmer.idPromotion','=',$id_promo)
-
                 ->where('session.dateSession', '=', $date)
                 ->get();
         return $id_subject;
     }
-
 }
+

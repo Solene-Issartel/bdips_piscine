@@ -21,11 +21,11 @@ Users list
                   <div class="row">
                     <div class="col-md-3">{{$user->name}}</div>
                     <div class="col-md-3">{{$user->firstname}}</div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="margin-right:0%;text-align:right;">
                       <form class="form-horizontal" method="POST" action="{{ url('stats')}}">
                         {{ csrf_field() }}
                         <input type="hidden" name="id_user" value="{{$user->id}}">
-                        <button type="submit" class="btn btn-danger" style="margin-right:10%;">See stats</button>
+                        <button type="submit" class="btn btn-primary">Stats</button>
                       </form>
                       </div>
                     <div class="col-md-3"><button type="button" class="btn btn-danger" style="margin-right:10%;" data-toggle="modal" data-target="#validationModal{{$user->id}}">Delete</button></div>

@@ -60,7 +60,7 @@ Add Session
           <div class="row">
             <div class="col-sm-12">
               @foreach ($promos as $promo)
-                      <input type="checkbox" class="checkbox_promo" id="promo{{ $promo->idPromotion}}" name="promo[]" onclick="progFormValuesID({{ $promo->idPromotion}})">
+                      <input type="checkbox" class="checkbox_promo" id="promo{{ $promo->idPromotion}}" name="promo[]" value="{{ $promo->idPromotion}}">
               <label for="promo[]">{{$promo->libellePromotion}}</label>
               @endforeach
               

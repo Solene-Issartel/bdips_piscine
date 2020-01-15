@@ -25,12 +25,14 @@ class Promotion extends Model
         $this->annee = $GLOBALS['annee_en_cours'];
     }
 
+    //Recupére toutes les promotions de la bdd
 	public static function getAllPromos()
 	{
 		$promos = DB::table('promotion')->distinct()->get();
 		return $promos;
 	}
 
+	//Recupére toutes les promotions de l'année courante de la bdd
 	public static function getAllPromosOfCurrentYear()
 	{
 		global $GLOBALS;
@@ -39,11 +41,7 @@ class Promotion extends Model
 		return $promos;
 	}
 
-	public static function getPromoById($id_promotion)
-	{
-		$promo = DB::table($table)->where('idPromotion',$id_promotion);
-		return $promo;
-	}
+	//Recupére le libellé d'une promo grâce à son id
 	public static function getLibPromoById($id_promo)
 	{
 		$promo=DB::table('Promotion')

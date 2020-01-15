@@ -13,29 +13,16 @@ use Illuminate\Http\Request;
 
 class ResultatSousPartieController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware(['auth','verified']);
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Redirige vers le questionnaire du toeic  
     public function index()
     {
         $id_sujet=request('id_sujet');
         $id_session=request('id_session');
-	$temps_debut=Session::hourSession($id_session);
+	    $temps_debut=Session::hourSession($id_session);
         return view('questionnaire/quiz',['id_sujet' => $id_sujet,'id_session' => $id_session, 'temps_debut' => $temps_debut ]);
     }
 
+    //Calcul du score total et des sous-parties pour le toeic passé par l'utilisateur
     public function result()
     {
         $id=Auth::user()->id;

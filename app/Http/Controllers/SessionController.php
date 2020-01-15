@@ -12,24 +12,11 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware(['auth','verified']);
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Redirige vers la liste des sessions si l'utilisateur est un admin
     public function index()
     {
-        if (User::find(Auth::user()->id)->isAdmin()) {
+        if (Auth::user()->isAdmin()) {
             $sessions = Session::getAllSessions();
                 return view('session/liste_session', ['sessions' => $sessions]);
 
@@ -38,6 +25,7 @@ class SessionController extends Controller
         }
     }
 
+    //Fonction pour l'affichage pour la création d'une nouvelle session toeic
     public function newSession()
     {
     	$tab_sujets = Sujet::getAllSujets();
@@ -46,13 +34,16 @@ class SessionController extends Controller
         return view('session/session', ['tab_sujets' => $tab_sujets,'promos' => $promos]); 
     }
 
+
+    //Création d'une session (uniquement pour les admin)
     public function create()
     {
-        if(User::find(Auth::user()->id)->isAdmin()){
+        if(Auth::user()->isAdmin()){
             $promos = Promotion::getAllPromosOfCurrentYear();
 
             $session = new Session;
 
+            //on récupère les infos du formulaire
             $tab_promo = request('promo');
             $session->dateSession = request('date_session');
             $heure = request('heure_session').':00';
@@ -73,6 +64,7 @@ class SessionController extends Controller
         }
     }
 
+    //Fonction pour l'affichage des sessions non passées et pour lesquelles l'utilisateur peut entrer en fonction de sa promo
     public function enter_session()
     {
         $Subjects=Programmer::displaySubject(Auth::user()['idPromotion']);
@@ -87,6 +79,7 @@ class SessionController extends Controller
         return view('session.session_user',['sujets' => $sujets]);
     }
 
+    //Page d'attente pour pouvoir entrer dans une session. La session s'ouvre à l'heure programmée et ferme 30 min après celle-ci
     public function waiting_session()
     {
         date_default_timezone_set('Europe/Paris'); //fuseau horaire français
@@ -112,9 +105,11 @@ class SessionController extends Controller
         return view('session.waiting_session',['id_sujet' => $id_sujet,'id_session' => $id_session,'access'=>$access]);
     }
 
+
+    //Supprime une session si l'utilisateur est un admin
     public function delete()
     {
-        if (User::find(Auth::user()->id)->isAdmin()) {
+        if (Auth::user()->isAdmin()) {
             $idSession = request('idSession');
             $session = Session::deleteSession($idSession);
             

@@ -11,24 +11,10 @@ use Illuminate\Http\Request;
 
 class SujetController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware(['auth','verified']);
-    }
-
-    /**
-     * Show subject list.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Redirige vers la liste des sujets si l'utilisateur est un admin
     public function index()
     {
-        if (User::find(Auth::user()->id)->isAdmin()) {
+        if (Auth::user()->isAdmin()) {
             $sujets = Sujet::getAllSujets();
             return view('sujet', ['sujets' => $sujets]);
         } else {
@@ -36,11 +22,7 @@ class SujetController extends Controller
         }
     }
 
-     /**
-     * Show subject list.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Fonction pour l'affichage de création d'un nouveau sujet si l'utilisateur est un admin
     public function newSubject()
     {
         $id=Auth::user()->id;
@@ -57,16 +39,17 @@ class SujetController extends Controller
         }
     }
     
-
+    //Création d'un nouveau sujet et rediriction vers le remplissage des 200 question (correction)
     public function create()
     {
-        if (User::find(Auth::user()->id)->isAdmin()) {
+        if (Auth::user()->isAdmin()) {
             $sujet = new Sujet;
         
             $sujet->libelleSujet = request('subject_name');
             $sujet->nomAuteur = request('author_name');
             $sujet->save();
 
+            //on récupère le dernier id des questions entrées dans la bdd afin de ne pas écraser les sujets précèdents
             $last_id = Question::getLastId();
             if($last_id == null){
                 $last_id = 0;
@@ -80,9 +63,10 @@ class SujetController extends Controller
         
     }
 
+    //Supprime le sujet selectionné si l'utilisateur est un admin
     public function delete()
     {
-        if (User::find(Auth::user()->id)->isAdmin()) {
+        if (Auth::user()->isAdmin()) {
             $idSujet = request('idSujet');
             $sujet = Sujet::deleteSujet($idSujet);
             

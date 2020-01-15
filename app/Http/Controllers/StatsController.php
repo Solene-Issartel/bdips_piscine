@@ -12,21 +12,7 @@ use App\Models\SousPartie;
 use Auth;
 class StatsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware(['auth','verified']);
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         if(Auth::user()->isAdmin() and isset($_POST['id_user'])==false){ // Si l'user est admin

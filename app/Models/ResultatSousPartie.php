@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResultatSousPartie extends Model
 {
-	protected $table = 'resultatsouspartie';
-
 	public $timestamps = false;
 
+	//Retourne tous les scores par sous-parties pour un utiisateur et une session
     public function get_score($id_utilisateur,$id_session)
 	{
 	 $score = DB::table($table)
@@ -21,6 +20,7 @@ class ResultatSousPartie extends Model
 	 return $score;
 	}
 
+	//Calcule les scores pour la partie Listening pour un utiisateur et une session
 	public static function getScoreListening($id_session,$id_utilisateur)
 	{
 		$score_l = 0;
@@ -208,6 +208,7 @@ class ResultatSousPartie extends Model
 	 	return $score_list;
 	}
 
+	//Calcule les scores pour la partie Reading pour un utiisateur et une session
 	public static function getScoreReading($id_session,$id_utilisateur)
 	{
 		$score_l = 0;
@@ -391,14 +392,10 @@ class ResultatSousPartie extends Model
 	 	return $score_read;
 	}
 
-	// public static function getScoreTot($id_session,$id_user)
-	// {
-	// 	return $this.getScoreReading($id_session,$id_user)+$this.getScoreListening($id_session,$id_user);
-	// }
-
+	//Retourne les id session pour lesquelles les utilisateurs ont des scores 
 	public static function get_userSessions($id_user)
     {
-        // $id_session= DB::select('SELECT DISTINCT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user]);
+        //'SELECT DISTINCT idSession FROM resultatsouspartie WHERE idUtilisateur=?',[$id_user];
         $id_session=DB::table('resultatsouspartie')
         				->distinct()
         				->select('idSession')
@@ -406,8 +403,10 @@ class ResultatSousPartie extends Model
         				->get();
         return $id_session;
     }
+
+    //Retourne les id des sessions pour lesquelles une promo a des scores
     public static function get_promoSessions($id_promo){
-    	//$id_session= DB::select('SELECT DISTINCT idSession FROM resultatsouspartie JOIN users ON resultatsouspartie.idUtilisateur=users.id WHERE users.idPromotion=?',[$id_promo]);
+    	//'SELECT DISTINCT idSession FROM resultatsouspartie JOIN users ON resultatsouspartie.idUtilisateur=users.id WHERE users.idPromotion=?',[$id_promo];
     	$id_session= DB::table('resultatsouspartie')
     					->distinct()
     					->select('idSession')
@@ -416,12 +415,11 @@ class ResultatSousPartie extends Model
     					->get();
     	return $id_session;
     }
-    //public static function get_promoPartScore($id_promo,$id_session){
 
-    //}
 
+    //Retourne le score d'un utilisateur pour une sous-partie et une session données
     public static function get_userPartScore($id_souspartie,$id_user,$id_session){
-    	//$result=DB::select('SELECT scoreSousPartie FROM resultatsouspartie WHERE idSousPartie=? AND idUtilisateur=? AND idSession=?',[$id_souspartie],[$id_user],[$id_session]);
+    	//'SELECT scoreSousPartie FROM resultatsouspartie WHERE idSousPartie=? AND idUtilisateur=? AND idSession=?',[$id_souspartie],[$id_user],[$id_session];
     	$result=DB::table('resultatsouspartie')
     				->select('scoreSousPartie')
     				->where('idSousPartie','=',$id_souspartie)
@@ -431,6 +429,7 @@ class ResultatSousPartie extends Model
     	return $result;
     }
 
+    //Retourne les id utilisateurs qui ont des scores pour une session donnée
     public static function get_SessionUsers($id_session)
     {
     	$users=DB::table('resultatsouspartie')

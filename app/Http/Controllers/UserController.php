@@ -9,21 +9,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware(['auth','verified']);
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Redirige vers la modification du profil de l'utilisateur
     public function index()
     {
         $id = Auth::user()->id;
@@ -32,6 +18,7 @@ class UserController extends Controller
         return view('user',['user' => $currentuser, 'promos' => $promos]);
     }
 
+    //Modifie le profil de l'utilisateur
     public function update()
     {
         $id = request('id');
@@ -49,10 +36,15 @@ class UserController extends Controller
     
     }
 
+    //Redirige vers la liste des étudiants si l'utilisateur est un admin
     public function listing()
     {
-        $users = User::getAllUsersNotAdmin();
-        return view('users_list', ['users' => $users]);
+        if (Auth::user()->isAdmin()) {
+            $users = User::getAllUsersNotAdmin();
+            return view('users_list', ['users' => $users]);
+        } else {
+            return view('error.error_404');
+        }
     }
 
     public function delete()

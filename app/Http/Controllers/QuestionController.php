@@ -11,30 +11,20 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware(['auth','verified']);
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Redirige vers la création des questions pour un sujet
     public function index()
     {
         return view('question');
     }
 
+    //Création d'un sujet (200 questions) si l'utilisateur est un admin
     public function create()
     {
-        if(User::find(Auth::user()->id)->isAdmin()){
+        if(Auth::user()->isAdmin()){
+
+            //on récupère le dernier id des questions entrées dans la bdd afin de ne pas écraser les sujets précèdents
             $last_id=Question::getLastId() + 1;
+
             for ($i=$last_id; $i <=$last_id+199 ; $i++) { 
                $question = new Question;
                $question->numeroQuestion = request('num_question'.$i);
@@ -48,9 +38,7 @@ class QuestionController extends Controller
             return view('sujet', ['sujets' => $sujets]);
         } else {
             return view('error.error_404');
-        }
-        
-        
+        } 
         
     }
 

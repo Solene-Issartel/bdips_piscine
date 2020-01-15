@@ -57,6 +57,7 @@ Route::post('/create_question', 'QuestionController@create');
 
 //Stats
 Route::get('/stats','StatsController@index')->name('stats');
+Route::post('/affichageUser','StatsController@index')->name('affichageUser');
 Route::post('/choix','StatsController@checkchoice')->name('choix');
 Route::post('/affichage','StatsController@affichage')->name('affichage');
 

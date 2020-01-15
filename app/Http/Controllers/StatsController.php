@@ -29,12 +29,18 @@ class StatsController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->isAdmin()){ // Si l'user est admin
+        if(Auth::user()->isAdmin() and isset($_POST['id_user'])==false){ // Si l'user est admin
             return view('/stats/stats');
         }
         else{//sinon
         	//Creation et récupération des variables 
             $id_user=Auth::user()->id;
+            if (isset($_POST['id_user'])){
+                $id_user=request('id_user');
+                $info=User::get_nameUser($id_user);
+                $name=$info[0]->name;
+                $firstname=$info[0]->firstname;
+            }
             //Recupere les sessions auxquelles a participer l'user 
             $sessions=ResultatSousPartie::get_userSessions($id_user);
             $libSujet=array();
@@ -77,6 +83,9 @@ class StatsController extends Controller
 	                array_push($resSousPartie,$res[0]->scoreSousPartie*$percentage[$i-1]);
 
 	            }
+            }
+            if (isset($name)){
+                return view('/stats/affichage',['id_user'=>$id_user,'libSujet'=> $libSujet, 'resultatSujet'=> $resultatSujet,'userDate'=>$userDate,'userHour'=>$userHour,'userIdSession'=>$userIdSession,'libSousParties'=>$libSousParties,'resSousPartie'=>$resSousPartie,'name'=>$name,'firstname'=>$firstname]);
             }
             return view('/stats/affichage',['id_user'=>$id_user,'libSujet'=> $libSujet, 'resultatSujet'=> $resultatSujet,'userDate'=>$userDate,'userHour'=>$userHour,'userIdSession'=>$userIdSession,'libSousParties'=>$libSousParties,'resSousPartie'=>$resSousPartie]);
             }

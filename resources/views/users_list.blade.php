@@ -22,7 +22,7 @@ Users list
                     <div class="col-md-3">{{$user->name}}</div>
                     <div class="col-md-3">{{$user->firstname}}</div>
                     <div class="col-md-3" style="margin-right:0%;text-align:right;">
-                      <form class="form-horizontal" method="POST" action="{{ url('stats')}}">
+                      <form class="form-horizontal" method="POST" action="{{ url('affichageUser')}}">
                         {{ csrf_field() }}
                         <input type="hidden" name="id_user" value="{{$user->id}}">
                         <button type="submit" class="btn btn-primary">Stats</button>

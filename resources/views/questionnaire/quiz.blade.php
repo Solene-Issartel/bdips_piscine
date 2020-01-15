@@ -104,7 +104,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 1; $i <= 6; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
                                     D <input type="radio" name="result{{$i}}" value="D">
@@ -130,7 +130,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 7; $i <= 31; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
 
@@ -155,7 +155,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 32; $i <= 70; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
                                     D <input type="radio" name="result{{$i}}" value="D">
@@ -181,7 +181,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 71; $i <= 100; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
                                     D <input type="radio" name="result{{$i}}" value="D">
@@ -207,7 +207,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 101; $i <= 130; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
                                     D <input type="radio" name="result{{$i}}" value="D">
@@ -233,7 +233,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 131; $i <= 146; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
                                     D <input type="radio" name="result{{$i}}" value="D">
@@ -259,7 +259,7 @@ Quiz
                                 <!-- last_id pour les questions dans la bdd : permet de ne pas écraser les questions des autres sujets -->
                                 @for ($i = 147; $i <= 200; $i++)
                                     {{$i}} -
-                                    A <input type="radio" name="result{{$i}}" value="A">
+                                    A <input type="radio" name="result{{$i}}" value="A" checked>
                                     B <input type="radio" name="result{{$i}}" value="B">
                                     C <input type="radio" name="result{{$i}}" value="C">
                                     D <input type="radio" name="result{{$i}}" value="D">

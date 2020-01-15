@@ -133,7 +133,7 @@ Statistiques
 	        datasets: [{
 	            label: 'Score',
 	            data: [<?php echo $totalusers-$totaldiff ;?>,<?php echo $totaldiff;?>] ,
-	            backgroundColor:['rgba(231, 76, 60, 0.5)',"rgba(230, 126, 34, 0.5)"],
+	            backgroundColor:['rgba(39, 174, 96, 0.5)','rgba(231, 76, 60, 0.5)'],
 				barThickness : 50 
 	        }]
 	    },

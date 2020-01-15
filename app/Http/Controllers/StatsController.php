@@ -359,7 +359,6 @@ class StatsController extends Controller
                 	array_push($moySousPartie,$tmpmoy);
                 }
             }
-            var_dump($difficulte);
 
             if($totalusers>0){
                 $totaldiff=count($difficulte);
@@ -367,7 +366,6 @@ class StatsController extends Controller
             else{
                 $totaldiff=0;
             }
-            var_dump($totaldiff);
             return view('/stats/affichage',['libSousParties'=>$libSousParties,'moySousPartie'=>$moySousPartie,'totalusers'=>$totalusers,'totaldiff'=>$totaldiff,'difficulte'=>$difficulte]);
         }
         elseif(isset($_POST['okUserSubPart'])){

@@ -56,14 +56,35 @@ Statistiques
 @elseif (isset($moySousPartie))
 <div class="container-fluid text-center" style="margin-top:50px;">
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-6" style="vertical-align: middle;">
 			<canvas id="myChart"></canvas>
 		</div>
-		<div class="col-sm-6">
-			<canvas id="sucessRate"></canvas>
+		<div class="col-sm-6" style="vertical-align: middle;">
+			<canvas id="sucessRate" style="margin-bottom:30px;"></canvas>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+					Students in failure
+				</button>
+			</p>
+			<div class="collapse" id="collapseExample" style="width:40%;margin-left:30%;">
+				<div class="card card-body">
+					<ul class="list-group">
+						<?php
+						//eleve en difficulté :
+						foreach ($difficulte as &$diff) {
+							echo "	<li class='list-group-item d-flex justify-content-between align-items-center'>
+										$diff
+									</li>";
+						}
+						?>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+
+
 
 
 <script>
@@ -93,7 +114,7 @@ Statistiques
 		    		text:'Selected session\'s score',
 		    		fontSize:50,
 					fontColor:'#000000',
-					padding:30
+					padding:40
 		    	},
 		    	legend:{position:'right',display: true},
 		    }
@@ -122,18 +143,12 @@ Statistiques
 	    		text:' Success Rate',
 	    		fontSize:50,
 				fontColor:'#000000',
-				padding:30
+				padding:40
 	    	}
 	    	//legend:{position:'bottom',display: false}  	
 	    }
 	});
 </script>
-
-<?php
-//eleve en difficulté : 
-print_r($difficulte);
-
-?>
 
 
 @elseif (isset($partie))

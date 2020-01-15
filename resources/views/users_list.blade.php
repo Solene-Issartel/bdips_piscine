@@ -20,8 +20,7 @@ Users list
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col-md-3">{{$user->name}}</div>
-                    <div class="col-md-3">{{$user->firstname}}</div>
-                    <div class="col-md-3"></div>
+                    <div class="col-md-6">{{$user->firstname}}</div>
                     <div class="col-md-3"><button type="button" class="btn btn-danger" style="margin-right:10%;" data-toggle="modal" data-target="#validationModal{{$user->id}}">Delete</button></div>
                   </div>
                 </li>

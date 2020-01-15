@@ -20,7 +20,7 @@ Session User
         <form class="form-horizontal" method="POST" action="{{ url('waiting_session')}}">
                         {{ csrf_field() }}
           
-            @if (isset($sujets))
+            @if (count($sujets)==0)
               <div class="form-group">
                 <select class="form-control" id="form-session" name="id_session">
                   @foreach($sujets as $sujet)

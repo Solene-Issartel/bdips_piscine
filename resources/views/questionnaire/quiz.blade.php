@@ -279,7 +279,7 @@ Quiz
                     @auth
                         <!-- Button trigger modal -->
                         <div role="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#validateModal" style="margin-top:20px;margin-bottom:40px;">
-                          Next
+                          Send
                         </div>
                     @endauth
 
@@ -309,7 +309,7 @@ Quiz
                     @guest
                         <!-- Button trigger modal -->
                         <div role="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#disconnectedModal" style="margin-top:20px;margin-bottom:40px;">
-                          Next
+                          Send
                         </div>
                     @endguest
 

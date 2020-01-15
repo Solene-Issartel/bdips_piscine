@@ -340,6 +340,7 @@ Statistiques
 		options: {
 			title:{display:true,text:'Scores timeline',fontSize:70,fontColor:'#000000',padding:30},
 			legend:{position:'bottom',display: false},
+	
 			scales:{
 				yAxes:[{
 					ticks: {

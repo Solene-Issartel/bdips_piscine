@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-	protected $table = 'session';
+    protected $table = 'session';
 
-	/**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -51,6 +51,13 @@ class Session extends Model
         }
         
         return $tab_s;
+    }
+
+    //Récupère toutes les sessions de la bdd
+    public static function get_session()
+    {
+        $session = DB::table('session')->get();
+        return $session;
     }
 
     //Supprime la session grâce à l'id donné

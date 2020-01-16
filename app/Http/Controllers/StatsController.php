@@ -135,7 +135,14 @@ class StatsController extends Controller
 
         }
         else{
-           return view('/stats/choix', ['choix'=>$choix]);  
+        	$allpromo=Promotion::getAllPromos();
+        	$id_promos=array();
+        	$libPromos=array();
+        	for ($i=0; $i<count($allpromo); $i++){
+        		array_push($id_promos,$allpromo[$i]->idPromotion);
+        		array_push($libPromos,$allpromo[$i]->libellePromotion);
+        	}
+            return view('/stats/choix', ['choix'=>$choix,'id_promos'=>$id_promos,'libPromos'=>$libPromos]);  
         }
         
         

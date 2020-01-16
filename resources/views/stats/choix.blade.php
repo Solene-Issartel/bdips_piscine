@@ -28,24 +28,9 @@ Statistics
       </br>
       <div class="row" style="display:inline-block;width:30%;margin-top:20px;">
         <select class="custom-select mr-sm-2" name="promotion">
-          <option value="1">IG3</option>
-          <option value="2">IG4</option>
-          <option value="3">IG5</option>
-          <option value="4">GBA3</option>
-          <option value="5">GBA4</option>
-          <option value="6">GBA5</option>
-          <option value="7">MAT3</option>
-          <option value="8">MAT4</option>
-          <option value="9">MAT5</option>
-          <option value="10">MI3</option>
-          <option value="11">MI4</option>
-          <option value="12">MI5</option>
-          <option value="13">MEA3</option>
-          <option value="14">MEA4</option>
-          <option value="15">MEA5</option>
-          <option value="16">STE3</option>
-          <option value="17">STE4</option>
-          <option value="18">STE5</option>
+          <?php for($i=0; $i<count($id_promos);$i++){
+            echo "\t",'<option value="',$id_promos[$i],'">',$libPromos[$i],'</option>',"\n";
+          }?>
         </select>
       </div>
       </br>
@@ -92,36 +77,9 @@ Statistics
     <div class="container-fluid text-center">
       <div class="row" style="display:inline-block;width:10%;">
         <select class="custom-select mr-sm-2" name="promotion">
-        <optgroup label="IG">
-          <option value="1">IG3</option>
-          <option value="2">IG4</option>
-          <option value="3">IG5</option>
-        </optgroup>
-        <optgroup label="GBA">
-          <option value="4">GBA3</option>
-          <option value="5">GBA4</option>
-          <option value="6">GBA5</option>
-        </optgroup>
-        <optgroup label="MAT">
-          <option value="7">MAT3</option>
-          <option value="8">MAT4</option>
-          <option value="9">MAT5</option>
-        </optgroup>
-        <optgroup label="MI">
-          <option value="10">MI3</option>
-          <option value="11">MI4</option>
-          <option value="12">MI5</option>
-        </optgroup>
-        <optgroup label="MEA">
-          <option value="13">MEA3</option>
-          <option value="14">MEA4</option>
-          <option value="15">MEA5</option>
-        </optgroup>
-        <optgroup label="STE">
-          <option value="16">STE3</option>
-          <option value="17">STE4</option>
-          <option value="18">STE5</option>
-        </optgroup>
+        <?php for($i=0; $i<count($id_promos);$i++){
+            echo "\t",'<option value="',$id_promos[$i],'">',$libPromos[$i],'</option>',"\n";
+          }?>
         </select>
       </div>
       </br>

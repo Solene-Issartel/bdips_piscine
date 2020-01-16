@@ -16,7 +16,6 @@ class StatsController extends Controller
     public function index()
     {
         if(Auth::user()->isAdmin() and request('id_user')==null){ // Si l'user est admin
-        	var_dump(request('id_user'));
             return view('/stats/stats');
         }
         else{//sinon

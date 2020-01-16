@@ -282,6 +282,7 @@ Statistiques
 @elseif (isset($id_user))
 	@if(isset($name))
 		<h3 align="center"> <?php echo $name." ".$firstname ;?></h3>
+		
 	@endif
 
 <div class="container-fluid text-center" style="width: 70%;height:auto;margin-top:50px;">
@@ -311,6 +312,8 @@ Statistiques
 					}?>
 				</select>
 				</br>
+				<input type ='hidden' name='id_user' value={{$id_user}}>
+
 				<input type="submit" name="okUserSubPart" class="btn btn-primary" value="Submit" style="margin-top:15px;"/>			
 			</form>
 		</div>

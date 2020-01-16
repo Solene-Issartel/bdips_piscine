@@ -22,33 +22,18 @@ class Session extends Model
     //To don't use 'created_at and updated_at' in database
     public $timestamps = false;
 
-    //Recupére toutes les sessions programmées après la date et l'heure courante de la bdd
+    //Recupére toutes les sessions programmées après la date courante dans la bdd
     public static function getAllSessions()
     {
-        //date et heure courantes
+        //date courante
         $current_date = date("Y-m-d");
-        $current_hour = date("H:i:s");
-
-        //on récupère les sessions du jour qui ne sont pas encore passées
-        $tab_s_today = DB::table('session')
-            ->distinct()
-
-            ->where('dateSession','=',$current_date)
-            ->where('heureDebut','>',$current_hour)
-            ->get();
 
         //on récupère les sessions d'après la date courante
-        $tab_s_future = DB::table('session')
+        $tab_s = DB::table('session')
             ->distinct()
 
             ->where('dateSession','>',$current_date)
             ->get();
-
-        if(count($tab_s_today)>0){
-            $tab_s=array_merge($tab_s_today,$tab_s_future);
-        } else {
-            $tab_s = $tab_s_future;
-        }
         
         return $tab_s;
     }

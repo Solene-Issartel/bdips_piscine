@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResultatSousPartie extends Model
 {
+	protected $table = 'resultatsouspartie';
+	
 	public $timestamps = false;
 
 	//Retourne tous les scores par sous-parties pour un utiisateur et une session

@@ -21,14 +21,14 @@ class SessionController extends Controller
                 return view('session/liste_session', ['sessions' => $sessions]);
 
         } else {
-        	return view('error.error_404');
+            return view('error.error_404');
         }
     }
 
     //Fonction pour l'affichage pour la création d'une nouvelle session toeic
     public function newSession()
     {
-    	$tab_sujets = Sujet::getAllSujets();
+        $tab_sujets = Sujet::getAllSujets();
         $promos = Promotion::getAllPromosOfCurrentYear();
 
         return view('session/session', ['tab_sujets' => $tab_sujets,'promos' => $promos]); 

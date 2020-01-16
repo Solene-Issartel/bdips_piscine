@@ -33,6 +33,7 @@ class Session extends Model
             ->distinct()
 
             ->where('dateSession','>',$current_date)
+            ->orderBy('dateSession')
             ->get();
         
         return $tab_s;
